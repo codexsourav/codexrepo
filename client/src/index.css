@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&family=Zen+Antique+Soft&family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+}
+
+html {
+  scroll-behavior: smooth;
+
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: rgb(0, 0, 0);
+  background: #ddfa02;
+}
+
+::selection {
+  color: rgb(0, 0, 0);
+  background: #ddfa02;
+}
+
+*:hover,
+*:focus {
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  /* background-color: #0D0D0D; */
+  /* color: #fff; */
+  font-family: 'Lato', sans-serif;
+  overflow-x: hidden !important;
+  width: 100vw;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0px 50px;
+
+}
+
+.Toastify__toast-container {
+  z-index: 99999999 !important;
+}
+
+.Toastify__toast.Toastify__toast-theme--light {
+  background-color: #46464652 !important;
+  backdrop-filter: blur(20px);
+  border-radius: 0px !important;
+}
+
+.Toastify__close-button.Toastify__close-button--light {
+  color: #fff !important;
+}
+
+.Toastify__toast-body {
+  color: #fff !important;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    padding: 0px 10px;
+  }
+}
