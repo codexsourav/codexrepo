@@ -1,0 +1,1 @@
+.services{padding-top:50px;padding-bottom:30px}.services .content{margin-top:30px;display:grid;grid-template-columns:repeat(3, 1fr);gap:30px}@media screen and (max-width: 850px){.services .content{grid-template-columns:auto}}

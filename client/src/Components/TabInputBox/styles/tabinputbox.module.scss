@@ -1,0 +1,28 @@
+.tabinputbox {
+    width: 100%;
+    label {
+        color: #000;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: bold;
+        line-height: 30px; /* 150% */
+        text-transform: uppercase;
+    }
+    .inputbox {
+        width: 100%;
+        border-radius: 0px !important;
+        border-bottom: 2px solid #000;
+
+        input {
+            width: 100%;
+            color: #000 !important;
+            font-weight: 600;
+            &::placeholder {
+                color: #0000004b !important;
+                font-weight: 500;
+                font-size: 15px;
+            }
+        }
+    }
+}

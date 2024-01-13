@@ -1,0 +1,79 @@
+.appdownload {
+    display: grid;
+    grid-template-columns: 450px auto;
+    gap: 20px;
+    @media screen and (max-width: 1000px) {
+        grid-template-columns: auto;
+    }
+
+    .imageApp {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 100%;
+        }
+    }
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 50px;
+        gap: 30px;
+        @media screen and (max-width: 850px) {
+            padding: 30px;
+        }
+        h2 {
+            color: #282828;
+            text-align: center;
+            font-size: 50px;
+            font-style: normal;
+            font-weight: 400;
+            text-transform: capitalize;
+            @media screen and (max-width: 1000px) {
+                font-size: 30px;
+            }
+            @media screen and (max-width: 550px) {
+                font-size: 25px;
+            }
+        }
+        h1 {
+            color: #000;
+            text-align: center;
+            font-size: 55px;
+            font-style: normal;
+            font-weight: 700;
+
+            text-transform: capitalize;
+            font-size: 45px;
+            @media screen and (max-width: 550px) {
+                font-size: 30px;
+            }
+        }
+        p {
+            color: #000;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 25px;
+            text-transform: capitalize;
+        }
+        .downloadLinks {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            @media screen and (max-width: 550px) {
+                justify-content: center;
+                align-items: center;
+            }
+            img {
+                width: 160px;
+                @media screen and (max-width: 550px) {
+                    width: 100px;
+                }
+            }
+        }
+    }
+}

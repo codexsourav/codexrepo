@@ -1,0 +1,1 @@
+.onewaytab{width:80%;flex-shrink:0;border-radius:44px;background-color:rgba(255,255,255,.2862745098);-webkit-backdrop-filter:blur(25px);backdrop-filter:blur(25px);display:grid;gap:60px;padding:60px 70px 65px 70px;grid-template-columns:repeat(4, 1fr)}@media screen and (max-width: 950px){.onewaytab{grid-template-columns:auto;gap:30px;width:90%;padding:40px;padding-bottom:50px}}

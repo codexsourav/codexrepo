@@ -1,0 +1,34 @@
+.blogpost {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    img {
+        width: 100%;
+        height: 200px;
+    }
+    .post {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        color: #000;
+        text-transform: uppercase;
+        cursor: default;
+        &::before {
+            content: "";
+            width: 50px;
+            height: 1px;
+            background-color: rgb(192, 192, 192);
+            display: inline-block;
+            margin-top: 0px;
+        }
+    }
+    .title {
+        font-size: 18px;
+    }
+    .timeStamp {
+        color: #2e2e2e;
+        font-size: 14px;
+    }
+}

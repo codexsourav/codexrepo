@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&family=Zen+Antique+Soft&family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700;900&display=swap');
 
+:root {
+  --main-color: rgb(22, 22, 22);
+  --scend-color: rgb(255, 255, 255);
+  --main: #FF9933;
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -15,13 +22,13 @@ html {
 
 ::-moz-selection {
   /* Code for Firefox */
-  color: rgb(0, 0, 0);
-  background: #ddfa02;
+  color: var(--scend-color);
+  background: var(--main-color);
 }
 
 ::selection {
-  color: rgb(0, 0, 0);
-  background: #ddfa02;
+  color: var(--scend-color);
+  background: var(--main-color);
 }
 
 *:hover,
@@ -63,6 +70,47 @@ body {
 
 .Toastify__toast-body {
   color: #fff !important;
+}
+
+
+
+.tabsearchBox .wrapper:first-child {
+  border-radius: 0px !important;
+  border: none !important;
+  background-color: transparent;
+  box-shadow: none !important;
+}
+
+.tabsearchBox div.wrapper div input {
+  border: none !important;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.tabsearchBox .wrapper>div:nth-child(2) {
+  background-color: #fff !important;
+  display: block !important;
+  border: none !important;
+}
+
+.btn {
+  border-radius: 50px;
+  background: #0b0b0b;
+  padding: 15px 20px;
+  flex-shrink: 0;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 30px;
+  /* 166.667% */
+  text-transform: uppercase;
 }
 
 @media screen and (max-width: 900px) {

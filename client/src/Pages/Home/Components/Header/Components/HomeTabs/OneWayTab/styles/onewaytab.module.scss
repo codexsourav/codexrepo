@@ -1,0 +1,20 @@
+.onewaytab {
+    width: 80%;
+    flex-shrink: 0;
+    border-radius: 44px;
+    // background: linear-gradient(92deg, rgba(255, 255, 255, 0.507) 2.36%, rgba(202, 139, 46, 0.507) 91.17%);
+    background-color: #ffffff49;
+    backdrop-filter: blur(25px);
+    display: grid;
+    gap: 60px;
+    padding: 60px 70px 65px 70px;
+    grid-template-columns: repeat(4, 1fr);
+
+    @media screen and (max-width: 950px) {
+        grid-template-columns: auto;
+        gap: 30px;
+        width: 90%;
+        padding: 40px;
+        padding-bottom: 50px;
+    }
+}

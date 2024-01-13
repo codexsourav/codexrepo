@@ -1,0 +1,22 @@
+.latestblogs {
+    padding-top: 100px;
+    padding-bottom: 30px;
+    .titleSection {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        a {
+            text-decoration: none;
+            color: #1d1d1d;
+        }
+    }
+    .posts {
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        @media screen and (max-width: 850px) {
+            grid-template-columns: auto;
+        }
+    }
+}
