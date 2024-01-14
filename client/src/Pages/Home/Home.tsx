@@ -1,22 +1,23 @@
-import React from "react";
-import Header from "./Components/Header/Header";
-import About from "./Components/About/About";
-import Services from "./Components/Services/Services";
-import LatestBlogs from "./Components/LatestBlogs/LatestBlogs";
-import TripInfo from "./Components/TripInfo/TripInfo";
-import AppDownload from "./Components/AppDownload/AppDownload";
-function Home() {
+import Navbar from "@/Component/Navbar/Navbar"
+import Header from "./Componets/Header/Header"
+import AboutUS from "./Componets/AboutUS/AboutUS"
+import About from "./Componets/About/About"
+import Services from "./Componets/Services/Services"
+import AppDownload from "./Componets/AppDownload/AppDownload"
+import LatestBlogs from "./Componets/LatestBlogs/LatestBlogs"
+import Footer from "@/Component/Footer/Footer"
 
+function Home() {
     return (
         <>
+            <Navbar />
             <Header />
-            <Services />
             <About />
-            <TripInfo />
-            <LatestBlogs />
+            <Services />
             <AppDownload />
+            <LatestBlogs />
+            <Footer />
         </>
     )
 }
-
-export default React.memo(Home);
+export default Home

@@ -1,9 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&family=Zen+Antique+Soft&family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
 
 :root {
-  --main-color: rgb(22, 22, 22);
-  --scend-color: rgb(255, 255, 255);
-  --main: #FF9933;
+  --black: rgb(22, 22, 22);
+  --black-tp: rgba(0, 0, 0, 0.897);
+  --white: rgb(255, 255, 255);
+  --main: #E36414;
+  --sec: #5F0F40;
 }
 
 
@@ -42,16 +44,16 @@ html {
 body {
   /* background-color: #0D0D0D; */
   /* color: #fff; */
-  font-family: 'Lato', sans-serif;
+  font-family: 'Roboto', sans-serif;
   overflow-x: hidden !important;
   width: 100vw;
+  z-index: 1;
 }
 
 .container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0px 50px;
-
 }
 
 .Toastify__toast-container {

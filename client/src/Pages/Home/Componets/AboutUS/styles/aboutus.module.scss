@@ -1,0 +1,15 @@
+.aboutus {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    color: var(--main);
+    .title {
+        font-weight: 300;
+        font-size: 80px !important;
+    }
+    .desc {
+        line-height: 30px;
+        font-size: 18px;
+        color: var(--black);
+    }
+}
