@@ -1,0 +1,1 @@
+.airport{display:grid;grid-template-columns:100px repeat(3, 1fr) 120px;gap:50px;width:100%}@media screen and (max-width: 800px){.airport{grid-template-columns:auto}}.airport div{width:100%}.airport div label{font-weight:bold;margin-bottom:10px;font-size:14px}.airport div input{width:100%;display:block}

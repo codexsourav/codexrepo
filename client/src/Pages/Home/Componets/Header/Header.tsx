@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import styles from './styles/header.module.css'
+import OneWay from '../tabs/OneWay/OneWay';
+import RoundTrip from '../tabs/RoundTrip/RoundTrip';
+import Local from '../tabs/Local/Local';
+import Airport from '../tabs/Airport/Airport';
 const Header = () => {
     const [tabinex, setTabinex] = useState<number>(0);
+    const tabs: ReactNode[] = [<OneWay />, <RoundTrip />, <Local />, <Airport />];
     return (
         <>
             <div className={styles.header}>
@@ -12,6 +17,10 @@ const Header = () => {
                         <div onClick={() => setTabinex(1)} className={`${styles.tab} ${tabinex == 1 ? styles.active : null}`}>Round Trip</div>
                         <div onClick={() => setTabinex(2)} className={`${styles.tab} ${tabinex == 2 ? styles.active : null}`}>Local</div>
                         <div onClick={() => setTabinex(3)} className={`${styles.tab} ${tabinex == 3 ? styles.active : null}`}>Airport</div>
+                    </div>
+                    <div className={styles.tabview}>
+                        {tabs[tabinex]}
+
                     </div>
                     <button className={styles.search}>Explore</button>
                 </div>

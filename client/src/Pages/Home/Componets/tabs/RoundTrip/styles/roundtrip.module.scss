@@ -1,0 +1,22 @@
+.roundtrip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 50px;
+
+    width: 100%;
+    @media screen and (max-width: 800px) {
+        grid-template-columns: auto;
+    }
+    div {
+        width: 100%;
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        input {
+            width: 100%;
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,1 @@
+.oneway{display:grid;grid-template-columns:repeat(4, 1fr);gap:50px;width:100%}@media screen and (max-width: 800px){.oneway{grid-template-columns:auto}}.oneway div{width:100%}.oneway div label{font-weight:bold;margin-bottom:10px;font-size:14px}.oneway div input{width:100%;display:block}
