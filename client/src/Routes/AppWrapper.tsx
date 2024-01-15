@@ -4,16 +4,19 @@ import { ToastContainer } from 'react-toastify';
 
 import Loader from '@/utils/Loader';
 import Navbar from '@/Component/Navbar/Navbar';
+import { useLocation } from 'react-router-dom';
+
 
 interface AppWrapperProps {
     children: ReactNode;
 }
 
 const AppWrapper: React.FC<AppWrapperProps> = ({ children }) => {
+    const location = useLocation();
 
     return <>
         <Loader />
-        <Navbar />
+        {location.pathname.startsWith("/admin") ? null : <Navbar />}
         {children}
 
         <ToastContainer

@@ -9,7 +9,7 @@ function Loader() {
     const dispatch = useDispatch();
     return (
         <LoadingBar
-            color='#f11946'
+            color='#fff'
             height={5}
             progress={loading.value}
             onLoaderFinished={() => dispatch(setLoader(0))}

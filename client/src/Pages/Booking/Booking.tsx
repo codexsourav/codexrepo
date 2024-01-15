@@ -56,18 +56,20 @@ const Booking = () => {
                         </div>
                         <button className={styles.bookbtn} >Book Your Cab</button>
                     </div>
-                    <div className={styles.info}>
-                        <h1>Booking Details</h1>
-                        <ul>
-                            <li>Type: One Way</li>
-                            <li>Pickup Address: Bangalore, india</li>
-                            <li>Drop Address: Delhi, india</li>
-                            <li>Pickup Date: 15/01/2024</li>
-                            <li>Pickup time: 12:10 PM</li>
-                            <li>Car Type: XUV</li>
-                            <li>KMs Includes: XUV</li>
-                            <li>Total Fare:  ₹ 41792</li>
-                        </ul>
+                    <div>
+                        <div className={styles.info}>
+                            <h1>Booking Details</h1>
+                            <ul>
+                                <li>Type: One Way</li>
+                                <li>Pickup Address: Bangalore, india</li>
+                                <li>Drop Address: Delhi, india</li>
+                                <li>Pickup Date: 15/01/2024</li>
+                                <li>Pickup time: 12:10 PM</li>
+                                <li>Car Type: XUV</li>
+                                <li>KMs Includes: XUV</li>
+                                <li>Total Fare:  ₹ 41792</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

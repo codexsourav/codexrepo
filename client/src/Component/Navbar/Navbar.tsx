@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './styles/navbar.module.css'
 import { FaRegUserCircle } from "react-icons/fa";
-import { IoMenuOutline, IoCloseOutline } from "react-icons/io5";
+import { IoMenuOutline, IoCloseOutline, IoWallet } from "react-icons/io5";
 
 
 
@@ -20,8 +20,9 @@ const Navbar = () => {
                             <a href="/">About</a>
                             <a href="/">Blog</a>
                             <a href="/">Services</a>
+                            <a href="#"><IoWallet size={20} className={styles.wallet} />  $10.0</a>
                         </div>
-                        <a href="/"><FaRegUserCircle size={24} /></a>
+                        <a href="/auth"><FaRegUserCircle size={24} /></a>
                     </div>
                 </div>
             </div>
