@@ -14,7 +14,7 @@ const Local = () => {
                         apiKey={""}
                         onPlaceSelected={(place) => console.log(place)}
                         className={"tabinput"}
-                        placeholder='your city'
+                        placeholder='Enter Your city'
                     />
                 </div>
                 <div>

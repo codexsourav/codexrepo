@@ -4,8 +4,8 @@
   --black: rgb(22, 22, 22);
   --black-tp: rgba(0, 0, 0, 0.897);
   --white: rgb(255, 255, 255);
-  --main: #E36414;
-  --sec: #5F0F40;
+  --main: #000000;
+  --sec: #0c0c0c;
 }
 
 
@@ -29,8 +29,8 @@ html {
 }
 
 ::selection {
-  color: var(--scend-color);
-  background: var(--main-color);
+  color: var(--white);
+  background: var(--main);
 }
 
 *:hover,

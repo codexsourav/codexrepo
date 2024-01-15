@@ -3,6 +3,7 @@ import React, { ReactNode } from 'react';
 import { ToastContainer } from 'react-toastify';
 
 import Loader from '@/utils/Loader';
+import Navbar from '@/Component/Navbar/Navbar';
 
 interface AppWrapperProps {
     children: ReactNode;
@@ -12,6 +13,7 @@ const AppWrapper: React.FC<AppWrapperProps> = ({ children }) => {
 
     return <>
         <Loader />
+        <Navbar />
         {children}
 
         <ToastContainer

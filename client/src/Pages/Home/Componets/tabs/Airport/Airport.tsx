@@ -23,7 +23,7 @@ const Airport = () => {
                         apiKey={""}
                         onPlaceSelected={(place) => console.log(place)}
                         className={"tabinput"}
-                        placeholder=''
+                        placeholder={tripType ? "Enter Airport Name" : "Your Address"}
                     />
                 </div>
                 <div>
@@ -32,7 +32,7 @@ const Airport = () => {
                         apiKey={""}
                         onPlaceSelected={(place) => console.log(place)}
                         className={"tabinput"}
-                        placeholder=''
+                        placeholder={tripType ? "Your Address" : "Enter Airport Name"}
                     />
                 </div>
                 <div>

@@ -5,6 +5,8 @@
     border-bottom: 3px solid var(--white);
     backdrop-filter: blur(20px);
     z-index: 999;
+    top: 0;
+    right: 0;
     position: fixed;
     .nav {
         height: 100%;

@@ -20,9 +20,8 @@ const Header = () => {
                     </div>
                     <div className={styles.tabview}>
                         {tabs[tabinex]}
-
                     </div>
-                    <button className={styles.search}>Explore</button>
+                    <a href='/explore' className={styles.search}>Explore</a>
                 </div>
             </div>
         </>

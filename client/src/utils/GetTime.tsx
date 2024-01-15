@@ -1,11 +1,11 @@
 export const generateTimeArray = (): string[] => {
-    const timeArray = [];
+    const timeArray: string[] = [];
     const startTime = new Date();
     startTime.setHours(0, 0, 0, 0); // Set start time to midnight
 
-    for (let i = 0; i < 288; i++) {
-        // 288 intervals represent 24 hours with 5-minute intervals
-        const time = new Date(startTime.getTime() + i * 5 * 60 * 1000);
+    for (let i = 0; i < 96; i++) {
+        // 96 intervals represent 24 hours with 15-minute intervals
+        const time = new Date(startTime.getTime() + i * 15 * 60 * 1000);
         const hours = time.getHours();
         const minutes = time.getMinutes();
         const ampm = hours >= 12 ? 'PM' : 'AM';
