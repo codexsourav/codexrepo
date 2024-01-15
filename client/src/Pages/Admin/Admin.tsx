@@ -29,15 +29,15 @@ function Admin() {
     const [tabIndex, setTabIndex] = useState(0)
     return (
         <>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 sm:gap-10 px-5 sm:px-20 mt-10">
-                <div className="bg-green-300 p-5 h-40 col-span-2">
-                    <h3 className="font-bold text-lg mb-3">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-5 sm:gap-10 px-5 sm:px-20 mt-10">
+                <div className="bg-green-300 p-5 h-full  col-span-2">
+                    <div className="font-bold flex justify-between items-center mb-3">
                         <h3 className="font-bold text-2xl">Welcome, Admin</h3>
-                    </h3>
+                        <a href="#" className="flex text-sm justify-end items-end mt-2">Logout</a>
+                    </div>
 
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor consequuntur suscipit voluptas.</p>
 
-                    <a href="#" className="flex justify-end items-end mt-2">Logout</a>
                 </div>
                 <div className="bg-gray-300 p-5 h-40 flex justify-between items-center flex-col">
                     <h3 className="font-bold text-lg">Total Users</h3>
@@ -46,8 +46,8 @@ function Admin() {
                 </div>
 
                 <div className="bg-blue-300 p-5 h-40 flex justify-between items-center flex-col">
-                    <h3 className="font-bold text-lg">Pending Booking</h3>
-                    <h1 className="text-5xl">10</h1>
+                    <h3 className="font-bold text-lg">Booking</h3>
+                    <h1 className="text-5xl">4</h1>
                     <div></div>
                 </div>
             </div>
