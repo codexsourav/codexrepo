@@ -6,6 +6,7 @@ import Booking from "@/Pages/Booking/Booking";
 import Auth from "@/Pages/Auth/Auth";
 import Admin from "@/Pages/Admin/Admin";
 import Login from "@/Pages/Admin/Login/Login";
+import Profile from "@/Pages/Profile/Profile";
 
 function AppRoutes() {
     return (
@@ -14,6 +15,8 @@ function AppRoutes() {
             <Route path="/explore" element={<Explore />} />
             <Route path="/booking" element={<Booking />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/profile" element={<Profile />} />
+
             <Route path="/admin" element={<Admin />} />
             <Route path="/admin/login" element={<Login />} />
             <Route path="*" element={<Error404 />} />

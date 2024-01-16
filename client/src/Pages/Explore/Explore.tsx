@@ -6,7 +6,7 @@ const Explore = () => {
         <>
             <div className={`${styles.explore} container`}>
                 <div className={`${styles.info}`}>
-                    <h2>Your Trip Info</h2>
+                    <h2 className='text-xl font-bold' >Your Trip Info</h2>
                     <ul>
                         <li>Type: One Way</li>
                         <li>Pickup Address: Bangalore, india</li>
@@ -37,7 +37,7 @@ export default React.memo(Explore);
 const CarBox = () => {
     return <div className={styles.carbox}>
         <img src="https://demothemesflat.co/conexikit/wp-content/uploads/2022/11/Taxis-01.png" alt="car" />
-        <h1>M5 2008 Model</h1>
+        <h1 className='font-bold text-2xl' >M5 2008 Model</h1>
         <div className={styles.infobox}>
             <div className={styles.infocar}><p>Base Rate:</p> <p>₹200.00</p></div>
             <div className={styles.infocar}><p>Par 1/KM:</p> <p>₹40.00</p></div>

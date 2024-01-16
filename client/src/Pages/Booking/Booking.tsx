@@ -8,7 +8,7 @@ const Booking = () => {
             <div className="container">
                 <div className={`${styles.booking}`}>
                     <div className={styles.contactForm}>
-                        <h1>CONTACT & PICKUP DETAILS</h1>
+                        <h1 className='font-bold text-lg' >CONTACT & PICKUP DETAILS</h1>
                         <div className={styles.inputsec}>
                             <label >Name</label>
                             <input
@@ -54,12 +54,12 @@ const Booking = () => {
                                 placeholder='Enter Drop Address Here'
                             />
                         </div>
-                        <button className={styles.bookbtn} >Book Your Cab</button>
+                        <button className={styles.bookbtn}  >Book Your Cab</button>
                     </div>
                     <div>
                         <div className={styles.info}>
-                            <h1>Booking Details</h1>
-                            <ul>
+                            <h1 className='font-bold text-lg'>Booking Details</h1>
+                            <ul className='list-none'>
                                 <li>Type: One Way</li>
                                 <li>Pickup Address: Bangalore, india</li>
                                 <li>Drop Address: Delhi, india</li>

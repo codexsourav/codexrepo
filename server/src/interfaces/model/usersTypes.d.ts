@@ -3,13 +3,11 @@ import { Document, Model } from 'mongoose';
 // Define the interface for the Cat document
 interface IUsers {
     name: string;
-    email: string;
     mobile: string | number;
-    pass: string;
+    wallet: number;
+    transaction: array;
     image: string;
     isAllow: boolean;
-    isAdmin: boolean;
-    jwtToken: string;
 }
 
 // Extend the Cat document with Document interface from Mongoose

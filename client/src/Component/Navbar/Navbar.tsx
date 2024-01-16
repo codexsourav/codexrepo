@@ -12,7 +12,7 @@ const Navbar = () => {
             <div className={styles.navbar}>
                 <div className={`${styles.nav} container`}>
                     <IoMenuOutline onClick={() => setShowMenu(true)} size={24} color="#fff" style={{ display: "none" }} className={styles.menuicon} />
-                    <img src="/images/logo.png" alt="logo" height={40} className={styles.logo} />
+                    <img src="/images/logo.png" alt="logo" height={40} className={`${styles.logo} ml-16 sm:ml-0`} />
                     <div className={styles.menu}>
                         <div className={`${styles.links} ${showMenu ? styles.active : null}`}>
                             <IoCloseOutline onClick={() => setShowMenu(false)} size={40} color="#fff" style={{ display: "none" }} className={styles.closeicon} />
@@ -20,8 +20,8 @@ const Navbar = () => {
                             <a href="/">About</a>
                             <a href="/">Blog</a>
                             <a href="/">Services</a>
-                            <a href="#"><IoWallet size={20} className={styles.wallet} />  $10.0</a>
                         </div>
+                        <a href="#" className='flex justify-center items-center gap-3 ' ><IoWallet size={24} className={styles.wallet} />  <span className='hidden sm:block'  >₹250.0</span></a>
                         <a href="/auth"><FaRegUserCircle size={24} /></a>
                     </div>
                 </div>

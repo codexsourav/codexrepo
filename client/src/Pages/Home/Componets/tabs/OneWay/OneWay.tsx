@@ -11,7 +11,7 @@ const OneWay = () => {
                 <div>
                     <label >From</label>
                     <ReactGoogleAutocomplete
-                        apiKey={""}
+                        apiKey={"AIzaSyCt16mbckx6dStfwzjYECsX96Nt6j_rS3o"}
                         onPlaceSelected={(place) => console.log(place)}
                         className={"tabinput"}
                         placeholder='Ex : Mumbai'
@@ -20,7 +20,7 @@ const OneWay = () => {
                 <div>
                     <label >To</label>
                     <ReactGoogleAutocomplete
-                        apiKey={""}
+                        apiKey={"AIzaSyCt16mbckx6dStfwzjYECsX96Nt6j_rS3o"}
                         onPlaceSelected={(place) => console.log(place)}
                         className={"tabinput"}
                         placeholder='Ex : Bangalore'
