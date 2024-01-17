@@ -4,6 +4,8 @@ import { IAdminUsers } from "./model/adminType.js";
 
 export interface IToken {
     id: string,
+    _id: string,
+
     mobile?: string | number,
     email?: string,
     date: Date,

@@ -2,7 +2,7 @@ import { NextFunction, Response } from 'express';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import { AuthRequest, IToken } from 'src/interfaces/AuthRequest.js';
 import { IAdminUsersDocument } from 'src/interfaces/model/adminType.js';
-import AdminsModel from 'src/db/models/AdminModels.js';
+import AdminsModel from '../db/models/AdminModels.js';
 
 export default async (req: AuthRequest, res: Response, next: NextFunction) => {
     try {
@@ -23,7 +23,7 @@ export default async (req: AuthRequest, res: Response, next: NextFunction) => {
         }
 
         const user = jwt.verify(token, process.env.JWTKEY || "123") as JwtPayload | IToken;
-        const userInfo: IAdminUsersDocument | null = await AdminsModel.findOne({ "_id": user!.id }, { pass: 0 });
+        const userInfo: IAdminUsersDocument | null = await AdminsModel.findOne({ "_id": user!._id }, { pass: 0 });
         if (!userInfo) {
             return res.status(401).send({ "error": "You Are Not Authorized", "auth": false });
         }

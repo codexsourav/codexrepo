@@ -1,31 +1,48 @@
-import { Response, Router, Request } from 'express';
-import AdminsModel from 'src/db/models/AdminModels.js';
-import CabsModel from 'src/db/models/CabsMoadel.js';
-import admin_middleware from 'src/middleware/admin_middleware.js';
-import { setJwtToken } from 'src/utils/makeTwtToken.js';
-const router: Router = Router();
+import express, { Response, Router, Request } from 'express';
+import AdminsModel from '../db/models/AdminModels.js';
+import CabsModel from '../db/models/CabsMoadel.js';
+import admin_middleware from '../middleware/admin_middleware.js';
+import { setJwtToken } from '../utils/makeTwtToken.js';
+const AdminRouter = express.Router();
 
-router.post("/api/admin/login", async (req: Request, res: Response) => {
+AdminRouter.post("/api/admin/login", async (req: Request, res: Response) => {
     try {
         const { email, pass } = req.body;
+        console.log(req.body.email);
+
         if (!email || !pass) {
             return res.status(203).json({ "message": "Invalid Email Or Password" });
         }
-        const user = await AdminsModel.find({ email, pass });
+        const user = await AdminsModel.findOne({ email, pass });
+        console.log(user);
+
         if (!user) {
             return res.status(203).json({ "message": "Invalid Email Or Password" });
         } else {
-            const token = setJwtToken(req, user)
+            const token = setJwtToken(res, { "email": user?.email, "_id": user?._id })
             return res.status(200).json({ "message": "Login Successful", token });
         }
     } catch (error) {
+        console.log(error);
         return res.status(500).json({ "message": "Unknown Server Error" });
     }
 });
 
-router.post("/api/admin/addcab", admin_middleware, async (req: Request, res: Response) => {
+AdminRouter.get("/api/cabs", async (req: Request, res: Response) => {
     try {
-        const { image, name, baserate, carnumber, kmprice, maxpac } = req.body;
+        const cabs = await CabsModel.find({ delete: false });
+        return res.status(200).json(cabs);
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json([]);
+    }
+});
+
+
+AdminRouter.post("/api/admin/addcab", admin_middleware, async (req: Request, res: Response) => {
+    try {
+        const { image, name, baserate, carnumber, parkm, maxpac } = req.body;
 
         if (!image) {
             return res.status(203).json({ "message": "Please Select Car Image" });
@@ -35,7 +52,7 @@ router.post("/api/admin/addcab", admin_middleware, async (req: Request, res: Res
             return res.status(203).json({ "message": "Name is required" });
         }
 
-        if (!baserate || isNaN(baserate)) {
+        if (!baserate) {
             return res.status(203).json({ "message": "Enter The Base Rate" });
         }
 
@@ -43,28 +60,30 @@ router.post("/api/admin/addcab", admin_middleware, async (req: Request, res: Res
             return res.status(203).json({ "message": "Car Number is required" });
         }
 
-        if (!kmprice || isNaN(kmprice)) {
+        if (!parkm) {
             return res.status(203).json({ "message": "Enter 1/Kilometer Price" });
         }
 
-        if (!maxpac || isNaN(maxpac)) {
+        if (!maxpac) {
             return res.status(203).json({ "message": "Enter Max Passenger Capacity" });
         }
 
-        const newCab = new CabsModel({ image, name, baserate, carnumber, kmprice, maxpac });
+        const newCab = new CabsModel({ image, name, baserate, carnumber, parkm, maxpac });
 
         await newCab.save();
         return res.status(200).json({ "message": "New Cab Added Successfully" });
 
     } catch (error) {
+        console.log(error);
+
         return res.status(500).json({ "message": "Unknown Server Error" });
     }
 });
 
-router.put("/api/admin/cab/:id", admin_middleware, async (req: Request, res: Response) => {
+AdminRouter.put("/api/admin/cab/:id", admin_middleware, async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
-        const { image, name, baserate, carnumber, kmprice, maxpac } = req.body;
+        const { image, name, baserate, carnumber, parkm, maxpac } = req.body;
 
         if (!image) {
             return res.status(203).json({ "message": "Please Select Car Image" });
@@ -74,7 +93,7 @@ router.put("/api/admin/cab/:id", admin_middleware, async (req: Request, res: Res
             return res.status(203).json({ "message": "Name is required" });
         }
 
-        if (!baserate || isNaN(baserate)) {
+        if (!baserate) {
             return res.status(203).json({ "message": "Enter The Base Rate" });
         }
 
@@ -82,15 +101,15 @@ router.put("/api/admin/cab/:id", admin_middleware, async (req: Request, res: Res
             return res.status(203).json({ "message": "Car Number is required" });
         }
 
-        if (!kmprice || isNaN(kmprice)) {
+        if (!parkm) {
             return res.status(203).json({ "message": "Enter 1/Kilometer Price" });
         }
 
-        if (!maxpac || isNaN(maxpac)) {
+        if (!maxpac) {
             return res.status(203).json({ "message": "Enter Max Passenger Capacity" });
         }
 
-        const updateCab = await CabsModel.updateOne({ _id: id }, { image, name, baserate, carnumber, kmprice, maxpac });
+        const updateCab = await CabsModel.updateOne({ _id: id }, { image, name, baserate, carnumber, parkm, maxpac });
 
         return res.status(200).json({ "message": "Cab Update Successfully" });
 
@@ -99,15 +118,22 @@ router.put("/api/admin/cab/:id", admin_middleware, async (req: Request, res: Res
     }
 });
 
-router.put("/api/admin/cab/:id", admin_middleware, async (req: Request, res: Response) => {
+AdminRouter.delete("/api/admin/cab/:id", admin_middleware, async (req: Request, res: Response) => {
+    console.log("OKKK");
+
     try {
         const { id } = req.params;
 
-        const updateCab = await CabsModel.deleteOne({ _id: id });
+        const deleteCab = await CabsModel.deleteOne({ _id: id });
+        console.log(deleteCab);
 
         return res.status(200).json({ "message": "Cab Delete Successfully" });
 
     } catch (error) {
+        console.log(error);
+
         return res.status(500).json({ "message": "Unknown Server Error" });
     }
 });
+
+export { AdminRouter };

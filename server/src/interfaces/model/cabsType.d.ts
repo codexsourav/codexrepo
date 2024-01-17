@@ -7,8 +7,9 @@ interface ICabs {
     carnumber: string;
     baserate: number;
     parkm: number;
-    maxprc: number;
+    maxpac: number;
     isAllow: boolean;
+    delete: boolean;
     date: any,
 }
 

@@ -1,8 +1,15 @@
 import multer from "multer";
-
+import fs from 'fs'
 const storage: multer.StorageEngine = multer.diskStorage({
     destination: function (req, file, cb) {
-        return cb(null, '../static/uploads');
+        const destinationPath = './static/uploads';
+
+        // Create the destination directory if it doesn't exist
+        if (!fs.existsSync(destinationPath)) {
+            fs.mkdirSync(destinationPath, { recursive: true });
+        }
+
+        return cb(null, destinationPath);
     },
     filename: function (req, file, cb) {
         const allowExt: string[] = ['jpg', 'png', 'jpeg', 'webp'];

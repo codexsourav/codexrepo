@@ -1,16 +1,18 @@
+import Loading from '@/Component/loading';
 import React, { ReactNode, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
 interface ProtectedProps {
     page: ReactNode;
+    isadmin?: boolean,
 }
 
-function Protected({ page }: ProtectedProps) {
+function Protected({ page, isadmin = false }: ProtectedProps) {
     const navigate = useNavigate();
     useEffect(() => {
-        const auth = localStorage.getItem(import.meta.env.VITE_AUTHKEY);
+        const auth = localStorage.getItem(isadmin ? import.meta.env.VITE_ADMINAUTHKEY : import.meta.env.VITE_AUTHKEY);
         if (!auth) {
-            navigate("/", { replace: true });
+            navigate((isadmin ? "/admin/login" : "/"), { replace: true });
         }
     }, []);
     return page;

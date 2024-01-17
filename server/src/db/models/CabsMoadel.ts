@@ -6,9 +6,13 @@ const cabs = new mongo.Schema<ICabs>({
     name: String,
     baserate: Number,
     carnumber: String,
-    image: Number,
+    image: String,
     parkm: Number,
-    maxprc: Number,
+    maxpac: Number,
+    delete: {
+        type: Boolean,
+        default: false,
+    },
     isAllow: {
         type: Boolean,
         default: true,

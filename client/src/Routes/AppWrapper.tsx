@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import Loader from '@/utils/Loader';
 import Navbar from '@/Component/Navbar/Navbar';
 import { useLocation } from 'react-router-dom';
+import { Toaster } from '@/components/ui/toaster';
 
 
 interface AppWrapperProps {
@@ -31,6 +32,7 @@ const AppWrapper: React.FC<AppWrapperProps> = ({ children }) => {
             pauseOnHover
             theme="light"
         />
+        <Toaster />
     </>;
 
 };

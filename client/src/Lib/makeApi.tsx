@@ -2,13 +2,13 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 
 
 
-export default async ({ path = "/", method = "GET", data = {}, baseUrl = import.meta.env.VITE_APIURL }: { path?: string, method?: string, data?: any, baseUrl?: string }) => {
+export default async ({ path = "/", method = "GET", data = {}, baseUrl = import.meta.env.VITE_APIURL, isAdmin = false }: { path?: string, method?: string, data?: any, baseUrl?: string, isAdmin?: boolean }) => {
     var options = {
         method: method,
         url: baseUrl + path,
         headers: {
             Accept: '*/*',
-            Authorization: 'barer ' + (localStorage.getItem(import.meta.env.VITE_AUTHKEY) || "").toString(),
+            Authorization: 'barer ' + (localStorage.getItem((isAdmin ? import.meta.env.VITE_ADMINAUTHKEY : import.meta.env.VITE_AUTHKEY)) || "").toString(),
             'Content-Type': 'application/json'
         },
         data: data,
@@ -21,7 +21,7 @@ export default async ({ path = "/", method = "GET", data = {}, baseUrl = import.
         if (error instanceof AxiosError) {
             if (error.response?.status == 401) {
                 if (typeof window !== "undefined") {
-                    window.location.replace("/login");
+                    window.location.replace("/");
                     throw error;
                 }
             }
@@ -32,7 +32,7 @@ export default async ({ path = "/", method = "GET", data = {}, baseUrl = import.
     }
 }
 
-export const uploadFileRequest = async (file: string, { baseUrl = import.meta.env.VITE_APIURL }: { baseUrl?: string }) => {
+export const uploadFileRequest = async (file: File, { baseUrl = import.meta.env.VITE_APIURL }: { baseUrl?: string }) => {
     const formData = new FormData();
     formData.append('file', file);
 

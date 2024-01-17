@@ -5,34 +5,35 @@ import env from "dotenv";
 import connectDB from './db/db.js';
 import middleware from './middleware/middleware.js';
 import UploadFile from './helper/UploadFile.js';
-
+import { AdminRouter } from './routes/admin.js'
 const app: express.Express = express();
 env.config();
+app.use(
+    cors(),
+    express.static("static"),
+    express.static("static/uploads"),
+    express.json(),
+    cookieParser(),
+    express.urlencoded({ extended: true }),
+    AdminRouter,
+);
 
-const initApp = () => {
 
-    const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8000;
 
-    app.use(
-        cors(),
-        express.static("static"),
-        express.static("static/uploads"),
-        express.json(),
-        express.urlencoded({ extended: true }),
-        cookieParser(),
-    );
 
-    connectDB().then(() => {
-        app.listen(port, () => {
-            console.log(`Server listening at Port - ${process.env.PORT}`);
-        });
-    }).catch((e) => {
-        console.log("App Start Error", e);
+
+connectDB().then(() => {
+    app.listen(port, () => {
+        console.log(`Server listening at Port - ${process.env.PORT}`);
     });
+}).catch((e) => {
+    console.log("App Start Error", e);
+});
 
-}
 
-app.post("/upload", middleware, UploadFile.single("file"), async (req: Request, res: Response) => {
+
+app.post("/upload", UploadFile.single("file"), async (req: Request, res: Response) => {
     res.send(req.file)
 });
 
@@ -46,4 +47,4 @@ app.get("/", async (req: Request, res: Response) => {
     });
 });
 
-initApp();
+

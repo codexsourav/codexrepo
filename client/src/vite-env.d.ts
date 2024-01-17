@@ -2,4 +2,5 @@
 interface ImportMetaEnv {
     readonly VITE_AUTHKEY: string,
     readonly VITE_APIURL: string,
+    readonly VITE_ADMINAUTHKEY: string;
 }
