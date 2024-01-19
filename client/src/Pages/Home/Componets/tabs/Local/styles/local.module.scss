@@ -8,6 +8,9 @@
         grid-template-columns: auto;
     }
     div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         width: 100%;
         label {
             font-weight: bold;

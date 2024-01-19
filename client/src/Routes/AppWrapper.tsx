@@ -6,7 +6,7 @@ import Loader from '@/utils/Loader';
 import Navbar from '@/Component/Navbar/Navbar';
 import { useLocation } from 'react-router-dom';
 import { Toaster } from '@/components/ui/toaster';
-
+import "react-toastify/dist/ReactToastify.css";
 
 interface AppWrapperProps {
     children: ReactNode;
@@ -23,7 +23,7 @@ const AppWrapper: React.FC<AppWrapperProps> = ({ children }) => {
         <ToastContainer
             position="top-right"
             autoClose={3000}
-            hideProgressBar={false}
+            hideProgressBar={true}
             newestOnTop={true}
             closeOnClick
             rtl={false}

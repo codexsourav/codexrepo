@@ -1,42 +1,104 @@
 import React from 'react';
 import styles from './styles/roundtrip.module.css'
-import ReactGoogleAutocomplete from 'react-google-autocomplete';
 import { generateTimeArray } from '@/utils/GetTime';
+import GoogleMapInput from '@/Component/GoogleMapInput/GoogleMapInput';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import StoreType, { AppDispatch } from '@/Interfaces/storeInterface';
+import { IRoundTrip, setRoundTrip } from '@/Redux/TripBox/RoundTrip';
+import { errorToast } from '@/Lib/showToast';
+import { validateDateDifference } from '@/Lib/getVewDate';
+
+// ?type=oneway&pickupaddress=[]&dropaddress=[]&pickdate=[]&picktime=[];
+// ?type=roundtrip&pickupaddress=[]&dropaddress=[]&pickdate=[]&returndate=[]&picktime=[];
+// ?type=local&pickupaddress=[]&pickdate=[]&picktime=[];
+// ?type=airport&trip=[]&airportname=[]&location=[]&pickdate=[]&picktime=[];
+
+
 
 const RoundTrip = () => {
+
+    const navigate = useNavigate();
+    const data = useSelector((store: StoreType) => store.roundTrip)
+    const diapatch = useDispatch<AppDispatch>();
+    const setData = (name: keyof IRoundTrip, value: string) => {
+        diapatch(setRoundTrip({ name, value }))
+    };
+
+    const valiDateData = (data: IRoundTrip): string | boolean => {
+        const { form, to, pickDate, returnDate, time } = data;
+
+        if (!form.trim()) {
+            return 'Please enter "From" location.';
+        }
+
+        if (!to.trim()) {
+            return 'Please enter "To" location.';
+        }
+
+        if (!pickDate) {
+            return 'Please Select PickUp Date.';
+        }
+
+        if (!returnDate) {
+            return 'Please Select Return Date.';
+        }
+
+        if (!time.trim()) {
+            return 'Please Select Pickup time.';
+        } if (validateDateDifference(data.pickDate, new Date().toISOString())) {
+            return 'Invalid Pickup Date.';
+        } if (validateDateDifference(data.returnDate, new Date().toISOString())) {
+            return 'Invalid Return Date.';
+        } if (validateDateDifference(data.returnDate, data.pickDate)) {
+            return 'Invalid Pickup,Return Formate.';
+        }
+        return true;
+    };
+
+
+
+    const exploreCabs = () => {
+        const validate = valiDateData(data);
+        if (validate == true) {
+            navigate(`/explore?type=roundtrip&pickupaddress=${data.form}&dropaddress=${data.to}&pickdate=${data.pickDate}&returndate=${data.returnDate}&picktime=${data.time}`);
+        } else {
+            errorToast(validate.toString());
+        }
+    }
+
+
     const timeArray = generateTimeArray();
     return (
         <>
             <div className={styles.roundtrip}>
-                <div>
-                    <label >From</label>
-                    <ReactGoogleAutocomplete
-                        apiKey={""}
-                        onPlaceSelected={(place) => console.log(place)}
-                        className={"tabinput"}
-                        placeholder='Ex : Mumbai'
-                    />
-                </div>
-                <div>
-                    <label >To</label>
-                    <ReactGoogleAutocomplete
-                        apiKey={""}
-                        onPlaceSelected={(place) => console.log(place)}
-                        className={"tabinput"}
-                        placeholder='Ex : Bangalore'
-                    />
-                </div>
+
+                <GoogleMapInput label='From' placeholder='Ex: Delhi' onChenge={(places) => {
+                    if (places) {
+                        const locationData = places.formatted_address.toString();
+                        setData('form', locationData)
+                    }
+                }} />
+
+                <GoogleMapInput label='To' placeholder='Ex: Kolkata' onChenge={(places) => {
+                    if (places) {
+                        const locationData = places.formatted_address.toString();
+                        setData('to', locationData)
+                    }
+                }} />
+
                 <div>
                     <label >Pickup Date</label>
-                    <input type="date" name="date" id="date" className="tabinput" />
+                    <input type="date" name="date" id="date" className="tabinput" onChange={(e) => setData('pickDate', e.target.value)} />
                 </div>
                 <div>
                     <label >Return</label>
-                    <input type="date" name="date" id="date" className="tabinput" />
+                    <input type="date" name="date" id="date" className="tabinput" onChange={(e) => setData('returnDate', e.target.value)} />
                 </div>
                 <div>
                     <label >Pickup Time</label>
-                    <select name="time" id="time" className='tabinput'>
+                    <select name="time" id="time" className='tabinput' onChange={(e) => setData('time', e.target.value)}>
+                        <option value="" selected>00:00 --</option>
                         {
                             timeArray.map((e, i) => {
                                 return <option key={"timeround-" + i} value={e} >{e}</option>
@@ -45,7 +107,7 @@ const RoundTrip = () => {
                     </select>
                 </div>
             </div>
-
+            <button className='searchBtn' onClick={exploreCabs}>Explore</button>
         </>
     );
 };

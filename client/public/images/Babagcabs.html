@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style>.pac-container{background-color:#fff;position:absolute!important;z-index:1000;border-radius:2px;border-top:1px solid #d9d9d9;font-family:Arial,sans-serif;-webkit-box-shadow:0 2px 6px rgba(0,0,0,.3);box-shadow:0 2px 6px rgba(0,0,0,.3);-webkit-box-sizing:border-box;box-sizing:border-box;overflow:hidden}.pac-logo:after{content:"";padding:1px 1px 1px 0;height:18px;-webkit-box-sizing:border-box;box-sizing:border-box;text-align:right;display:block;background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3.png);background-position:right;background-repeat:no-repeat;-webkit-background-size:120px 14px;background-size:120px 14px}.hdpi.pac-logo:after{background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3_hdpi.png)}.pac-item{cursor:default;padding:0 4px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;line-height:30px;text-align:left;border-top:1px solid #e6e6e6;font-size:11px;color:#515151}.pac-item:hover{background-color:#fafafa}.pac-item-selected,.pac-item-selected:hover{background-color:#ebf2fe}.pac-matched{font-weight:700}.pac-item-query{font-size:13px;padding-right:3px;color:#000}.pac-icon{width:15px;height:20px;margin-right:7px;margin-top:6px;display:inline-block;vertical-align:top;background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/autocomplete-icons.png);-webkit-background-size:34px 34px;background-size:34px}.hdpi .pac-icon{background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/autocomplete-icons_hdpi.png)}.pac-icon-search{background-position:-1px -1px}.pac-item-selected .pac-icon-search{background-position:-18px -1px}.pac-icon-marker{background-position:-1px -161px}.pac-item-selected .pac-icon-marker{background-position:-18px -161px}.pac-placeholder{color:gray}sentinel{}
+</style><style>.pac-container{background-color:#fff;position:absolute!important;z-index:1000;border-radius:2px;border-top:1px solid #d9d9d9;font-family:Arial,sans-serif;-webkit-box-shadow:0 2px 6px rgba(0,0,0,.3);box-shadow:0 2px 6px rgba(0,0,0,.3);-webkit-box-sizing:border-box;box-sizing:border-box;overflow:hidden}.pac-logo:after{content:"";padding:1px 1px 1px 0;height:18px;-webkit-box-sizing:border-box;box-sizing:border-box;text-align:right;display:block;background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3.png);background-position:right;background-repeat:no-repeat;-webkit-background-size:120px 14px;background-size:120px 14px}.hdpi.pac-logo:after{background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3_hdpi.png)}.pac-item{cursor:default;padding:0 4px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;line-height:30px;text-align:left;border-top:1px solid #e6e6e6;font-size:11px;color:#515151}.pac-item:hover{background-color:#fafafa}.pac-item-selected,.pac-item-selected:hover{background-color:#ebf2fe}.pac-matched{font-weight:700}.pac-item-query{font-size:13px;padding-right:3px;color:#000}.pac-icon{width:15px;height:20px;margin-right:7px;margin-top:6px;display:inline-block;vertical-align:top;background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/autocomplete-icons.png);-webkit-background-size:34px 34px;background-size:34px}.hdpi .pac-icon{background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/autocomplete-icons_hdpi.png)}.pac-icon-search{background-position:-1px -1px}.pac-item-selected .pac-icon-search{background-position:-18px -1px}.pac-icon-marker{background-position:-1px -161px}.pac-item-selected .pac-icon-marker{background-position:-18px -161px}.pac-placeholder{color:gray}sentinel{}
+</style><style>.pac-container{background-color:#fff;position:absolute!important;z-index:1000;border-radius:2px;border-top:1px solid #d9d9d9;font-family:Arial,sans-serif;-webkit-box-shadow:0 2px 6px rgba(0,0,0,.3);box-shadow:0 2px 6px rgba(0,0,0,.3);-webkit-box-sizing:border-box;box-sizing:border-box;overflow:hidden}.pac-logo:after{content:"";padding:1px 1px 1px 0;height:18px;-webkit-box-sizing:border-box;box-sizing:border-box;text-align:right;display:block;background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3.png);background-position:right;background-repeat:no-repeat;-webkit-background-size:120px 14px;background-size:120px 14px}.hdpi.pac-logo:after{background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3_hdpi.png)}.pac-item{cursor:default;padding:0 4px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;line-height:30px;text-align:left;border-top:1px solid #e6e6e6;font-size:11px;color:#515151}.pac-item:hover{background-color:#fafafa}.pac-item-selected,.pac-item-selected:hover{background-color:#ebf2fe}.pac-matched{font-weight:700}.pac-item-query{font-size:13px;padding-right:3px;color:#000}.pac-icon{width:15px;height:20px;margin-right:7px;margin-top:6px;display:inline-block;vertical-align:top;background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/autocomplete-icons.png);-webkit-background-size:34px 34px;background-size:34px}.hdpi .pac-icon{background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/autocomplete-icons_hdpi.png)}.pac-icon-search{background-position:-1px -1px}.pac-item-selected .pac-icon-search{background-position:-18px -1px}.pac-icon-marker{background-position:-1px -161px}.pac-item-selected .pac-icon-marker{background-position:-18px -161px}.pac-placeholder{color:gray}sentinel{}
+</style><style>.pac-container{background-color:#fff;position:absolute!important;z-index:1000;border-radius:2px;border-top:1px solid #d9d9d9;font-family:Arial,sans-serif;-webkit-box-shadow:0 2px 6px rgba(0,0,0,.3);box-shadow:0 2px 6px rgba(0,0,0,.3);-webkit-box-sizing:border-box;box-sizing:border-box;overflow:hidden}.pac-logo:after{content:"";padding:1px 1px 1px 0;height:18px;-webkit-box-sizing:border-box;box-sizing:border-box;text-align:right;display:block;background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3.png);background-position:right;background-repeat:no-repeat;-webkit-background-size:120px 14px;background-size:120px 14px}.hdpi.pac-logo:after{background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3_hdpi.png)}.pac-item{cursor:default;padding:0 4px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;line-height:30px;text-align:left;border-top:1px solid #e6e6e6;font-size:11px;color:#515151}.pac-item:hover{background-color:#fafafa}.pac-item-selected,.pac-item-selected:hover{background-color:#ebf2fe}.pac-matched{font-weight:700}.pac-item-query{font-size:13px;padding-right:3px;color:#000}.pac-icon{width:15px;height:20px;margin-right:7px;margin-top:6px;display:inline-block;vertical-align:top;background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/autocomplete-icons.png);-webkit-background-size:34px 34px;background-size:34px}.hdpi .pac-icon{background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/autocomplete-icons_hdpi.png)}.pac-icon-search{background-position:-1px -1px}.pac-item-selected .pac-icon-search{background-position:-18px -1px}.pac-icon-marker{background-position:-1px -161px}.pac-item-selected .pac-icon-marker{background-position:-18px -161px}.pac-placeholder{color:gray}sentinel{}
+</style>
+  <script type="module">
+import RefreshRuntime from "/@react-refresh"
+RefreshRuntime.injectIntoGlobalHook(window)
+window.$RefreshReg$ = () => {}
+window.$RefreshSig$ = () => (type) => type
+window.__vite_plugin_react_preamble_installed__ = true
+</script>
+
+  <script type="module" src="Babagcabs_files/client.js"></script>
+
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="http://localhost:5173/vite.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Babagcabs</title>
+<style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/globals.css">/*
+! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com
+*//*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+html,
+:host {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
+  -o-tab-size: 4;
+     tab-size: 4; /* 3 */
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
+  font-feature-settings: normal; /* 5 */
+  font-variation-settings: normal; /* 6 */
+  -webkit-tap-highlight-color: transparent; /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+  border-top-width: 1px; /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* 1 */
+  font-feature-settings: normal; /* 2 */
+  font-variation-settings: normal; /* 3 */
+  font-size: 1em; /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+  border-collapse: collapse; /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-feature-settings: inherit; /* 1 */
+  font-variation-settings: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  font-weight: inherit; /* 1 */
+  line-height: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+[hidden] {
+  display: none;
+}
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+  * {
+  border-color: hsl(var(--border));
+}
+
+  body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+@media (min-width: 1400px) {
+
+  .container {
+    max-width: 1400px;
+  }
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+.pointer-events-auto {
+  pointer-events: auto;
+}
+.visible {
+  visibility: visible;
+}
+.fixed {
+  position: fixed;
+}
+.absolute {
+  position: absolute;
+}
+.relative {
+  position: relative;
+}
+.inset-0 {
+  inset: 0px;
+}
+.inset-x-0 {
+  left: 0px;
+  right: 0px;
+}
+.inset-y-0 {
+  top: 0px;
+  bottom: 0px;
+}
+.bottom-0 {
+  bottom: 0px;
+}
+.left-0 {
+  left: 0px;
+}
+.left-1\/2 {
+  left: 50%;
+}
+.left-2 {
+  left: 0.5rem;
+}
+.left-\[50\%\] {
+  left: 50%;
+}
+.right-0 {
+  right: 0px;
+}
+.right-2 {
+  right: 0.5rem;
+}
+.right-4 {
+  right: 1rem;
+}
+.top-0 {
+  top: 0px;
+}
+.top-2 {
+  top: 0.5rem;
+}
+.top-4 {
+  top: 1rem;
+}
+.top-\[50\%\] {
+  top: 50%;
+}
+.z-50 {
+  z-index: 50;
+}
+.z-\[100\] {
+  z-index: 100;
+}
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+.float-start {
+  float: inline-start;
+}
+.float-end {
+  float: inline-end;
+}
+.-mx-1 {
+  margin-left: -0.25rem;
+  margin-right: -0.25rem;
+}
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+.mb-20 {
+  margin-bottom: 5rem;
+}
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+.mb-32 {
+  margin-bottom: 8rem;
+}
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+.mb-8 {
+  margin-bottom: 2rem;
+}
+.ml-16 {
+  margin-left: 4rem;
+}
+.ml-2 {
+  margin-left: 0.5rem;
+}
+.ml-5 {
+  margin-left: 1.25rem;
+}
+.mr-2 {
+  margin-right: 0.5rem;
+}
+.mt-10 {
+  margin-top: 2.5rem;
+}
+.mt-2 {
+  margin-top: 0.5rem;
+}
+.mt-28 {
+  margin-top: 7rem;
+}
+.mt-3 {
+  margin-top: 0.75rem;
+}
+.mt-4 {
+  margin-top: 1rem;
+}
+.mt-5 {
+  margin-top: 1.25rem;
+}
+.mt-9 {
+  margin-top: 2.25rem;
+}
+.flex {
+  display: flex;
+}
+.inline-flex {
+  display: inline-flex;
+}
+.table {
+  display: table;
+}
+.grid {
+  display: grid;
+}
+.contents {
+  display: contents;
+}
+.hidden {
+  display: none;
+}
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+.h-10 {
+  height: 2.5rem;
+}
+.h-11 {
+  height: 2.75rem;
+}
+.h-12 {
+  height: 3rem;
+}
+.h-16 {
+  height: 4rem;
+}
+.h-20 {
+  height: 5rem;
+}
+.h-3 {
+  height: 0.75rem;
+}
+.h-3\.5 {
+  height: 0.875rem;
+}
+.h-4 {
+  height: 1rem;
+}
+.h-40 {
+  height: 10rem;
+}
+.h-8 {
+  height: 2rem;
+}
+.h-9 {
+  height: 2.25rem;
+}
+.h-96 {
+  height: 24rem;
+}
+.h-\[var\(--radix-select-trigger-height\)\] {
+  height: var(--radix-select-trigger-height);
+}
+.h-auto {
+  height: auto;
+}
+.h-full {
+  height: 100%;
+}
+.h-px {
+  height: 1px;
+}
+.h-screen {
+  height: 100vh;
+}
+.max-h-96 {
+  max-height: 24rem;
+}
+.max-h-screen {
+  max-height: 100vh;
+}
+.w-10 {
+  width: 2.5rem;
+}
+.w-20 {
+  width: 5rem;
+}
+.w-3 {
+  width: 0.75rem;
+}
+.w-3\.5 {
+  width: 0.875rem;
+}
+.w-3\/4 {
+  width: 75%;
+}
+.w-4 {
+  width: 1rem;
+}
+.w-\[100px\] {
+  width: 100px;
+}
+.w-\[350px\] {
+  width: 350px;
+}
+.w-full {
+  width: 100%;
+}
+.w-screen {
+  width: 100vw;
+}
+.min-w-\[8rem\] {
+  min-width: 8rem;
+}
+.min-w-\[var\(--radix-select-trigger-width\)\] {
+  min-width: var(--radix-select-trigger-width);
+}
+.max-w-lg {
+  max-width: 32rem;
+}
+.shrink-0 {
+  flex-shrink: 0;
+}
+.caption-bottom {
+  caption-side: bottom;
+}
+.-translate-x-1\/2 {
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.translate-x-\[-50\%\] {
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.translate-y-\[-50\%\] {
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.cursor-default {
+  cursor: default;
+}
+.select-none {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.resize {
+  resize: both;
+}
+.list-none {
+  list-style-type: none;
+}
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.grid-rows-2 {
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-col-reverse {
+  flex-direction: column-reverse;
+}
+.items-start {
+  align-items: flex-start;
+}
+.items-end {
+  align-items: flex-end;
+}
+.items-center {
+  align-items: center;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-evenly {
+  justify-content: space-evenly;
+}
+.gap-1 {
+  gap: 0.25rem;
+}
+.gap-3 {
+  gap: 0.75rem;
+}
+.gap-4 {
+  gap: 1rem;
+}
+.gap-5 {
+  gap: 1.25rem;
+}
+.gap-8 {
+  gap: 2rem;
+}
+.gap-16 {
+  gap: 4rem;
+}
+.gap-y-10 {
+  row-gap: 2.5rem;
+}
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.space-y-1 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+.space-y-1\.5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.375rem * var(--tw-space-y-reverse));
+}
+.space-y-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+.overflow-auto {
+  overflow: auto;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+.rounded {
+  border-radius: 0.25rem;
+}
+.rounded-full {
+  border-radius: 9999px;
+}
+.rounded-lg {
+  border-radius: var(--radius);
+}
+.rounded-md {
+  border-radius: calc(var(--radius) - 2px);
+}
+.rounded-sm {
+  border-radius: calc(var(--radius) - 4px);
+}
+.border {
+  border-width: 1px;
+}
+.border-b {
+  border-bottom-width: 1px;
+}
+.border-l {
+  border-left-width: 1px;
+}
+.border-r {
+  border-right-width: 1px;
+}
+.border-t {
+  border-top-width: 1px;
+}
+.border-destructive {
+  border-color: hsl(var(--destructive));
+}
+.border-input {
+  border-color: hsl(var(--input));
+}
+.bg-background {
+  background-color: hsl(var(--background));
+}
+.bg-black\/80 {
+  background-color: rgb(0 0 0 / 0.8);
+}
+.bg-blue-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(147 197 253 / var(--tw-bg-opacity));
+}
+.bg-card {
+  background-color: hsl(var(--card));
+}
+.bg-destructive {
+  background-color: hsl(var(--destructive));
+}
+.bg-gray-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+}
+.bg-green-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(134 239 172 / var(--tw-bg-opacity));
+}
+.bg-green-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
+}
+.bg-muted {
+  background-color: hsl(var(--muted));
+}
+.bg-muted\/50 {
+  background-color: hsl(var(--muted) / 0.5);
+}
+.bg-popover {
+  background-color: hsl(var(--popover));
+}
+.bg-primary {
+  background-color: hsl(var(--primary));
+}
+.bg-red-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
+.bg-red-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+}
+.bg-secondary {
+  background-color: hsl(var(--secondary));
+}
+.bg-slate-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+}
+.bg-slate-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
+.bg-slate-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+}
+.bg-transparent {
+  background-color: transparent;
+}
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.p-1 {
+  padding: 0.25rem;
+}
+.p-10 {
+  padding: 2.5rem;
+}
+.p-2 {
+  padding: 0.5rem;
+}
+.p-4 {
+  padding: 1rem;
+}
+.p-5 {
+  padding: 1.25rem;
+}
+.p-6 {
+  padding: 1.5rem;
+}
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+.py-1\.5 {
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+}
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.pl-8 {
+  padding-left: 2rem;
+}
+.pr-2 {
+  padding-right: 0.5rem;
+}
+.pr-8 {
+  padding-right: 2rem;
+}
+.pt-0 {
+  padding-top: 0px;
+}
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.align-middle {
+  vertical-align: middle;
+}
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+.font-bold {
+  font-weight: 700;
+}
+.font-medium {
+  font-weight: 500;
+}
+.font-semibold {
+  font-weight: 600;
+}
+.leading-none {
+  line-height: 1;
+}
+.tracking-tight {
+  letter-spacing: -0.025em;
+}
+.text-card-foreground {
+  color: hsl(var(--card-foreground));
+}
+.text-destructive-foreground {
+  color: hsl(var(--destructive-foreground));
+}
+.text-foreground {
+  color: hsl(var(--foreground));
+}
+.text-foreground\/50 {
+  color: hsl(var(--foreground) / 0.5);
+}
+.text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+.text-popover-foreground {
+  color: hsl(var(--popover-foreground));
+}
+.text-primary {
+  color: hsl(var(--primary));
+}
+.text-primary-foreground {
+  color: hsl(var(--primary-foreground));
+}
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+.text-secondary-foreground {
+  color: hsl(var(--secondary-foreground));
+}
+.text-slate-400 {
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity));
+}
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.text-yellow-600 {
+  --tw-text-opacity: 1;
+  color: rgb(202 138 4 / var(--tw-text-opacity));
+}
+.underline-offset-4 {
+  text-underline-offset: 4px;
+}
+.opacity-0 {
+  opacity: 0;
+}
+.opacity-100 {
+  opacity: 1;
+}
+.opacity-50 {
+  opacity: 0.5;
+}
+.opacity-70 {
+  opacity: 0.7;
+}
+.opacity-90 {
+  opacity: 0.9;
+}
+.shadow-lg {
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.shadow-md {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.shadow-sm {
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.outline-none {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.outline {
+  outline-style: solid;
+}
+.ring-offset-background {
+  --tw-ring-offset-color: hsl(var(--background));
+}
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.transition {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.duration-200 {
+  transition-duration: 200ms;
+}
+.ease-in-out {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes enter {
+
+  from {
+    opacity: var(--tw-enter-opacity, 1);
+    transform: translate3d(var(--tw-enter-translate-x, 0), var(--tw-enter-translate-y, 0), 0) scale3d(var(--tw-enter-scale, 1), var(--tw-enter-scale, 1), var(--tw-enter-scale, 1)) rotate(var(--tw-enter-rotate, 0));
+  }
+}
+@keyframes exit {
+
+  to {
+    opacity: var(--tw-exit-opacity, 1);
+    transform: translate3d(var(--tw-exit-translate-x, 0), var(--tw-exit-translate-y, 0), 0) scale3d(var(--tw-exit-scale, 1), var(--tw-exit-scale, 1), var(--tw-exit-scale, 1)) rotate(var(--tw-exit-rotate, 0));
+  }
+}
+.animate-in {
+  animation-name: enter;
+  animation-duration: 150ms;
+  --tw-enter-opacity: initial;
+  --tw-enter-scale: initial;
+  --tw-enter-rotate: initial;
+  --tw-enter-translate-x: initial;
+  --tw-enter-translate-y: initial;
+}
+.fade-in-0 {
+  --tw-enter-opacity: 0;
+}
+.zoom-in-95 {
+  --tw-enter-scale: .95;
+}
+.duration-200 {
+  animation-duration: 200ms;
+}
+.ease-in-out {
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.file\:border-0::file-selector-button {
+  border-width: 0px;
+}
+
+.file\:bg-transparent::file-selector-button {
+  background-color: transparent;
+}
+
+.file\:text-sm::file-selector-button {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.file\:font-medium::file-selector-button {
+  font-weight: 500;
+}
+
+.placeholder\:text-muted-foreground::-moz-placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+.placeholder\:text-muted-foreground::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+.hover\:bg-accent:hover {
+  background-color: hsl(var(--accent));
+}
+
+.hover\:bg-destructive\/90:hover {
+  background-color: hsl(var(--destructive) / 0.9);
+}
+
+.hover\:bg-muted\/50:hover {
+  background-color: hsl(var(--muted) / 0.5);
+}
+
+.hover\:bg-primary\/90:hover {
+  background-color: hsl(var(--primary) / 0.9);
+}
+
+.hover\:bg-red-900:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(127 29 29 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-secondary:hover {
+  background-color: hsl(var(--secondary));
+}
+
+.hover\:bg-secondary\/80:hover {
+  background-color: hsl(var(--secondary) / 0.8);
+}
+
+.hover\:text-accent-foreground:hover {
+  color: hsl(var(--accent-foreground));
+}
+
+.hover\:text-foreground:hover {
+  color: hsl(var(--foreground));
+}
+
+.hover\:underline:hover {
+  text-decoration-line: underline;
+}
+
+.hover\:opacity-100:hover {
+  opacity: 1;
+}
+
+.focus\:bg-accent:focus {
+  background-color: hsl(var(--accent));
+}
+
+.focus\:text-accent-foreground:focus {
+  color: hsl(var(--accent-foreground));
+}
+
+.focus\:opacity-100:focus {
+  opacity: 1;
+}
+
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus\:ring-2:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.focus\:ring-ring:focus {
+  --tw-ring-color: hsl(var(--ring));
+}
+
+.focus\:ring-offset-2:focus {
+  --tw-ring-offset-width: 2px;
+}
+
+.focus-visible\:outline-none:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus-visible\:ring-2:focus-visible {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.focus-visible\:ring-ring:focus-visible {
+  --tw-ring-color: hsl(var(--ring));
+}
+
+.focus-visible\:ring-offset-2:focus-visible {
+  --tw-ring-offset-width: 2px;
+}
+
+.disabled\:pointer-events-none:disabled {
+  pointer-events: none;
+}
+
+.disabled\:cursor-not-allowed:disabled {
+  cursor: not-allowed;
+}
+
+.disabled\:opacity-50:disabled {
+  opacity: 0.5;
+}
+
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+.group.destructive .group-\[\.destructive\]\:border-muted\/40 {
+  border-color: hsl(var(--muted) / 0.4);
+}
+
+.group.destructive .group-\[\.destructive\]\:text-red-300 {
+  --tw-text-opacity: 1;
+  color: rgb(252 165 165 / var(--tw-text-opacity));
+}
+
+.group.destructive .group-\[\.destructive\]\:hover\:border-destructive\/30:hover {
+  border-color: hsl(var(--destructive) / 0.3);
+}
+
+.group.destructive .group-\[\.destructive\]\:hover\:bg-destructive:hover {
+  background-color: hsl(var(--destructive));
+}
+
+.group.destructive .group-\[\.destructive\]\:hover\:text-destructive-foreground:hover {
+  color: hsl(var(--destructive-foreground));
+}
+
+.group.destructive .group-\[\.destructive\]\:hover\:text-red-50:hover {
+  --tw-text-opacity: 1;
+  color: rgb(254 242 242 / var(--tw-text-opacity));
+}
+
+.group.destructive .group-\[\.destructive\]\:focus\:ring-destructive:focus {
+  --tw-ring-color: hsl(var(--destructive));
+}
+
+.group.destructive .group-\[\.destructive\]\:focus\:ring-red-400:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(248 113 113 / var(--tw-ring-opacity));
+}
+
+.group.destructive .group-\[\.destructive\]\:focus\:ring-offset-red-600:focus {
+  --tw-ring-offset-color: #dc2626;
+}
+
+.peer:disabled ~ .peer-disabled\:cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+.peer:disabled ~ .peer-disabled\:opacity-70 {
+  opacity: 0.7;
+}
+
+.data-\[disabled\]\:pointer-events-none[data-disabled] {
+  pointer-events: none;
+}
+
+.data-\[side\=bottom\]\:translate-y-1[data-side=bottom] {
+  --tw-translate-y: 0.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.data-\[side\=left\]\:-translate-x-1[data-side=left] {
+  --tw-translate-x: -0.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.data-\[side\=right\]\:translate-x-1[data-side=right] {
+  --tw-translate-x: 0.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.data-\[side\=top\]\:-translate-y-1[data-side=top] {
+  --tw-translate-y: -0.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.data-\[swipe\=cancel\]\:translate-x-0[data-swipe=cancel] {
+  --tw-translate-x: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.data-\[swipe\=end\]\:translate-x-\[var\(--radix-toast-swipe-end-x\)\][data-swipe=end] {
+  --tw-translate-x: var(--radix-toast-swipe-end-x);
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.data-\[swipe\=move\]\:translate-x-\[var\(--radix-toast-swipe-move-x\)\][data-swipe=move] {
+  --tw-translate-x: var(--radix-toast-swipe-move-x);
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.data-\[state\=open\]\:bg-accent[data-state=open] {
+  background-color: hsl(var(--accent));
+}
+
+.data-\[state\=open\]\:bg-secondary[data-state=open] {
+  background-color: hsl(var(--secondary));
+}
+
+.data-\[state\=selected\]\:bg-muted[data-state=selected] {
+  background-color: hsl(var(--muted));
+}
+
+.data-\[state\=open\]\:text-muted-foreground[data-state=open] {
+  color: hsl(var(--muted-foreground));
+}
+
+.data-\[disabled\]\:opacity-50[data-disabled] {
+  opacity: 0.5;
+}
+
+.data-\[swipe\=move\]\:transition-none[data-swipe=move] {
+  transition-property: none;
+}
+
+.data-\[state\=closed\]\:duration-300[data-state=closed] {
+  transition-duration: 300ms;
+}
+
+.data-\[state\=open\]\:duration-500[data-state=open] {
+  transition-duration: 500ms;
+}
+
+.data-\[state\=open\]\:animate-in[data-state=open] {
+  animation-name: enter;
+  animation-duration: 150ms;
+  --tw-enter-opacity: initial;
+  --tw-enter-scale: initial;
+  --tw-enter-rotate: initial;
+  --tw-enter-translate-x: initial;
+  --tw-enter-translate-y: initial;
+}
+
+.data-\[state\=closed\]\:animate-out[data-state=closed] {
+  animation-name: exit;
+  animation-duration: 150ms;
+  --tw-exit-opacity: initial;
+  --tw-exit-scale: initial;
+  --tw-exit-rotate: initial;
+  --tw-exit-translate-x: initial;
+  --tw-exit-translate-y: initial;
+}
+
+.data-\[swipe\=end\]\:animate-out[data-swipe=end] {
+  animation-name: exit;
+  animation-duration: 150ms;
+  --tw-exit-opacity: initial;
+  --tw-exit-scale: initial;
+  --tw-exit-rotate: initial;
+  --tw-exit-translate-x: initial;
+  --tw-exit-translate-y: initial;
+}
+
+.data-\[state\=closed\]\:fade-out-0[data-state=closed] {
+  --tw-exit-opacity: 0;
+}
+
+.data-\[state\=closed\]\:fade-out-80[data-state=closed] {
+  --tw-exit-opacity: 0.8;
+}
+
+.data-\[state\=open\]\:fade-in-0[data-state=open] {
+  --tw-enter-opacity: 0;
+}
+
+.data-\[state\=closed\]\:zoom-out-95[data-state=closed] {
+  --tw-exit-scale: .95;
+}
+
+.data-\[state\=open\]\:zoom-in-95[data-state=open] {
+  --tw-enter-scale: .95;
+}
+
+.data-\[side\=bottom\]\:slide-in-from-top-2[data-side=bottom] {
+  --tw-enter-translate-y: -0.5rem;
+}
+
+.data-\[side\=left\]\:slide-in-from-right-2[data-side=left] {
+  --tw-enter-translate-x: 0.5rem;
+}
+
+.data-\[side\=right\]\:slide-in-from-left-2[data-side=right] {
+  --tw-enter-translate-x: -0.5rem;
+}
+
+.data-\[side\=top\]\:slide-in-from-bottom-2[data-side=top] {
+  --tw-enter-translate-y: 0.5rem;
+}
+
+.data-\[state\=closed\]\:slide-out-to-bottom[data-state=closed] {
+  --tw-exit-translate-y: 100%;
+}
+
+.data-\[state\=closed\]\:slide-out-to-left[data-state=closed] {
+  --tw-exit-translate-x: -100%;
+}
+
+.data-\[state\=closed\]\:slide-out-to-left-1\/2[data-state=closed] {
+  --tw-exit-translate-x: -50%;
+}
+
+.data-\[state\=closed\]\:slide-out-to-right[data-state=closed] {
+  --tw-exit-translate-x: 100%;
+}
+
+.data-\[state\=closed\]\:slide-out-to-right-full[data-state=closed] {
+  --tw-exit-translate-x: 100%;
+}
+
+.data-\[state\=closed\]\:slide-out-to-top[data-state=closed] {
+  --tw-exit-translate-y: -100%;
+}
+
+.data-\[state\=closed\]\:slide-out-to-top-\[48\%\][data-state=closed] {
+  --tw-exit-translate-y: -48%;
+}
+
+.data-\[state\=open\]\:slide-in-from-bottom[data-state=open] {
+  --tw-enter-translate-y: 100%;
+}
+
+.data-\[state\=open\]\:slide-in-from-left[data-state=open] {
+  --tw-enter-translate-x: -100%;
+}
+
+.data-\[state\=open\]\:slide-in-from-left-1\/2[data-state=open] {
+  --tw-enter-translate-x: -50%;
+}
+
+.data-\[state\=open\]\:slide-in-from-right[data-state=open] {
+  --tw-enter-translate-x: 100%;
+}
+
+.data-\[state\=open\]\:slide-in-from-top[data-state=open] {
+  --tw-enter-translate-y: -100%;
+}
+
+.data-\[state\=open\]\:slide-in-from-top-\[48\%\][data-state=open] {
+  --tw-enter-translate-y: -48%;
+}
+
+.data-\[state\=open\]\:slide-in-from-top-full[data-state=open] {
+  --tw-enter-translate-y: -100%;
+}
+
+.data-\[state\=closed\]\:duration-300[data-state=closed] {
+  animation-duration: 300ms;
+}
+
+.data-\[state\=open\]\:duration-500[data-state=open] {
+  animation-duration: 500ms;
+}
+
+@media (min-width: 640px) {
+
+  .sm\:bottom-0 {
+    bottom: 0px;
+  }
+
+  .sm\:bottom-10 {
+    bottom: 2.5rem;
+  }
+
+  .sm\:right-0 {
+    right: 0px;
+  }
+
+  .sm\:top-auto {
+    top: auto;
+  }
+
+  .sm\:ml-0 {
+    margin-left: 0px;
+  }
+
+  .sm\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .sm\:block {
+    display: block;
+  }
+
+  .sm\:w-96 {
+    width: 24rem;
+  }
+
+  .sm\:max-w-sm {
+    max-width: 24rem;
+  }
+
+  .sm\:flex-row {
+    flex-direction: row;
+  }
+
+  .sm\:flex-col {
+    flex-direction: column;
+  }
+
+  .sm\:justify-end {
+    justify-content: flex-end;
+  }
+
+  .sm\:gap-10 {
+    gap: 2.5rem;
+  }
+
+  .sm\:space-x-2 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+    margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .sm\:rounded-lg {
+    border-radius: var(--radius);
+  }
+
+  .sm\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .sm\:text-left {
+    text-align: left;
+  }
+
+  .data-\[state\=open\]\:sm\:slide-in-from-bottom-full[data-state=open] {
+    --tw-enter-translate-y: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .md\:max-w-\[420px\] {
+    max-width: 420px;
+  }
+
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .md\:gap-x-10 {
+    -moz-column-gap: 2.5rem;
+         column-gap: 2.5rem;
+  }
+
+  .md\:p-5 {
+    padding: 1.25rem;
+  }
+}
+
+.\[\&\:has\(\[role\=checkbox\]\)\]\:pr-0:has([role=checkbox]) {
+  padding-right: 0px;
+}
+
+.\[\&\>span\]\:line-clamp-1>span {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.\[\&\>tr\]\:last\:border-b-0:last-child>tr {
+  border-bottom-width: 0px;
+}
+
+.\[\&_tr\:last-child\]\:border-0 tr:last-child {
+  border-width: 0px;
+}
+
+.\[\&_tr\]\:border-b tr {
+  border-bottom-width: 1px;
+}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/index.css">@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+:root {
+  --black: rgb(22, 22, 22);
+  --black-tp: rgba(0, 0, 0, 0.897);
+  --white: rgb(255, 255, 255);
+  --main: #000000;
+  --sec: #0c0c0c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+}
+
+html {
+  scroll-behavior: smooth;
+
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: var(--scend-color);
+  background: var(--main-color);
+}
+
+::selection {
+  color: var(--white);
+  background: var(--main);
+}
+
+*:hover,
+*:focus {
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  /* background-color: #0D0D0D; */
+  /* color: #fff; */
+  font-family: 'Lato', sans-serif;
+  overflow-x: hidden !important;
+  width: 100vw;
+  z-index: 1;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0px 50px;
+}
+
+.Toastify__toast-container {
+  z-index: 99999999 !important;
+}
+
+.Toastify__toast.Toastify__toast-theme--light {
+  background-color: #46464652 !important;
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  border-radius: 0px !important;
+}
+
+.Toastify__close-button.Toastify__close-button--light {
+  color: #fff !important;
+}
+
+.Toastify__toast-body {
+  color: #fff !important;
+}
+
+.tabsearchBox .wrapper:first-child {
+  border-radius: 0px !important;
+  border: none !important;
+  background-color: transparent;
+  box-shadow: none !important;
+}
+
+.tabsearchBox div.wrapper div input {
+  border: none !important;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.tabsearchBox .wrapper>div:nth-child(2) {
+  background-color: #fff !important;
+  display: block !important;
+  border: none !important;
+}
+
+.btn {
+  border-radius: 50px;
+  background: #0b0b0b;
+  padding: 15px 20px;
+  flex-shrink: 0;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 30px;
+  /* 166.667% */
+  text-transform: uppercase;
+}
+
+.tabinput {
+  border: none;
+  border-bottom: 2px solid var(--main);
+  padding: 10px 0px;
+  font-weight: bold;
+  background-color: transparent;
+
+  width: 100%;
+}
+
+.tabinput::-moz-placeholder {
+  font-weight: bold;
+  color: #0b0b0bb4;
+}
+
+.tabinput::placeholder {
+  font-weight: bold;
+  color: #0b0b0bb4;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    padding: 0px 10px;
+  }
+}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/lodar.css">.loader {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.car__body {
+    animation: shake .2s ease-in-out infinite alternate
+}
+
+.car__line {
+    transform-origin: center right;
+    stroke-dasharray: 22;
+    animation: line .8s ease-in-out infinite;
+    animation-fill-mode: both
+}
+
+.car__line--top {
+    animation-delay: 0s
+}
+
+.car__line--middle {
+    animation-delay: .2s
+}
+
+.car__line--bottom {
+    animation-delay: .4s
+}
+
+@keyframes shake {
+    0% {
+        transform: translateY(-1%)
+    }
+
+    100% {
+        transform: translateY(3%)
+    }
+}
+
+@keyframes line {
+    0% {
+        stroke-dashoffset: 22
+    }
+
+    25% {
+        stroke-dashoffset: 22
+    }
+
+    50% {
+        stroke-dashoffset: 0
+    }
+
+    51% {
+        stroke-dashoffset: 0
+    }
+
+    80% {
+        stroke-dashoffset: -22
+    }
+
+    100% {
+        stroke-dashoffset: -22
+    }
+}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Component/Navbar/styles/navbar.module.css">._navbar_1fepg_1{width:100vw;height:70px;background-color:var(--main);border-bottom:3px solid var(--white);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);z-index:999;top:0;right:0;position:fixed}._navbar_1fepg_1 ._nav_1fepg_1{height:100%;display:flex;justify-content:space-between;align-items:center;z-index:999}._navbar_1fepg_1 ._nav_1fepg_1 ._logo_1fepg_1{width:120px}._navbar_1fepg_1 ._nav_1fepg_1 ._menu_1fepg_1{display:flex;gap:40px}._navbar_1fepg_1 ._nav_1fepg_1 ._menu_1fepg_1 a{color:#fff}._navbar_1fepg_1 ._nav_1fepg_1 ._menu_1fepg_1 ._links_1fepg_1{z-index:99999;display:flex;gap:30px}._navbar_1fepg_1 ._nav_1fepg_1 ._menu_1fepg_1 ._links_1fepg_1 a{color:var(--white);font-size:15px;display:flex;justify-content:center;align-items:center;opacity:.7;text-transform:uppercase}._navbar_1fepg_1 ._nav_1fepg_1 ._menu_1fepg_1 ._links_1fepg_1 ._wallet_1fepg_1{margin-right:10px}._navbar_1fepg_1 ._nav_1fepg_1 ._contactNumber_1fepg_1{text-align:center;margin:0}@media(max-width: 768px){._navbar_1fepg_1 ._nav_1fepg_1 ._menuicon_1fepg_1{display:block !important}._navbar_1fepg_1 ._nav_1fepg_1 ._menu_1fepg_1 ._links_1fepg_1{display:none;position:fixed;top:0;right:0;flex-direction:column;justify-content:center;align-items:center;gap:80px;font-weight:bold;background-color:var(--black);width:100vw;height:100vh;z-index:999}._navbar_1fepg_1 ._nav_1fepg_1 ._menu_1fepg_1 ._links_1fepg_1._active_1fepg_1{display:flex !important}._navbar_1fepg_1 ._nav_1fepg_1 ._menu_1fepg_1 ._links_1fepg_1 a{font-size:25px}._navbar_1fepg_1 ._nav_1fepg_1 ._menu_1fepg_1 ._links_1fepg_1 ._closeicon_1fepg_1{position:absolute;top:0;right:0;margin:30px;display:block !important}}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Pages/Home/Componets/Header/styles/header.module.css">._header_1k8k2_1{z-index:1;width:100vw;height:100vh;max-height:450px;position:relative;display:flex;justify-content:center;align-items:center;margin-bottom:300px}@media screen and (max-width: 800px){._header_1k8k2_1{margin-bottom:600px}}._header_1k8k2_1 img{width:100%;height:100%;-o-object-fit:cover;object-fit:cover}@media screen and (max-width: 800px){._header_1k8k2_1{max-height:320px}}._header_1k8k2_1 ._sideBox_1k8k2_1{width:90%;height:280px;margin-top:450px;background-color:rgba(255,255,255,.9098039216);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-radius:20px;position:absolute;display:flex;justify-content:center;align-items:center;flex-direction:column;box-shadow:0px 10px 15px -3px rgba(0,0,0,.3)}@media screen and (max-width: 800px){._header_1k8k2_1 ._sideBox_1k8k2_1{top:-250px;height:auto;padding:100px 0px}}._header_1k8k2_1 ._sideBox_1k8k2_1 ._tabs_1k8k2_1{position:absolute;top:0;box-shadow:0px 10px 15px -3px rgba(0,0,0,.1);margin-top:-28px;border-radius:20px;width:700px;height:48px;background-color:#fff;display:grid;overflow:hidden;grid-template-columns:repeat(4, 1fr)}@media screen and (max-width: 900px){._header_1k8k2_1 ._sideBox_1k8k2_1 ._tabs_1k8k2_1{width:90%}}@media screen and (max-width: 800px){._header_1k8k2_1 ._sideBox_1k8k2_1 ._tabs_1k8k2_1{height:40px;text-align:center;margin-top:20px;box-shadow:none;border-radius:10px}}._header_1k8k2_1 ._sideBox_1k8k2_1 ._tabs_1k8k2_1 ._tab_1k8k2_1{height:100%;display:flex;justify-content:center;align-items:center;font-weight:600;text-transform:uppercase;cursor:pointer}._header_1k8k2_1 ._sideBox_1k8k2_1 ._tabs_1k8k2_1 ._tab_1k8k2_1._active_1k8k2_1{background-color:var(--main);color:#fff}@media screen and (max-width: 800px){._header_1k8k2_1 ._sideBox_1k8k2_1 ._tabs_1k8k2_1 ._tab_1k8k2_1{font-size:13px}}@media screen and (max-width: 500px){._header_1k8k2_1 ._sideBox_1k8k2_1 ._tabs_1k8k2_1 ._tab_1k8k2_1{font-size:11px}}._header_1k8k2_1 ._sideBox_1k8k2_1 ._search_1k8k2_1{position:absolute;bottom:0;border:none;padding:15px 50px;background-color:var(--main);color:#fff;margin-bottom:-20px;border-radius:30px;box-shadow:0px -5px 15px 0px rgba(0,0,0,.3);cursor:pointer;font-size:20px;font-weight:bold}._header_1k8k2_1 ._sideBox_1k8k2_1 ._tabview_1k8k2_1{width:100%}@media screen and (max-width: 800px){._header_1k8k2_1 ._sideBox_1k8k2_1 ._tabview_1k8k2_1{width:85%}}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Pages/Home/Componets/tabs/OneWay/styles/oneway.module.css">._oneway_ftxsz_1{display:grid;grid-template-columns:repeat(3, 1fr) 150px;gap:50px;width:100%}@media screen and (max-width: 800px){._oneway_ftxsz_1{grid-template-columns:auto}}._oneway_ftxsz_1 div{width:100%;display:flex;flex-direction:column;justify-content:space-between}._oneway_ftxsz_1 div label{font-weight:bold;margin-bottom:10px;font-size:14px}._oneway_ftxsz_1 div input{width:100%;display:block}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Pages/Home/Componets/tabs/RoundTrip/styles/roundtrip.module.css">._roundtrip_qfsyr_1{display:grid;grid-template-columns:repeat(5, 1fr);gap:50px;width:100%}@media screen and (max-width: 800px){._roundtrip_qfsyr_1{grid-template-columns:auto}}._roundtrip_qfsyr_1 div{width:100%;display:flex;flex-direction:column;justify-content:space-between}._roundtrip_qfsyr_1 div label{font-weight:bold;margin-bottom:10px;font-size:14px}._roundtrip_qfsyr_1 div input{width:100%;display:block}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Pages/Home/Componets/tabs/Local/styles/local.module.css">._local_k7raj_1{display:grid;grid-template-columns:repeat(3, 1fr);gap:50px;width:100%}@media screen and (max-width: 800px){._local_k7raj_1{grid-template-columns:auto}}._local_k7raj_1 div{display:flex;flex-direction:column;justify-content:space-between;width:100%}._local_k7raj_1 div label{font-weight:bold;margin-bottom:10px;font-size:14px}._local_k7raj_1 div input{width:100%;display:block}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Pages/Home/Componets/tabs/Airport/styles/airport.module.css">._airport_y4ey4_1{display:grid;grid-template-columns:100px repeat(3, 1fr) 120px;gap:30px;width:100%}@media screen and (max-width: 800px){._airport_y4ey4_1{grid-template-columns:auto}}._airport_y4ey4_1 ._fld_y4ey4_1{grid-column:span 2;display:flex;flex-direction:row;gap:30px}._airport_y4ey4_1 ._fld_y4ey4_1._flip_y4ey4_1{flex-direction:row-reverse}._airport_y4ey4_1 div{width:100%;display:flex;flex-direction:column;justify-content:space-between}._airport_y4ey4_1 div label{font-weight:bold;margin-bottom:10px;font-size:14px}._airport_y4ey4_1 div input{width:100%;display:block}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Pages/Home/Componets/About/styles/about.module.css">._about_ji29s_1{padding-top:60px}._about_ji29s_1 ._content_ji29s_1{display:grid;grid-template-columns:450px auto;gap:20px 60px}@media screen and (max-width: 1000px){._about_ji29s_1 ._content_ji29s_1{grid-template-columns:auto}}._about_ji29s_1 ._content_ji29s_1 ._img_ji29s_1{width:100%;height:400px}._about_ji29s_1 ._content_ji29s_1 ._img_ji29s_1 img{width:100%;height:100%;-o-object-fit:cover;object-fit:cover}._about_ji29s_1 ._content_ji29s_1 ._view_ji29s_1{display:flex;flex-direction:column;justify-content:space-between}._about_ji29s_1 ._content_ji29s_1 ._view_ji29s_1 ._content_ji29s_1{display:flex;flex-direction:column}._about_ji29s_1 ._content_ji29s_1 ._view_ji29s_1 ._content_ji29s_1 h1{font-size:30px}._about_ji29s_1 ._content_ji29s_1 ._view_ji29s_1 ._content_ji29s_1 p{color:#282828;font-size:15px;font-style:normal;font-weight:400;line-height:30px;text-transform:capitalize}._about_ji29s_1 ._content_ji29s_1 ._view_ji29s_1 a{margin-top:20px;width:200px}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Component/ShowTitle/styles/showtitle.module.css">._showtitle_ifha0_1{color:#141414;font-size:20px;font-style:normal;font-weight:400;line-height:normal;letter-spacing:3px;display:flex;justify-content:center;align-items:center;flex-direction:column;text-transform:uppercase}._showtitle_ifha0_1 ._line_ifha0_1{width:100px;height:2px;background:#141414;margin-top:8px}._showtitleLeft_ifha0_1{color:#141414;font-size:20px;font-style:normal;font-weight:400;line-height:normal;letter-spacing:3px;display:flex;justify-content:flex-start !important;align-content:flex-start !important;flex-direction:column;text-transform:uppercase}._showtitleLeft_ifha0_1 ._line_ifha0_1{width:100px;height:2px;background:#141414;margin-top:8px}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Pages/Home/Componets/Services/styles/services.module.css">._services_1hwsi_1{padding-top:50px;padding-bottom:30px}._services_1hwsi_1 ._content_1hwsi_1{margin-top:30px;display:grid;grid-template-columns:repeat(3, 1fr);gap:30px}@media screen and (max-width: 850px){._services_1hwsi_1 ._content_1hwsi_1{grid-template-columns:auto}}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Pages/Home/Componets/ServicesBox/styles/blogpost.module.css">._blogpost_1uq3j_1{display:flex;flex-direction:column;gap:20px}._blogpost_1uq3j_1 ._image_1uq3j_1{width:100%;height:250px;-o-object-fit:cover;object-fit:cover}._blogpost_1uq3j_1 ._title_1uq3j_1{font-size:20px;font-weight:bold;color:#1b1b1b}._blogpost_1uq3j_1 ._desc_1uq3j_1{font-weight:400;font-size:15px;color:#424242}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Pages/Home/Componets/AppDownload/styles/appdownload.module.css">._appdownload_1o743_1{display:grid;grid-template-columns:450px auto;gap:20px}@media screen and (max-width: 1000px){._appdownload_1o743_1{grid-template-columns:auto}}._appdownload_1o743_1 ._imageApp_1o743_1{width:100%;display:flex;justify-content:center;align-items:center}._appdownload_1o743_1 ._imageApp_1o743_1 img{width:100%}._appdownload_1o743_1 ._info_1o743_1{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:50px;gap:30px}@media screen and (max-width: 850px){._appdownload_1o743_1 ._info_1o743_1{padding:30px}}._appdownload_1o743_1 ._info_1o743_1 h2{color:#282828;text-align:center;font-size:50px;font-style:normal;font-weight:400;text-transform:capitalize}@media screen and (max-width: 1000px){._appdownload_1o743_1 ._info_1o743_1 h2{font-size:30px}}@media screen and (max-width: 550px){._appdownload_1o743_1 ._info_1o743_1 h2{font-size:25px}}._appdownload_1o743_1 ._info_1o743_1 h1{color:#000;text-align:center;font-style:normal;font-weight:700;text-transform:capitalize;font-size:45px}@media screen and (max-width: 550px){._appdownload_1o743_1 ._info_1o743_1 h1{font-size:30px}}._appdownload_1o743_1 ._info_1o743_1 p{color:#000;font-size:12px;font-style:normal;font-weight:400;line-height:25px;text-transform:capitalize}._appdownload_1o743_1 ._info_1o743_1 ._downloadLinks_1o743_1{display:flex;flex-direction:row;gap:30px}@media screen and (max-width: 550px){._appdownload_1o743_1 ._info_1o743_1 ._downloadLinks_1o743_1{justify-content:center;align-items:center}}._appdownload_1o743_1 ._info_1o743_1 ._downloadLinks_1o743_1 img{width:160px}@media screen and (max-width: 550px){._appdownload_1o743_1 ._info_1o743_1 ._downloadLinks_1o743_1 img{width:100px}}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Pages/Home/Componets/LatestBlogs/styles/latestblogs.module.css">._latestblogs_zi4lj_1{padding-top:100px;padding-bottom:30px}._latestblogs_zi4lj_1 ._titleSection_zi4lj_1{display:flex;justify-content:space-between;align-items:center}._latestblogs_zi4lj_1 ._titleSection_zi4lj_1 a{text-decoration:none;color:#1d1d1d}._latestblogs_zi4lj_1 ._posts_zi4lj_1{margin-top:40px;display:grid;grid-template-columns:repeat(3, 1fr);gap:30px}@media screen and (max-width: 850px){._latestblogs_zi4lj_1 ._posts_zi4lj_1{grid-template-columns:auto}}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Pages/Home/Componets/LatestBlogs/BlogPost/styles/blogpost.module.css">._blogpost_1hko1_1{display:flex;flex-direction:column;gap:20px}._blogpost_1hko1_1 img{width:100%;height:200px}._blogpost_1hko1_1 ._post_1hko1_1{display:flex;justify-content:flex-start;align-items:center;gap:10px;font-size:13px;color:#000;text-transform:uppercase;cursor:default}._blogpost_1hko1_1 ._post_1hko1_1::before{content:"";width:50px;height:1px;background-color:silver;display:inline-block;margin-top:0px}._blogpost_1hko1_1 ._title_1hko1_1{font-size:18px}._blogpost_1hko1_1 ._timeStamp_1hko1_1{color:#2e2e2e;font-size:14px}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Component/Footer/styles/footer.module.css">._footer_zvhvl_1{background:#0f0f0f;width:100%;color:#fff;display:grid;grid-template-columns:repeat(3, 1fr);padding:40px;gap:50px}@media screen and (max-width: 900px){._footer_zvhvl_1{grid-template-columns:auto}}._footer_zvhvl_1 ._title_zvhvl_1{font-size:25px;font-weight:bolder;text-transform:uppercase;margin-bottom:30px}._footer_zvhvl_1 ._about_zvhvl_1{display:flex;flex-direction:column}._footer_zvhvl_1 ._about_zvhvl_1 ._links_zvhvl_1{margin-top:30px;display:flex}._footer_zvhvl_1 ._links_zvhvl_1{display:flex;justify-content:flex-start;align-items:flex-start;gap:80px}._footer_zvhvl_1 ._links_zvhvl_1 ul{display:flex;flex-direction:column;gap:20px;list-style:outside}._footer_zvhvl_1 ._links_zvhvl_1 a{text-decoration:none;color:#fff}._footer_zvhvl_1 ._address_zvhvl_1 ._contents_zvhvl_1{display:flex;flex-direction:column;gap:20px}._footer_zvhvl_1 ._address_zvhvl_1 ._contents_zvhvl_1 p{color:#fff;display:flex;justify-content:flex-start;align-items:center}._footer_zvhvl_1 ._address_zvhvl_1 ._contents_zvhvl_1 ._icon_zvhvl_1{margin-right:10px}._copyright_zvhvl_1{width:100%;height:60px;background-color:var(--black);color:#fff;display:flex;justify-content:center;align-items:center}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Pages/Explore/styles/explore.module.css">._explore_18scp_1{margin-top:70px;display:grid;grid-template-columns:350px auto;height:1800px}@media screen and (max-width: 750px){._explore_18scp_1{grid-template-columns:auto;margin-top:0px}}._explore_18scp_1 ._info_18scp_1{width:100%;background-color:#fff;border-radius:10px;border:2px solid #e4e4e4;color:#111;height:450px;margin-top:50px;position:sticky;top:150px;padding:30px;justify-content:space-between;transition:.5s;display:flex;flex-direction:column;gap:40px}@media screen and (max-width: 750px){._explore_18scp_1 ._info_18scp_1{position:relative;margin-top:100px;top:0}}._explore_18scp_1 ._info_18scp_1:hover{border-color:var(--main)}._explore_18scp_1 ._info_18scp_1 h2{text-align:center;text-transform:uppercase}._explore_18scp_1 ._info_18scp_1 ul{padding:0px 20px;display:flex;flex-direction:column;gap:20px;opacity:.9;font-weight:bold}._explore_18scp_1 ._info_18scp_1 ._modify_18scp_1{border:none;background-color:var(--main);padding:10px;font-weight:bold;color:#fff;cursor:pointer;border-radius:10px}._explore_18scp_1 ._cars_18scp_1{margin:80px 0px;display:grid;grid-template-columns:repeat(2, 1fr);padding:0px 40px;gap:30px}@media screen and (max-width: 1100px){._explore_18scp_1 ._cars_18scp_1{grid-template-columns:auto}}@media screen and (max-width: 750px){._explore_18scp_1 ._cars_18scp_1{padding:0px}}._explore_18scp_1 ._cars_18scp_1 ._carbox_18scp_1{border:2px solid #e2e2e2;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:30px;border-radius:10px;padding:24px 0px;transition:.5s}._explore_18scp_1 ._cars_18scp_1 ._carbox_18scp_1:hover{border-color:var(--main)}._explore_18scp_1 ._cars_18scp_1 ._carbox_18scp_1 img{width:60%;margin-top:10px}._explore_18scp_1 ._cars_18scp_1 ._carbox_18scp_1 h1{color:#111}._explore_18scp_1 ._cars_18scp_1 ._carbox_18scp_1 ._infobox_18scp_1{width:100%;display:flex;justify-content:space-between;align-items:flex-start;flex-direction:column;gap:20px}._explore_18scp_1 ._cars_18scp_1 ._carbox_18scp_1 ._infobox_18scp_1 ._infocar_18scp_1{display:flex;font-weight:bold;width:100%;padding:0px 40px;justify-content:space-between;align-items:center;font-size:17px}._explore_18scp_1 ._cars_18scp_1 ._carbox_18scp_1 ._infobox_18scp_1 ._infocar_18scp_1 p{color:#717171}._explore_18scp_1 ._cars_18scp_1 ._carbox_18scp_1 ._bookbtn_18scp_1{background-color:#e4e4e4;color:#111;width:160px;height:60px;display:flex;justify-content:center;align-items:center;font-weight:bold;border-radius:50px;cursor:pointer;transition:.5s}._explore_18scp_1 ._cars_18scp_1 ._carbox_18scp_1 ._bookbtn_18scp_1:hover{background-color:var(--main);color:#fff}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Pages/Booking/styles/booking.module.css">._booking_odacd_1{display:grid;grid-template-columns:auto 400px;gap:60px;margin-top:130px;padding:0px 80px}@media screen and (max-width: 1000px){._booking_odacd_1{padding:0px 0px;gap:30px;grid-template-columns:auto 350px}}@media screen and (max-width: 850px){._booking_odacd_1{grid-template-columns:auto}}._booking_odacd_1 ._contactForm_odacd_1{border-radius:30px;background-color:#fff;box-shadow:0px 0px 15px 3px rgba(0,0,0,.2);padding:30px}._booking_odacd_1 ._contactForm_odacd_1 h1{font-size:20px;color:var(--main)}._booking_odacd_1 ._contactForm_odacd_1 ._inputsec_odacd_1{margin-top:20px}._booking_odacd_1 ._contactForm_odacd_1 ._inputsec_odacd_1 label{font-weight:bold;margin-bottom:10px;font-size:14px}._booking_odacd_1 ._contactForm_odacd_1 ._bookbtn_odacd_1{margin-top:30px;width:100%;border:none;height:45px;font-weight:bold;background-color:var(--main);color:#fff;border-radius:10px;cursor:pointer}._booking_odacd_1 ._info_odacd_1{box-shadow:0px 0px 15px 3px rgba(0,0,0,.2);border-radius:30px;border:2px solid #e4e4e4;color:#111;padding:30px;justify-content:flex-start;transition:.5s;display:flex;flex-direction:column;gap:40px}@media screen and (max-width: 750px){._booking_odacd_1 ._info_odacd_1{position:relative;margin-top:10px;margin-bottom:80px;top:0}}._booking_odacd_1 ._info_odacd_1 h1{text-transform:uppercase;font-size:20px;color:var(--main)}._booking_odacd_1 ._info_odacd_1 ul{padding:0px 20px;display:flex;flex-direction:column;gap:20px;opacity:.9;font-weight:bold}._booking_odacd_1 ._info_odacd_1 ._modify_odacd_1{border:none;background-color:var(--main);padding:10px;font-weight:bold;color:#fff;cursor:pointer;border-radius:10px}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Pages/Auth/styles/auth.module.css">._auth_1isav_1{display:flex;justify-content:center;align-items:center;width:100vw;height:100vh;background-color:#f5f5f5}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Component/AuthBox/styles/authbox.module.css">._authbox_nfbzr_1{width:350px;background-color:#fff;box-shadow:0px 3px 5px 3px rgba(104,104,104,.2);border-radius:10px;display:flex;flex-direction:column;align-items:center;gap:5px;padding:30px 25px}._authbox_nfbzr_1 img{margin-bottom:10px}._authbox_nfbzr_1 ._title_nfbzr_1{font-size:18px;font-weight:500;padding-bottom:8px;letter-spacing:-0.4px;color:var(--black)}._authbox_nfbzr_1 ._desc_nfbzr_1{opacity:.5;font-size:16px;line-height:1.21;letter-spacing:-0.2px}._authbox_nfbzr_1 ._inputbox_nfbzr_1{width:100%;margin-top:20px;padding:12px 10px;display:flex;justify-content:center;align-items:center;gap:15px;border:1px solid #e5e5e5;border-radius:5px}._authbox_nfbzr_1 ._inputbox_nfbzr_1 img{margin:auto 5px}._authbox_nfbzr_1 ._inputbox_nfbzr_1 p{display:inline-block;vertical-align:middle;opacity:.6;font-size:16px;letter-spacing:-0.3px}._authbox_nfbzr_1 ._inputbox_nfbzr_1 input{border:none;display:inline-block;vertical-align:middle;opacity:.6;font-size:16px;letter-spacing:-0.3px}._authbox_nfbzr_1 ._btn_nfbzr_1{width:100%;height:45px;border:none;margin:0;border-radius:5px;text-transform:uppercase;font-weight:bold;color:var(--black);margin-top:20px;background-color:#ebebeb;transition:.5s;cursor:pointer}._authbox_nfbzr_1 ._btn_nfbzr_1:hover{background-color:var(--main);color:#fff}._input_nfbzr_1{width:100%;margin-top:20px;padding:12px 10px;text-align:center;display:flex;justify-content:center;align-items:center;gap:15px;border:1px solid #e5e5e5;border-radius:5px}</style><style type="text/css" data-vite-dev-id="/home/sourav/Work/babagcabs/client/src/Pages/Profile/styles/profile.module.css"></style><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/common.js"></script><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/util.js"></script><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/controls.js"></script><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/places_impl.js"></script><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/AuthenticationService.Authenticate"></script><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/AutocompletionService_010.GetPredictions"></script><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/AutocompletionService_003.GetPredictions"></script><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/AutocompletionService_002.GetPredictions"></script><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/AutocompletionService_009.GetPredictions"></script><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/AutocompletionService.GetPredictions"></script><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/AutocompletionService_004.GetPredictions"></script><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/PlaceService_002.GetPlaceDetails"></script><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/PlaceService.GetPlaceDetails"></script><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/AutocompletionService_005.GetPredictions"></script><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/AutocompletionService_006.GetPredictions"></script><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/AutocompletionService_008.GetPredictions"></script><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/AutocompletionService_007.GetPredictions"></script><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/AutocompletionService_008.GetPredictions"></script><script type="text/javascript" charset="UTF-8" src="Babagcabs_files/AutocompletionService_007.GetPredictions"></script></head>
+
+<body>
+  <div id="root"><div class="" style="position: fixed; top: 0px; left: 0px; height: 5px; background: transparent; z-index: 2147483647; width: 100%;"><div class="" style="height: 100%; background: rgb(255, 255, 255); width: 0%; opacity: 1; color: rgb(255, 255, 255);"><div style="box-shadow: rgb(255, 255, 255) 0px 0px 10px, rgb(255, 255, 255) 0px 0px 10px; width: 5%; opacity: 1; position: absolute; height: 100%; transform: rotate(3deg) translate(0px, -4px); left: -5.5%;"></div></div></div><div class="_navbar_1fepg_1"><div class="_nav_1fepg_1 container"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" color="#fff" style="color: rgb(255, 255, 255); display: none;" class="_menuicon_1fepg_1" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M80 160h352M80 256h352M80 352h352"></path></svg><img src="Babagcabs_files/logo.png" alt="logo" height="40" class="_logo_1fepg_1 ml-16 sm:ml-0"><div class="_menu_1fepg_1"><div class="_links_1fepg_1 null"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" color="#fff" style="color: rgb(255, 255, 255); display: none;" class="_closeicon_1fepg_1" height="40" width="40" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 368L144 144m224 0L144 368"></path></svg><a href="http://localhost:5173/">Home</a><a href="http://localhost:5173/">About</a><a href="http://localhost:5173/">Blog</a><a href="http://localhost:5173/">Services</a></div><a href="#" class="flex justify-center items-center gap-3 "><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="_wallet_1fepg_1" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M95.5 104h320a87.73 87.73 0 0111.18.71 66 66 0 00-77.51-55.56L86 94.08h-.3a66 66 0 00-41.07 26.13A87.57 87.57 0 0195.5 104zm320 24h-320a64.07 64.07 0 00-64 64v192a64.07 64.07 0 0064 64h320a64.07 64.07 0 0064-64V192a64.07 64.07 0 00-64-64zM368 320a32 32 0 1132-32 32 32 0 01-32 32z"></path><path d="M32 259.5V160c0-21.67 12-58 53.65-65.87C121 87.5 156 87.5 156 87.5s23 16 4 16-18.5 24.5 0 24.5 0 23.5 0 23.5L85.5 236z"></path></svg>  <span class="hidden sm:block">₹250.0</span></a><a href="http://localhost:5173/auth"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M248 104c-53 0-96 43-96 96s43 96 96 96 96-43 96-96-43-96-96-96zm0 144c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm0-240C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 448c-49.7 0-95.1-18.3-130.1-48.4 14.9-23 40.4-38.6 69.6-39.5 20.8 6.4 40.6 9.6 60.5 9.6s39.7-3.1 60.5-9.6c29.2 1 54.7 16.5 69.6 39.5-35 30.1-80.4 48.4-130.1 48.4zm162.7-84.1c-24.4-31.4-62.1-51.9-105.1-51.9-10.2 0-26 9.6-57.6 9.6-31.5 0-47.4-9.6-57.6-9.6-42.9 0-80.6 20.5-105.1 51.9C61.9 339.2 48 299.2 48 256c0-110.3 89.7-200 200-200s200 89.7 200 200c0 43.2-13.9 83.2-37.3 115.9z"></path></svg></a></div></div></div><div class="_header_1k8k2_1"><img src="Babagcabs_files/woman-6767494_960_720.jpg" alt="images"><div class="_sideBox_1k8k2_1 container"><div class="_tabs_1k8k2_1"><div class="_tab_1k8k2_1 _active_1k8k2_1">One Way</div><div class="_tab_1k8k2_1 null">Round Trip</div><div class="_tab_1k8k2_1 null">Local</div><div class="_tab_1k8k2_1 null">Airport</div></div><div class="_tabview_1k8k2_1"><div class="_oneway_ftxsz_1"><div><label>From</label><input class="tabinput pac-target-input" placeholder="Ex: Delhi" autocomplete="off" value=" Bengal, India"></div><div><label>To</label><input class="tabinput pac-target-input" placeholder="Ex: Kolkata" autocomplete="off"></div><div><label>Pickup Date</label><input type="date" name="date" id="date" class="tabinput"></div><div><label>Pickup Time</label><select name="time" id="time" class="tabinput"><option value="12:00 AM" selected="selected">12:00 AM</option><option value="12:15 AM">12:15 AM</option><option value="12:30 AM">12:30 AM</option><option value="12:45 AM">12:45 AM</option><option value="1:00 AM">1:00 AM</option><option value="1:15 AM">1:15 AM</option><option value="1:30 AM">1:30 AM</option><option value="1:45 AM">1:45 AM</option><option value="2:00 AM">2:00 AM</option><option value="2:15 AM">2:15 AM</option><option value="2:30 AM">2:30 AM</option><option value="2:45 AM">2:45 AM</option><option value="3:00 AM">3:00 AM</option><option value="3:15 AM">3:15 AM</option><option value="3:30 AM">3:30 AM</option><option value="3:45 AM">3:45 AM</option><option value="4:00 AM">4:00 AM</option><option value="4:15 AM">4:15 AM</option><option value="4:30 AM">4:30 AM</option><option value="4:45 AM">4:45 AM</option><option value="5:00 AM">5:00 AM</option><option value="5:15 AM">5:15 AM</option><option value="5:30 AM">5:30 AM</option><option value="5:45 AM">5:45 AM</option><option value="6:00 AM">6:00 AM</option><option value="6:15 AM">6:15 AM</option><option value="6:30 AM">6:30 AM</option><option value="6:45 AM">6:45 AM</option><option value="7:00 AM">7:00 AM</option><option value="7:15 AM">7:15 AM</option><option value="7:30 AM">7:30 AM</option><option value="7:45 AM">7:45 AM</option><option value="8:00 AM">8:00 AM</option><option value="8:15 AM">8:15 AM</option><option value="8:30 AM">8:30 AM</option><option value="8:45 AM">8:45 AM</option><option value="9:00 AM">9:00 AM</option><option value="9:15 AM">9:15 AM</option><option value="9:30 AM">9:30 AM</option><option value="9:45 AM">9:45 AM</option><option value="10:00 AM">10:00 AM</option><option value="10:15 AM">10:15 AM</option><option value="10:30 AM">10:30 AM</option><option value="10:45 AM">10:45 AM</option><option value="11:00 AM">11:00 AM</option><option value="11:15 AM">11:15 AM</option><option value="11:30 AM">11:30 AM</option><option value="11:45 AM">11:45 AM</option><option value="12:00 PM">12:00 PM</option><option value="12:15 PM">12:15 PM</option><option value="12:30 PM">12:30 PM</option><option value="12:45 PM">12:45 PM</option><option value="1:00 PM">1:00 PM</option><option value="1:15 PM">1:15 PM</option><option value="1:30 PM">1:30 PM</option><option value="1:45 PM">1:45 PM</option><option value="2:00 PM">2:00 PM</option><option value="2:15 PM">2:15 PM</option><option value="2:30 PM">2:30 PM</option><option value="2:45 PM">2:45 PM</option><option value="3:00 PM">3:00 PM</option><option value="3:15 PM">3:15 PM</option><option value="3:30 PM">3:30 PM</option><option value="3:45 PM">3:45 PM</option><option value="4:00 PM">4:00 PM</option><option value="4:15 PM">4:15 PM</option><option value="4:30 PM">4:30 PM</option><option value="4:45 PM">4:45 PM</option><option value="5:00 PM">5:00 PM</option><option value="5:15 PM">5:15 PM</option><option value="5:30 PM">5:30 PM</option><option value="5:45 PM">5:45 PM</option><option value="6:00 PM">6:00 PM</option><option value="6:15 PM">6:15 PM</option><option value="6:30 PM">6:30 PM</option><option value="6:45 PM">6:45 PM</option><option value="7:00 PM">7:00 PM</option><option value="7:15 PM">7:15 PM</option><option value="7:30 PM">7:30 PM</option><option value="7:45 PM">7:45 PM</option><option value="8:00 PM">8:00 PM</option><option value="8:15 PM">8:15 PM</option><option value="8:30 PM">8:30 PM</option><option value="8:45 PM">8:45 PM</option><option value="9:00 PM">9:00 PM</option><option value="9:15 PM">9:15 PM</option><option value="9:30 PM">9:30 PM</option><option value="9:45 PM">9:45 PM</option><option value="10:00 PM">10:00 PM</option><option value="10:15 PM">10:15 PM</option><option value="10:30 PM">10:30 PM</option><option value="10:45 PM">10:45 PM</option><option value="11:00 PM">11:00 PM</option><option value="11:15 PM">11:15 PM</option><option value="11:30 PM">11:30 PM</option><option value="11:45 PM">11:45 PM</option></select></div></div></div><a href="http://localhost:5173/explore" class="_search_1k8k2_1">Explore</a></div></div><div class="_about_ji29s_1 container"><div class="_showtitleLeft_ifha0_1" data-aos=""><p>About US</p><div class="_line_ifha0_1"></div></div><br><br><div class="_content_ji29s_1"><div class="_img_ji29s_1"><img src="Babagcabs_files/istockphoto-1150571619-612x612.jpg" alt=""></div><div class="_view_ji29s_1"><div class="_content_ji29s_1"><h1>Welcome To BabaCabs</h1><p>Lorem
+ ipsum dolor, sit amet consectetur adipisicing elit. Explicabo 
+necessitatibus porro blanditiis pariatur corrupti illum beatae quo 
+praesentium! Cum eum id quibusdam ut ab assumenda aliquam ipsa! Culpa 
+dicta nisi distinctio dolorem, quibusdam laudantium recusandae? 
+Exercitationem dolorum dolores sit quos doloribus dolor quas, expedita 
+placeat facilis voluptates numquam aspernatur ipsa vel tempora suscipit 
+commodi maiores hic iusto repellat vero necessitatibus! Laborum, 
+molestiae. Dolorum minima quod nam, necessitatibus facere iusto 
+inventore voluptatum repudiandae dignissimos praesentium eaque nesciunt 
+accusamus at ab totam in repellendus dolores ut atque temporibus 
+debitis, eum exercitationem ratione sapiente. Veritatis porro saepe 
+vero. Eligendi amet in dicta velit.</p></div></div></div></div><div class="_services_1hwsi_1 container"><div class="_showtitleLeft_ifha0_1" data-aos=""><p>Our Services</p><div class="_line_ifha0_1"></div></div><div class="_content_1hwsi_1"><div class="_blogpost_1uq3j_1"><img class="_image_1uq3j_1" src="Babagcabs_files/photo-1575936123452-b67c3203c357.avif" alt="post"><h1 class="_title_1uq3j_1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, libero?</h1><p class="_desc_1uq3j_1">Lorem
+ ipsum dolor sit amet consectetur adipisicing elit. Alias enim possimus 
+nam quod, odio a itaque unde harum neque officiis reiciendis eius 
+voluptate tenetur debitis cumque est adipisci atque tempore.</p></div><div class="_blogpost_1uq3j_1"><img class="_image_1uq3j_1" src="Babagcabs_files/photo-1575936123452-b67c3203c357.avif" alt="post"><h1 class="_title_1uq3j_1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, libero?</h1><p class="_desc_1uq3j_1">Lorem
+ ipsum dolor sit amet consectetur adipisicing elit. Alias enim possimus 
+nam quod, odio a itaque unde harum neque officiis reiciendis eius 
+voluptate tenetur debitis cumque est adipisci atque tempore.</p></div><div class="_blogpost_1uq3j_1"><img class="_image_1uq3j_1" src="Babagcabs_files/photo-1575936123452-b67c3203c357.avif" alt="post"><h1 class="_title_1uq3j_1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, libero?</h1><p class="_desc_1uq3j_1">Lorem
+ ipsum dolor sit amet consectetur adipisicing elit. Alias enim possimus 
+nam quod, odio a itaque unde harum neque officiis reiciendis eius 
+voluptate tenetur debitis cumque est adipisci atque tempore.</p></div></div></div><div class="_appdownload_1o743_1 container"><div class="_imageApp_1o743_1"><img src="Babagcabs_files/appmobile.png" alt="mobile"></div><div class="_info_1o743_1"><h2>Download Our App</h2><h1>BabaGCabs</h1><p>Lorem
+ Ipsum is simply dummy text of the printing and typesetting industry. 
+Lorem Ipsum has been the industry's standard dummy text ever since the 
+1500s, when an unknown printer took a galley of type and scrambled it to
+ make a type specimen book.</p> <span style="display: inline-block; direction: ltr;"><span style="cursor: inherit; display: inline-block; position: relative;"><span style="visibility: hidden;"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" color="#ffffff54" style="color: rgba(255, 255, 255, 0.33);" height="40" width="40" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"></path></svg></span><span style="display: inline-block; position: absolute; overflow: hidden; top: 0px; left: 0px; width: 100%;"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" color="#FFC200" style="color: rgb(255, 194, 0);" height="40" width="40" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"></path></svg></span></span><span style="cursor: inherit; display: inline-block; position: relative;"><span style="visibility: hidden;"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" color="#ffffff54" style="color: rgba(255, 255, 255, 0.33);" height="40" width="40" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"></path></svg></span><span style="display: inline-block; position: absolute; overflow: hidden; top: 0px; left: 0px; width: 100%;"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" color="#FFC200" style="color: rgb(255, 194, 0);" height="40" width="40" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"></path></svg></span></span><span style="cursor: inherit; display: inline-block; position: relative;"><span style="visibility: hidden;"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" color="#ffffff54" style="color: rgba(255, 255, 255, 0.33);" height="40" width="40" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"></path></svg></span><span style="display: inline-block; position: absolute; overflow: hidden; top: 0px; left: 0px; width: 100%;"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" color="#FFC200" style="color: rgb(255, 194, 0);" height="40" width="40" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"></path></svg></span></span><span style="cursor: inherit; display: inline-block; position: relative;"><span style="visibility: hidden;"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" color="#ffffff54" style="color: rgba(255, 255, 255, 0.33);" height="40" width="40" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"></path></svg></span><span style="display: inline-block; position: absolute; overflow: hidden; top: 0px; left: 0px; width: 100%;"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" color="#FFC200" style="color: rgb(255, 194, 0);" height="40" width="40" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"></path></svg></span></span><span style="cursor: inherit; display: inline-block; position: relative;"><span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" color="#ffffff54" style="color: rgba(255, 255, 255, 0.33);" height="40" width="40" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"></path></svg></span><span style="display: inline-block; position: absolute; overflow: hidden; top: 0px; left: 0px; width: 50%;"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" color="#FFC200" style="color: rgb(255, 194, 0);" height="40" width="40" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"></path></svg></span></span></span><div class="_downloadLinks_1o743_1"><a href="#"><img src="Babagcabs_files/playstore.png" alt="play"></a><a href="#"><img src="Babagcabs_files/appstore.png" alt="play"></a></div></div></div><div class="_latestblogs_zi4lj_1 container"><div class="_titleSection_zi4lj_1"><div class="_showtitleLeft_ifha0_1" data-aos=""><p>ServicesBox</p><div class="_line_ifha0_1"></div></div><a href="#">Read More</a></div><div class="_posts_zi4lj_1"><div class="_blogpost_1hko1_1"><img src="Babagcabs_files/cadillac-xt4-2024-exterior-oem-05.webp" alt="image"><p class="_post_1hko1_1">Blog</p><h1 class="_title_1hko1_1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam, accusantium.</h1><p class="_timeStamp_1hko1_1">Admin - JAN 11 2024</p></div><div class="_blogpost_1hko1_1"><img src="Babagcabs_files/cadillac-xt4-2024-exterior-oem-05.webp" alt="image"><p class="_post_1hko1_1">Blog</p><h1 class="_title_1hko1_1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam, accusantium.</h1><p class="_timeStamp_1hko1_1">Admin - JAN 11 2024</p></div><div class="_blogpost_1hko1_1"><img src="Babagcabs_files/cadillac-xt4-2024-exterior-oem-05.webp" alt="image"><p class="_post_1hko1_1">Blog</p><h1 class="_title_1hko1_1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam, accusantium.</h1><p class="_timeStamp_1hko1_1">Admin - JAN 11 2024</p></div></div></div><div class="_footer_zvhvl_1"><div class="_about_zvhvl_1"><div class="_title_zvhvl_1">ABOUT US</div><p>Babagcabs
+ operates in the public transport market since 2024. Even though a 
+relatively new company, BabagcaBs achieved within a short time to 
+consolidate... </p><div class="_links_zvhvl_1"><a href="#"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" class="_icon_zvhvl_1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg></a><a href="#"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="_icon_zvhvl_1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg></a><a href="#"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="_icon_zvhvl_1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path></svg></a><a href="#"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="_icon_zvhvl_1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a></div></div><div><div class="_title_zvhvl_1">Links</div><div class="_links_zvhvl_1"><ul><li><a href="#"> Home</a></li><li><a href="#">About Us</a></li><li><a href="#">Services</a></li><li><a href="#">Cabs</a></li></ul><ul><li><a href="#">Blog</a></li><li><a href="#">Contact Us</a></li><li><a href="#">Reviews</a></li><li><a href="#">Login</a></li></ul></div></div><div class="_address_zvhvl_1"><div class="_title_zvhvl_1">Address</div><div class="_contents_zvhvl_1"><p>Address:  Sheetla Colony, Sector-6, Gurgaon Haryana 122006</p><p><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="_icon_zvhvl_1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 3a1 1 0 0 1 .877 .519l.051 .11l2 5a1 1 0 0 1 -.313 1.16l-.1 .068l-1.674 1.004l.063 .103a10 10 0 0 0 3.132 3.132l.102 .062l1.005 -1.672a1 1 0 0 1 1.113 -.453l.115 .039l5 2a1 1 0 0 1 .622 .807l.007 .121v4c0 1.657 -1.343 3 -3.06 2.998c-8.579 -.521 -15.418 -7.36 -15.94 -15.998a3 3 0 0 1 2.824 -2.995l.176 -.005h4z" stroke-width="0" fill="currentColor"></path></svg> +91 9680855252</p><p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="_icon_zvhvl_1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg> support@babagcabs.com</p></div></div></div><p style="text-align: center;" class="_copyright_zvhvl_1">Baba-Cabs 2023 © All Rights Reserved Terms of use</p><div class="Toastify"></div><div role="region" aria-label="Notifications (F8)" tabindex="-1" style="pointer-events: none;"><ol tabindex="-1" class="fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]"></ol></div></div>
+  <script type="module" src="Babagcabs_files/main.js"></script>
+
+
+<script src="Babagcabs_files/js"></script><div class="pac-container pac-logo" style="width: 251px; position: absolute; left: 114px; top: 486px;"><div class="pac-item"><span class="pac-icon pac-icon-marker"></span><span class="pac-item-query"><span class="pac-matched">Bangal</span></span><span>Himachal Pradesh, <span class="pac-matched">India</span></span></div><div class="pac-item"><span class="pac-icon pac-icon-marker"></span><span class="pac-item-query"><span class="pac-matched">Vengal</span></span><span>Tamil Nadu, <span class="pac-matched">India</span></span></div></div><div class="pac-container pac-logo" style="display: none;"></div><div class="pac-container pac-logo" style="width: 251px; position: absolute; left: 114px; top: 486px;"><div class="pac-item"><span class="pac-icon pac-icon-marker"></span><span class="pac-item-query"><span class="pac-matched">Bangal</span></span><span>Himachal Pradesh, <span class="pac-matched">India</span></span></div><div class="pac-item"><span class="pac-icon pac-icon-marker"></span><span class="pac-item-query"><span class="pac-matched">Vengal</span></span><span>Tamil Nadu, <span class="pac-matched">India</span></span></div></div><div class="pac-container pac-logo" style="display: none;"></div></body></html>

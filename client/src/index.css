@@ -60,20 +60,24 @@ body {
   z-index: 99999999 !important;
 }
 
-.Toastify__toast.Toastify__toast-theme--light {
-  background-color: #46464652 !important;
-  backdrop-filter: blur(20px);
-  border-radius: 0px !important;
-}
 
-.Toastify__close-button.Toastify__close-button--light {
-  color: #fff !important;
-}
 
-.Toastify__toast-body {
-  color: #fff !important;
+.searchBtn {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border: none;
+  padding: 15px 50px;
+  background-color: var(--main);
+  color: #fff;
+  margin-bottom: -20px;
+  border-radius: 30px;
+  box-shadow: 0px -5px 15px 0px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
 }
-
 
 
 .tabsearchBox .wrapper:first-child {
