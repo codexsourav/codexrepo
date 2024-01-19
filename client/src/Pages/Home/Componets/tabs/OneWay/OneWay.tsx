@@ -1,7 +1,13 @@
 import React from 'react';
 import styles from './styles/oneway.module.css'
-import ReactGoogleAutocomplete from 'react-google-autocomplete';
+import ReactGoogleAutocomplete, { usePlacesWidget } from 'react-google-autocomplete';
 import { generateTimeArray } from '@/utils/GetTime';
+
+const { ref } = usePlacesWidget({
+    apiKey: "AIzaSyBicErnm5MQhQ9TEC8PHfQoBxQZEdv7v40",
+    libraries: ["places"],
+    onPlaceSelected: (place) => console.log(place)
+})
 
 const OneWay = () => {
     const timeArray = generateTimeArray();
@@ -9,19 +15,20 @@ const OneWay = () => {
         <>
             <div className={styles.oneway}>
                 <div>
-                    <label >From</label>
+                    <label>From</label>
                     <ReactGoogleAutocomplete
-                        apiKey={"AIzaSyCt16mbckx6dStfwzjYECsX96Nt6j_rS3o"}
+                        apiKey={"AIzaSyBicErnm5MQhQ9TEC8PHfQoBxQZEdv7v40"}
                         onPlaceSelected={(place) => console.log(place)}
                         className={"tabinput"}
                         placeholder='Ex : Mumbai'
                     />
                 </div>
                 <div>
-                    <label >To</label>
+                    <label>To</label>
                     <ReactGoogleAutocomplete
-                        apiKey={"AIzaSyCt16mbckx6dStfwzjYECsX96Nt6j_rS3o"}
+                        apiKey={"AIzaSyBicErnm5MQhQ9TEC8PHfQoBxQZEdv7v40"}
                         onPlaceSelected={(place) => console.log(place)}
+                        libraries={['places']}
                         className={"tabinput"}
                         placeholder='Ex : Bangalore'
                     />

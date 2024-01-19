@@ -90,7 +90,7 @@ function ManageCabs() {
             {data == null ? <Loading /> : data.length == 0 ? <div className="flex justify-center items-center h-96">No Cabs Found</div> : <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-10 px-5 sm:px-20 mt-10  mb-32">
                 {
                     data.map((e, i) => {
-                        return <Card >
+                        return <Card key={"cab-" + i}>
                             <CardHeader className="flex flex-row justify-between w-full items-center">
                                 <div>
                                     <CardTitle>{e.carnumber}</CardTitle>
