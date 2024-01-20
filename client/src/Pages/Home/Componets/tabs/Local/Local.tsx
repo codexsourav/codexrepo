@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './styles/local.module.css'
 import { generateTimeArray } from '@/utils/GetTime';
 import GoogleMapInput from '@/Component/GoogleMapInput/GoogleMapInput';
-import { useNavigate } from 'react-router-dom';
+
 import { useDispatch, useSelector } from 'react-redux';
 import StoreType, { AppDispatch } from '@/Interfaces/storeInterface';
 import { ILocal, setLocal } from '@/Redux/TripBox/Local';
@@ -16,7 +16,7 @@ import { errorToast } from '@/Lib/showToast';
 
 
 const Local = () => {
-    const navigate = useNavigate();
+
     const data = useSelector((store: StoreType) => store.local)
     const diapatch = useDispatch<AppDispatch>();
 
@@ -47,7 +47,7 @@ const Local = () => {
     const exploreCabs = () => {
         const validate = validateLocalData(data);
         if (validate == true) {
-            navigate(`/explore?type=local&pickupaddress=${data.form}&pickdate=${data.pickDate}&picktime=${data.time}`)
+            window.location.href = (`/explore?type=local&pickupaddress=${data.form}&pickdate=${data.pickDate}&picktime=${data.time}`)
         } else {
             errorToast(validate.toString());
         }

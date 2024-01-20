@@ -9,25 +9,25 @@ services:
     volumes:
       - mongodb_data:/data/db
 
-  redis:
-    image: redis
-    container_name: redis-app
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/data
+  # redis:
+  #   image: redis
+  #   container_name: redis-app
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - redis_data:/data
 
-  postgres:
-    image: postgres
-    container_name: postgres-db
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_DB: sourav
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: sourav
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+  # postgres:
+  #   image: postgres
+  #   container_name: postgres-db
+  #   ports:
+  #     - "5432:5432"
+  #   environment:
+  #     POSTGRES_DB: sourav
+  #     POSTGRES_USER: root
+  #     POSTGRES_PASSWORD: sourav
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
 
 volumes:
   mongodb_data:

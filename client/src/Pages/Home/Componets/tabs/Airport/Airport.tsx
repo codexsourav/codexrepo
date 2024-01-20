@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './styles/airport.module.css'
 import { generateTimeArray } from '@/utils/GetTime';
 import GoogleMapInput from '@/Component/GoogleMapInput/GoogleMapInput';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import StoreType, { AppDispatch } from '@/Interfaces/storeInterface';
 import { IAirport, setAirport } from '@/Redux/TripBox/Airport';
@@ -14,10 +13,10 @@ import { errorToast } from '@/Lib/showToast';
 // ?type=local&pickupaddress=[]&pickdate=[]&picktime=[];
 // ?type=airport&trip=[]&airportname=[]&location=[]&pickdate=[]&picktime=[];
 
+export const airportTripType = ["Drop Airport", "PickUp To Airport"];
 
 const Airport = () => {
 
-    const navigate = useNavigate();
     const data = useSelector((store: StoreType) => store.airport)
     const diapatch = useDispatch<AppDispatch>();
 
@@ -52,7 +51,7 @@ const Airport = () => {
     const exploreCabs = () => {
         const validate = validateAirportData(data);
         if (validate == true) {
-            navigate(`/explore?type=airport&trip=${data.trip}&airportname=${data.airport}&location=${data.location}&pickdate=${data.pickDate}&picktime=${data.time}`)
+            window.location.href = (`/explore?type=airport&trip=${data.trip}&airportname=${data.airport}&location=${data.location}&pickdate=${data.pickDate}&picktime=${data.time}`)
         } else {
             errorToast(validate.toString());
         }
@@ -63,7 +62,6 @@ const Airport = () => {
         <>
 
             <div className={styles.airport}>
-
                 <div>
                     <label >TRIP</label>
                     <select name="date" id="date" className="tabinput" onChange={(e) => setData('trip', e.target.value)} >

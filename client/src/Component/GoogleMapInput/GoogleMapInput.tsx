@@ -1,12 +1,11 @@
-
 import React from "react";
 import ReactGoogleAutocomplete from "react-google-autocomplete"
 
 function GoogleMapInput({ airport = false, label, onChenge, placeholder, value }: { value?: string, label: string, airport?: boolean, placeholder: string, onChenge: ((val: any) => void) },) {
 
-    const showPlaces = { componentRestrictions: { country: "in" } };
+    const showPlaces = { componentRestrictions: { country: "in" }, "types": ["establishment"], };
     const showAirport = { componentRestrictions: { country: "in" }, "types": ["airport"] };
-
+    showPlaces.types = showPlaces.types.filter(type => type === "airport");
     return (
         <div>
             <label>{label}</label>

@@ -6,6 +6,8 @@ import connectDB from './db/db.js';
 import middleware from './middleware/middleware.js';
 import UploadFile from './helper/UploadFile.js';
 import { AdminRouter } from './routes/admin.js'
+import { ExploreRouts } from './routes/explore.js';
+import { AuthRouts } from './routes/auth.js';
 const app: express.Express = express();
 env.config();
 app.use(
@@ -16,6 +18,8 @@ app.use(
     cookieParser(),
     express.urlencoded({ extended: true }),
     AdminRouter,
+    ExploreRouts,
+    AuthRouts
 );
 
 

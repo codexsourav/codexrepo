@@ -8,6 +8,10 @@ interface IUsers {
     transaction: array;
     image: string;
     isAllow: boolean;
+    otp: {
+        value: string,
+        date: Date,
+    }
 }
 
 // Extend the Cat document with Document interface from Mongoose

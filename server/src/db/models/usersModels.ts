@@ -38,6 +38,10 @@ const users = new Schema<IUsers>({
         required: true,
         default: true,
     },
+    otp: {
+        value: String,
+        date: Date,
+    }
 });
 
 const UsersModel = mongo.model("users", users);

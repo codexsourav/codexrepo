@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './styles/roundtrip.module.css'
 import { generateTimeArray } from '@/utils/GetTime';
 import GoogleMapInput from '@/Component/GoogleMapInput/GoogleMapInput';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import StoreType, { AppDispatch } from '@/Interfaces/storeInterface';
 import { IRoundTrip, setRoundTrip } from '@/Redux/TripBox/RoundTrip';
@@ -17,8 +16,6 @@ import { validateDateDifference } from '@/Lib/getVewDate';
 
 
 const RoundTrip = () => {
-
-    const navigate = useNavigate();
     const data = useSelector((store: StoreType) => store.roundTrip)
     const diapatch = useDispatch<AppDispatch>();
     const setData = (name: keyof IRoundTrip, value: string) => {
@@ -52,6 +49,8 @@ const RoundTrip = () => {
             return 'Invalid Return Date.';
         } if (validateDateDifference(data.returnDate, data.pickDate)) {
             return 'Invalid Pickup,Return Formate.';
+        } if (form == to) {
+            return 'From or To Not Be Same';
         }
         return true;
     };
@@ -61,7 +60,7 @@ const RoundTrip = () => {
     const exploreCabs = () => {
         const validate = valiDateData(data);
         if (validate == true) {
-            navigate(`/explore?type=roundtrip&pickupaddress=${data.form}&dropaddress=${data.to}&pickdate=${data.pickDate}&returndate=${data.returnDate}&picktime=${data.time}`);
+            window.location.href = (`/explore?type=roundtrip&pickupaddress=${data.form}&dropaddress=${data.to}&pickdate=${data.pickDate}&returndate=${data.returnDate}&picktime=${data.time}`);
         } else {
             errorToast(validate.toString());
         }

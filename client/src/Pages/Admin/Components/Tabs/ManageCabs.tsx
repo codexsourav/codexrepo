@@ -104,7 +104,7 @@ function ManageCabs() {
                                 <p>Max Passenger : {e.maxpac}</p>
                             </CardContent>
                             <CardFooter className="flex float-end">
-                                <UpdateCabs id={e._id} data={{ name: e.name, baserate: e.baserate, carnumber: e.carnumber, image: e.image, maxpac: e.maxpac, parkm: e.maxpac }} reloadData={reloadData} />
+                                <UpdateCabs id={e._id} data={{ name: e.name, baserate: e.baserate, carnumber: e.carnumber, image: e.image, maxpac: e.maxpac, parkm: e.parkm }} reloadData={reloadData} />
                                 <AlertDialog>
                                     <AlertDialogTrigger>    <Button className="bg-red-600 hover:bg-red-900">Delete</Button></AlertDialogTrigger>
                                     <AlertDialogContent>
@@ -328,8 +328,6 @@ function UpdateCabs({ id, data, reloadData, }: { id: string, data: CabData, relo
 
     const [imageLoading, setImageLoading] = useState<boolean>(false)
     const [showUpdate, setshowUpdate] = useState<boolean>(false)
-
-
 
     const [cabData, setCabData] = useState<CabData>(data);
 

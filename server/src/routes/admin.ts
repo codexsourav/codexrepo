@@ -19,7 +19,7 @@ AdminRouter.post("/api/admin/login", async (req: Request, res: Response) => {
         if (!user) {
             return res.status(203).json({ "message": "Invalid Email Or Password" });
         } else {
-            const token = setJwtToken(res, { "email": user?.email, "_id": user?._id })
+            const token = setJwtToken({ "email": user?.email, "_id": user?._id })
             return res.status(200).json({ "message": "Login Successful", token });
         }
     } catch (error) {

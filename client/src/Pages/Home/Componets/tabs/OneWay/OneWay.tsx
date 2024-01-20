@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import StoreType, { AppDispatch } from '@/Interfaces/storeInterface';
 import { IOneWay, setOneWay } from '@/Redux/TripBox/OneWay';
 import { errorToast } from '@/Lib/showToast';
-import { useNavigate } from 'react-router-dom';
 import { validateDateDifference } from '@/Lib/getVewDate';
 
 
@@ -17,7 +16,7 @@ import { validateDateDifference } from '@/Lib/getVewDate';
 
 
 const OneWay = () => {
-    const navigate = useNavigate();
+
     const data = useSelector((store: StoreType) => store.oneWay)
     const diapatch = useDispatch<AppDispatch>();
 
@@ -40,6 +39,8 @@ const OneWay = () => {
             return 'Please Select Pickup time.';
         } if (validateDateDifference(data.pickDate, new Date().toISOString())) {
             return 'Invalid Pickup Date.';
+        } if (from == to) {
+            return 'From or To Not Be Same';
         }
         return true;
     };
@@ -51,7 +52,7 @@ const OneWay = () => {
             errorToast(valid.toString());
             return false;
         } else {
-            navigate(`/explore?type=oneway&pickupaddress=${data.from}&dropaddress=${data.to}&pickdate=${data.pickDate}&picktime=${data.time}`)
+            window.location.href = (`/explore?type=oneway&pickupaddress=${data.from}&dropaddress=${data.to}&pickdate=${data.pickDate}&picktime=${data.time}`)
         }
     };
 

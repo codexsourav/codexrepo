@@ -21,8 +21,8 @@ const Navbar = () => {
                             <a href="/">Blog</a>
                             <a href="/">Services</a>
                         </div>
-                        <a href="#" className='flex justify-center items-center gap-3 ' ><IoWallet size={24} className={styles.wallet} />  <span className='hidden sm:block'  >₹250.0</span></a>
-                        <a href="/auth"><FaRegUserCircle size={24} /></a>
+                        {localStorage.getItem(import.meta.env.VITE_AUTHKEY) ? <a href="#" className='flex justify-center items-center gap-3 ' ><IoWallet size={24} className={styles.wallet} />  <span className='hidden sm:block'  >₹250.0</span></a> : null}
+                        <a href={localStorage.getItem(import.meta.env.VITE_AUTHKEY) ? "/profile" : "/auth"}><FaRegUserCircle size={24} /></a>
                     </div>
                 </div>
             </div>

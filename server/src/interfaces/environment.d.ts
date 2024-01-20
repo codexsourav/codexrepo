@@ -8,6 +8,7 @@ declare global {
             EMAILMAIL: string,
             EMAILPASS: string,
             EMAILSLIST: string,
+            FAT2SMS: string,
         }
     }
 }
