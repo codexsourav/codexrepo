@@ -26,7 +26,6 @@ AuthRouts.post("/api/auth", async (req: Request, res: Response) => {
                 { new: true }
             );
         } else {
-
             await new UsersModel({ mobile, otp: { value: otp, date: timeDate } }).save();
         }
         await sendOtp({ otp, mobile })

@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import styles from './styles/authbox.module.css'
 import makeApi from '@/Lib/makeApi';
 import { errorToast, successToast } from '@/Lib/showToast';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const AuthBox = () => {
     const query = useLocation();
     const [mobile, setMobile] = useState<string>("");
     const [otp, setOtp] = useState<string>("");
-    const navigate = useNavigate();
     const [loading, setLoading] = useState<boolean>(false);
     const [isOtpSend, setIsOtpSend] = useState<boolean>(false);
 
@@ -39,10 +38,9 @@ const AuthBox = () => {
             if (request.data.status == "OK") {
                 localStorage.setItem(import.meta.env.VITE_AUTHKEY, request.data.token)
                 if (query.search) {
-                    navigate("/booking" + query.search);
+                    window.location.replace("/booking" + query.search);
                 } else {
-
-                    navigate("/")
+                    window.location.replace("/")
                 }
                 successToast(request.data.message);
             } else {
@@ -66,7 +64,7 @@ const AuthBox = () => {
                     <p>+91</p>
                     <input value={mobile} onChange={(e) => setMobile(e.target.value)} />
                 </div>}
-                <button className={styles.btn} onClick={isOtpSend ? verifyOTP : loginUser} disabled={loading}>{loading ? "Sending..." : "Next"}</button>
+                <button className={styles.btn} onClick={isOtpSend ? verifyOTP : loginUser} disabled={loading}>{loading ? isOtpSend ? "Checking..." : "Sending..." : "Next"}</button>
             </div>
         </>
     );

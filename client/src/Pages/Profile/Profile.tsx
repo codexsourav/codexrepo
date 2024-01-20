@@ -28,14 +28,14 @@ const Profile = () => {
                             </CardHeader>
                             <CardContent>
                                 <ul>
-                                    <li>Car Type: BMW</li>
-                                    <li>Name: Sourav Bapari</li>
-                                    <li>PickUp Address: kolkata,india</li>
-                                    <li>Drop Address: bisghupur,india</li>
-                                    <li>Pickup Date: 02/11/2001</li>
-                                    <li>Pickup Time: 03:11 PM</li>
-                                    <li>Distance: 120KM</li>
-                                    <li>Mobile: +91 9382156026</li>
+                                    <li>Car Type: -Demo Car name-</li>
+                                    <li>Name: Booking -User Name Here-</li>
+                                    <li>PickUp Address: -Pickup Address here-</li>
+                                    <li>Drop Address: -Drop Address Here-</li>
+                                    <li>Pickup Date: --/--/----</li>
+                                    <li>Pickup Time: --:-- --</li>
+                                    <li>Distance: --KM</li>
+                                    <li>Mobile: +91 ----------</li>
                                 </ul>
                             </CardContent>
                             <CardFooter className='flex gap-5'>
@@ -58,7 +58,7 @@ const Profile = () => {
                                     <AvatarImage src="https://github.com/shadcn.png" />
                                     <AvatarFallback>CN</AvatarFallback>
                                 </Avatar>
-                                <h2 className='font-bold text-lg mt-3' >Sourav Bapari</h2>
+                                <h2 className='font-bold text-lg mt-3' >-User Name Here-</h2>
                             </div>
                         </div>
                     </div>
