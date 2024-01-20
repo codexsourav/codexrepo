@@ -26,7 +26,6 @@ const Explore = () => {
     // get url paramiters 
     const authResult = new URLSearchParams(window.location.search);
 
-
     const type = authResult.get("type");
     const pickdate = authResult.get("pickdate");
     const picktime = authResult.get("picktime");

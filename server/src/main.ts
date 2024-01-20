@@ -8,11 +8,16 @@ import UploadFile from './helper/UploadFile.js';
 import { AdminRouter } from './routes/admin.js'
 import { ExploreRouts } from './routes/explore.js';
 import { AuthRouts } from './routes/auth.js';
+import path from 'path';
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const clint_path: string = path.join(__dirname, "../dist");
+
 const app: express.Express = express();
 env.config();
 app.use(
     cors(),
     express.static("static"),
+    express.static("dist"),
     express.static("static/uploads"),
     express.json(),
     cookieParser(),
@@ -45,10 +50,9 @@ app.get("/heath", async (req: Request, res: Response) => {
     res.send({ "message": "Everything is Healthy" });
 });
 
-app.get("/", async (req: Request, res: Response) => {
-    res.send({
-        "message": "Hi Welcome to Bid And Shops Api"
-    });
+app.get("/*", async (req: Request, res: Response) => {
+    return res.sendFile(path.join(clint_path, 'index.html'));
+
 });
 
 
