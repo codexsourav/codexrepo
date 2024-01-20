@@ -1,4 +1,4 @@
-import Loading from '@/Component/loading';
+
 import React, { ReactNode, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
