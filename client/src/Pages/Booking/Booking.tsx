@@ -207,7 +207,7 @@ const Booking = () => {
     const createBooking = async () => {
         const valid = ValiDateForm();
         if (valid == true) {
-
+            makeNewBooking();
         } else {
             errorToast(valid.toString());
         }
@@ -246,6 +246,8 @@ const Booking = () => {
                 }
             }
             const response = makeApi({ path: "/api/new/booking/", method: "POST", data })
+            console.log(response);
+
         } catch (error) {
 
         }

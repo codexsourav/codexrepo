@@ -23,7 +23,7 @@ const Profile = () => {
                     <div className=" col-span-2 h-auto rounded-3xl grid grid-cols-1 md:grid-cols-2 gap-5">
                         {/* <h1 className='text-2xl mb-5 text-center ml-2 font-bold uppercase' >My Booking Trips</h1> */}
                         {
-                            [1, 2, 3, 4, 5].map((e, i) => {
+                            [1, 2, 3, 4, 5].map((_, i) => {
                                 return <Card className='rounded-3xl shadow-md relative' key={"Booking-" + i}>
                                     <Button className='absolute right-3 top-3' variant="outline"><RiDeleteBinLine /></Button>
                                     <CardHeader>
