@@ -1,6 +1,6 @@
 .airport {
     display: grid;
-    grid-template-columns: 100px repeat(3, 1fr) 120px;
+    grid-template-columns: 100px repeat(2, 1fr) 350px;
     gap: 30px;
     width: 100%;
     @media screen and (max-width: 800px) {
@@ -37,5 +37,11 @@
             width: 100%;
             display: block;
         }
+    }
+    .datetime {
+        // background: #000;
+        display: grid !important;
+        grid-template-columns: 1fr 120px;
+        gap: 30px;
     }
 }

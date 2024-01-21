@@ -1,9 +1,9 @@
 .navbar {
     width: 100vw;
     height: 70px;
-    background-color: var(--main);
-    border-bottom: 3px solid var(--white);
-    backdrop-filter: blur(20px);
+    background-color: #141414de;
+    border-bottom: 3px solid var(--main);
+    backdrop-filter: blur(10px);
     z-index: 999;
     top: 0;
     right: 0;
@@ -22,6 +22,7 @@
             gap: 40px;
             a {
                 color: #fff;
+                color: var(--white);
             }
             .links {
                 z-index: 99999;
@@ -35,9 +36,11 @@
                     align-items: center;
                     opacity: 0.7;
                     text-transform: uppercase;
-                }
-                .wallet {
-                    margin-right: 10px;
+                    font-weight: bold;
+                    &:hover {
+                        color: var(--main);
+                        opacity: 1;
+                    }
                 }
             }
         }
@@ -54,7 +57,7 @@
             }
             .menu {
                 .links {
-                    display: none;
+                    transform: translateX(-100vw);
                     position: fixed;
                     top: 0;
                     right: 0;
@@ -63,15 +66,22 @@
                     align-items: center;
                     gap: 80px;
                     font-weight: bold;
-                    background-color: var(--black);
+
                     width: 100vw;
                     height: 100vh;
                     z-index: 999;
+                    background-color: #110602e0;
+                    backdrop-filter: blur(50px);
+                    transition: 0.5s;
                     &.active {
-                        display: flex !important;
+                        transform: translateX(0vw);
                     }
                     a {
                         font-size: 25px;
+                        color: #ffffffb6;
+                        &:hover {
+                            color: #fff;
+                        }
                     }
                     .closeicon {
                         position: absolute;

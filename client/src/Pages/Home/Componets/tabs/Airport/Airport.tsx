@@ -87,21 +87,23 @@ const Airport = () => {
 
                 </div>
 
-                <div>
-                    <label >Pickup Date</label>
-                    <input type="date" name="date" id="date" className="tabinput" onChange={(e) => setData('pickDate', e.target.value)} />
-                </div>
+                <div className={styles.datetime}>
+                    <div>
+                        <label >Pickup Date</label>
+                        <input type="date" name="date" id="date" className="tabinput" onChange={(e) => setData('pickDate', e.target.value)} />
+                    </div>
 
-                <div>
-                    <label >Pickup Time</label>
-                    <select name="time" id="time" className='tabinput' onChange={(e) => setData('time', e.target.value)}>
-                        <option value="">00:00 --</option>
-                        {
-                            timeArray.map((e, i) => {
-                                return <option key={"timeround-" + i} value={e} >{e}</option>
-                            })
-                        }
-                    </select>
+                    <div>
+                        <label >Pickup Time</label>
+                        <select name="time" id="time" className='tabinput' onChange={(e) => setData('time', e.target.value)}>
+                            <option value="">00:00 --</option>
+                            {
+                                timeArray.map((e, i) => {
+                                    return <option key={"timeround-" + i} value={e} >{e}</option>
+                                })
+                            }
+                        </select>
+                    </div>
                 </div>
 
             </div>

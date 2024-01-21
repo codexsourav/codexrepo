@@ -1,7 +1,5 @@
 export interface ICabData {
-    _id: {
-        $oid: string;
-    };
+    _id: string;
     name: string;
     baserate: number;
     carnumber: string;

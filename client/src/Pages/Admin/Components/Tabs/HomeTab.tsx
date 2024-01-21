@@ -106,7 +106,7 @@ const BookingView = () => {
             </SheetDescription>
         </SheetHeader>
         <div className="">
-            <div className="flex p-5 justify-between items-center mt-5">
+            <div className="flex p-1 md:p-5 justify-between items-center mt-5">
                 <img src="https://demothemesflat.co/conexikit/wp-content/uploads/2022/11/Taxis-01.png" alt="car" width={100} />
                 <div>
                     <h1 className="text-xl font-bold">M5 2008 Model</h1>

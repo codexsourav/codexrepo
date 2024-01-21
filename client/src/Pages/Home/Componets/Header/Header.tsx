@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <>
             <div className={styles.header}>
-                <img src="https://cdn.pixabay.com/photo/2021/11/04/06/15/woman-6767494_960_720.jpg" alt="images" />
+                <img src="/images/bg.jpg" alt="images" />
                 <TripBox />
             </div>
         </>

@@ -23,7 +23,7 @@ export default async (req: AuthRequest, res: Response, next: NextFunction) => {
         }
 
         const user = jwt.verify(token, process.env.JWTKEY || "123") as JwtPayload | IToken;
-        const userInfo: IUsersDocument | null = await UsersModel.findOne({ "_id": user!.id, isAllow: true }, { pass: 0 });
+        const userInfo: IUsersDocument | null = await UsersModel.findOne({ "_id": user!.id, isAllow: true }, { pass: 0, otp: 0, transaction: 0, isAllow: 0 });
         if (!userInfo) {
             return res.status(401).send({ "error": "You Are Not Authorized", "auth": false });
         }

@@ -4,7 +4,7 @@
   --black: rgb(22, 22, 22);
   --black-tp: rgba(0, 0, 0, 0.897);
   --white: rgb(255, 255, 255);
-  --main: #000000;
+  --main: #ea580c;
   --sec: #0c0c0c;
 }
 
@@ -66,19 +66,35 @@ body {
   position: absolute;
   bottom: 0;
   left: 50%;
+  width: 250px;
   transform: translate(-50%, 0);
   border: none;
-  padding: 15px 50px;
+  padding: 15px 55px;
+  text-transform: uppercase;
   background-color: var(--main);
   color: #fff;
   margin-bottom: -20px;
-  border-radius: 30px;
-  box-shadow: 0px -5px 15px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
+  transition: 0.5s;
 }
 
+.searchBtn:hover {
+  background-color: #c4510f;
+
+}
+
+@media screen and (max-width: 800px) {
+  .searchBtn {
+    width: 100%;
+    box-shadow: none;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+  }
+}
 
 .tabsearchBox .wrapper:first-child {
   border-radius: 0px !important;

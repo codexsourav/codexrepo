@@ -1,9 +1,4 @@
-export function generateOTP(): string {
-    const otp: number = Math.floor(1000 + Math.random() * 9000);
-    return otp.toString();
-}
-
-export function generateRandomPaymentId(length = 15) {
+export function generateRandomId(length = 15) {
     const prefix = 'BABAG';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let paymentId = prefix;
@@ -15,4 +10,3 @@ export function generateRandomPaymentId(length = 15) {
 
     return paymentId;
 }
-

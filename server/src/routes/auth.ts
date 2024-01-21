@@ -50,7 +50,7 @@ AuthRouts.post("/api/auth/:mobile", async (req: Request, res: Response) => {
         } else if (getUser.otp.value != otp) {
             return res.send({ status: "INVALID_OTP", message: "Invalid Otp" })
         } else {
-            const token = setJwtToken({ _id: getUser._id, mobile: getUser.mobile })
+            const token = setJwtToken({ id: getUser._id, mobile: getUser.mobile })
             return res.send({ status: "OK", message: "Login Successful", token })
         }
 

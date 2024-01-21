@@ -15,6 +15,7 @@ import HomeTab from "./Components/Tabs/HomeTab";
 import ManageCabs from "./Components/Tabs/ManageCabs";
 import BookingTab from "./Components/Tabs/BookingTab";
 import UsersTab from "./Components/Tabs/UsersTab";
+import InDEV from "@/Component/InDEV";
 
 
 function Admin() {
@@ -28,6 +29,7 @@ function Admin() {
                 <MenuItem item={<BsStack size={30} color={tabIndex == 2 ? "blue" : ""} />} hint="Booking" onClick={() => setTabIndex(2)} />
                 <MenuItem item={<FaCarAlt size={30} color={tabIndex == 3 ? "blue" : ""} />} hint="Manage Cabs" onClick={() => setTabIndex(3)} />
             </div>
+            <InDEV />
         </>
 
     )
