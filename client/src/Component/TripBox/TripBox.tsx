@@ -24,7 +24,7 @@ function TripBox() {
 
 
     return (
-        <div className={`${styles.sideBox} container`}>
+        <div className={`${styles.sideBox} container `}>
             <div className={styles.tabs}>
                 <div onClick={() => setTabinex(0)} className={`${styles.tab} ${tabinex == 0 ? styles.active : null}`}>One Way</div>
                 <div onClick={() => setTabinex(1)} className={`${styles.tab} ${tabinex == 1 ? styles.active : null}`}>Round Trip</div>

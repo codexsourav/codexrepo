@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 10px 15px -3px rgba(58, 58, 58, 0.3);
     @media screen and (max-width: 800px) {
         top: -250px;
         height: auto;
@@ -19,9 +19,9 @@
     .tabs {
         position: absolute;
         top: 0;
-        box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 10px 15px -3px rgba(66, 66, 66, 0.1);
         margin-top: -28px;
-        border-radius: 20px;
+        border-radius: 10px;
         width: 700px;
         height: 48px;
         background-color: #fff;

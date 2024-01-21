@@ -93,6 +93,9 @@ const Explore = () => {
 
     return (
         <>
+            <div className="h-14 shadow mt-16 w-full bg-orange-600 mb-10 flex justify-center items-center font-bold text-white">
+                <h1>PRICE INCLUSIVE OF ALL TOOLS AND TAXES</h1>
+            </div>
             <div className={`${styles.explore} container`}>
                 <div className="">
                     <div className={`${styles.info}`}>
@@ -139,21 +142,29 @@ const CarBox = ({ data, km, type }: { data: ICabData, km: number, type: string }
     const query = useLocation();
     const rediractUrl = () => {
         if (!localStorage.getItem(import.meta.env.VITE_AUTHKEY)) {
-            return "/auth" + query.search + (type == "local" ? "&km=" + km : "");
+            return "/auth" + query.search + `&car=${data._id}` + (type == "local" ? "&km=" + km : "");
         } else {
-            return "/booking" + query.search + (type == "local" ? "&km=" + km : "");
+            return "/booking" + query.search + `&car=${data._id}` + (type == "local" ? "&km=" + km : "");
         }
     };
-    return <div className={styles.carbox}>
-        <img src={import.meta.env.VITE_APIURL + "/" + data.image} alt="car" className='h-36 w-full object-contain' />
-        <h1 className='font-bold text-2xl' >{data.name}</h1>
-        <div className={styles.infobox}>
+    return <div className={`${styles.carbox}`}>
+        <div className="flex justify-between items-start  pt-4 w-full">
+            <div className="pl-5">
+                <h1 className='text-xl' >{data.name}</h1>
+                <p className='font-bold text-2xl text-orange-600 '>₹{Math.round(km * data.parkm)}.00</p>
+                <p className='font-bold text-sm text-slate-500 line-through hover:line-through'>₹{Math.round(km * data.parkm) + 1599}.00</p>
+                <p className='font-bold mt-2'>up to {Math.round(km)}.0KM</p>
+            </div>
+            <img src={import.meta.env.VITE_APIURL + "/" + data.image} alt="car" className='h-32 w-full object-contain pl-5 pr-2' />
+
+        </div>
+        <div className={`${styles.infobox} px-5`}>
             <div className={styles.infocar}><p>Base Rate:</p> <p>₹{data.baserate}.00</p></div>
             <div className={styles.infocar}><p>Par 1/KM:</p> <p>₹{data.parkm}.00</p></div>
             <div className={styles.infocar}><p>Max Passengers:</p> <p>{data.maxpac}</p></div>
-            <div className={styles.infocar}><p>Total Price:</p> <p>₹{Math.round(km * data.parkm)}.00</p></div>
+            {/* <div className={styles.infocar}><p>Total Price:</p> <p>₹{Math.round(km * data.parkm)}.00</p></div> */}
         </div>
-        <a href={rediractUrl()} className={styles.bookbtn}>BOOK NOW</a>
+        <a href={rediractUrl()} className={`${styles.bookbtn} w-full`}>BOOK NOW</a>
     </div>
 }
 

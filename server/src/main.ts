@@ -9,6 +9,7 @@ import { AdminRouter } from './routes/admin.js'
 import { ExploreRouts } from './routes/explore.js';
 import { AuthRouts } from './routes/auth.js';
 import path from 'path';
+import { BookingRoutes } from './routes/booking.js';
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const clint_path: string = path.join(__dirname, "../dist");
 
@@ -24,7 +25,8 @@ app.use(
     express.urlencoded({ extended: true }),
     AdminRouter,
     ExploreRouts,
-    AuthRouts
+    AuthRouts,
+    BookingRoutes
 );
 
 
