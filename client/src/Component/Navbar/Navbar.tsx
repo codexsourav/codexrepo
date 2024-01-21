@@ -3,8 +3,6 @@ import styles from './styles/navbar.module.css'
 import { FaRegUserCircle } from "react-icons/fa";
 import { IoMenuOutline, IoCloseOutline, IoWallet } from "react-icons/io5";
 
-
-
 const Navbar = () => {
     const [showMenu, setShowMenu] = useState<boolean>(false)
     return (
