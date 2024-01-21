@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './styles/navbar.module.css'
+
 import { LuUser2 } from "react-icons/lu";
 import { IoMenuOutline, IoCloseOutline } from "react-icons/io5";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
