@@ -48,7 +48,7 @@ function ManageOrder({ data, reload }: { data: Booking[], reload: Function }) {
                 </TableHeader>
                 <TableBody>
                     {
-                        data.map((e, i) => {
+                        data.map((e) => {
                             return <TableRow key={e._id} >
                                 <TableCell className="font-medium">{e.trip}</TableCell>
                                 <TableCell>{e.from}</TableCell>
