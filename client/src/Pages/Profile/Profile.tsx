@@ -10,6 +10,18 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+
 
 import { Button } from '@/components/ui/button';
 import { RiDeleteBinLine } from "react-icons/ri";
@@ -105,10 +117,10 @@ function BookingView({ data, reload }: { data: Booking, reload: Function }) {
     const [note, setNote] = useState("");
     const [reject, setReject] = useState(false);
 
-    const cancelOrder = async (route = "cancel") => {
+    const cancelOrder = async (route = "cancel", methed = "POST") => {
         const key = showAsyncToast("Processing...");
         try {
-            const response = await makeApi({ path: `/api/mybooking/${route}/` + data._id, method: "POST", data: { note } });
+            const response = await makeApi({ path: `/api/mybooking/${route}/` + data._id, method: methed, data: { note } });
             if (response.status != 200) {
                 showAsyncToastError(key, response.data.message);
             } else {
@@ -148,7 +160,23 @@ function BookingView({ data, reload }: { data: Booking, reload: Function }) {
         <>
 
             <Card className='rounded shadow-md relative'>
-                {(data.status == "complete" || data.status == "cancel") ? <Button className='absolute right-3 top-3' variant="outline"><RiDeleteBinLine /></Button> : null}
+                {(data.status == "complete" || data.status == "cancel") ? <AlertDialog>
+                    <AlertDialogTrigger><Button className='absolute right-3 top-3' variant="outline"  ><RiDeleteBinLine /></Button></AlertDialogTrigger>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                            <AlertDialogTitle>Are you absolutely sure to Delete?</AlertDialogTitle>
+                            <AlertDialogDescription>
+                                This action cannot be undone. This will permanently delete your account
+                                and remove your data from our servers.
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogAction className='bg-orange-600 hover:bg-orange-800' onClick={() => cancelOrder("delete", "DELETE")}>Delete</AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
+                    : null}
                 <CardHeader>
                     <CardTitle className={data.status == "cancel" ? "text-red-600" : data.status == "complete" ? "text-green-600" : ""} >{data.orderId}</CardTitle>
                     <CardDescription className='capitalize'>Trip: {data.trip}</CardDescription>
@@ -176,9 +204,10 @@ function BookingView({ data, reload }: { data: Booking, reload: Function }) {
                 <CardFooter className='flex gap-5'>
                     {makeActions()}
                 </CardFooter>
-            </Card>
+            </Card >
             {/* Reject */}
-            <Dialog open={reject} onOpenChange={(e) => setReject(e)}>
+            <Dialog open={reject} onOpenChange={(e) => setReject(e)
+            }>
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle>Enter Reason. Why You Cancel?</DialogTitle>
@@ -188,7 +217,7 @@ function BookingView({ data, reload }: { data: Booking, reload: Function }) {
                         </DialogDescription>
                     </DialogHeader>
                 </DialogContent>
-            </Dialog>
+            </Dialog >
         </>
     )
 }

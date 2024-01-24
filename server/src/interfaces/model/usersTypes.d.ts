@@ -9,6 +9,7 @@ interface IUsers {
     transaction: array;
     image: string;
     isAllow: boolean;
+    pass: string;
     otp: {
         value: string,
         date: Date,

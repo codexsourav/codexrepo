@@ -19,7 +19,7 @@ const Navbar = () => {
                             <div className="bg-white w-9 h-6 rounded-full text-orange-600 flex items-center justify-center">
                                 <FaPhone size={12} />
                             </div>
-                            <div className=' text-sm font-bold pr-4'> BaBagCaBs PVT. LTD.: 01169266014</div>
+                            <div className=' text-sm font-bold pr-4'> 01169266014</div>
                         </div>
                     </div>
                     <div className={styles.menu}>

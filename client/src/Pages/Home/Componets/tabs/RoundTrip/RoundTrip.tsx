@@ -86,14 +86,18 @@ const RoundTrip = () => {
                     }
                 }} />
 
-                <div>
-                    <label >Pickup Date</label>
-                    <input type="date" name="date" id="date" className="tabinput" onChange={(e) => setData('pickDate', e.target.value)} />
+
+                <div className={`md:col-span-2 ${styles.dateselect}`}>
+                    <div>
+                        <label >Pickup Date</label>
+                        <input type="date" name="date" id="date" className="tabinput" onChange={(e) => setData('pickDate', e.target.value)} />
+                    </div>
+                    <div>
+                        <label >Return Date</label>
+                        <input type="date" name="date" id="date" className="tabinput" onChange={(e) => setData('returnDate', e.target.value)} />
+                    </div>
                 </div>
-                <div>
-                    <label >Return</label>
-                    <input type="date" name="date" id="date" className="tabinput" onChange={(e) => setData('returnDate', e.target.value)} />
-                </div>
+
                 <div>
                     <label >Pickup Time</label>
                     <select name="time" id="time" className='tabinput' onChange={(e) => setData('time', e.target.value)}>
@@ -105,7 +109,7 @@ const RoundTrip = () => {
                         }
                     </select>
                 </div>
-            </div>
+            </div >
             <button className='searchBtn' onClick={exploreCabs}>Explore</button>
         </>
     );

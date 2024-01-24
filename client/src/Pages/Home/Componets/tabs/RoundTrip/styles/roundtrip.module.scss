@@ -4,9 +4,19 @@
     gap: 20px;
 
     width: 100%;
+    .dateselect {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 20px;
+    }
     @media screen and (max-width: 800px) {
         grid-template-columns: auto;
+        .dateselect {
+            display: flex !important;
+            flex-direction: row;
+        }
     }
+
     div {
         width: 100%;
         display: flex;

@@ -35,7 +35,7 @@ AdminRouter.post("/api/admin/login", async (req: Request, res: Response) => {
 AdminRouter.post("/api/admin/home", async (req: AuthRequest, res: Response) => {
     try {
         const users = await UsersModel.find({});
-        const bookings = await CabBookingModel.find({ isComplete: false });
+        const bookings = await CabBookingModel.find({ status: { $in: ["pending", "accepted"] } });
         const data = await getCadDataLimit({ find: { status: "pending" }, limit: 20 });
 
         res.send({ users: users.length, bookings: bookings.length, data });
@@ -189,7 +189,6 @@ AdminRouter.delete("/api/admin/removeuser/:id", admin_middleware, async (req: Re
     }
 });
 
-
 AdminRouter.post("/api/admin/bookingstatus/:status/:id", admin_middleware, async (req: Request, res: Response) => {
     try {
         const { name, carnumber, mobile, note, cashback, refund } = req.body;
@@ -244,7 +243,6 @@ AdminRouter.get("/api/bookings/refunds", async (req: Request, res: Response) => 
         return res.status(500).json([]);
     }
 });
-
 
 AdminRouter.get("/api/bookings/:status", async (req: Request, res: Response) => {
     try {

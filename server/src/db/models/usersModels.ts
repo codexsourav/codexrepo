@@ -28,6 +28,9 @@ const users = new Schema<IUsers>({
         minLength: 10,
         unique: true,
     },
+    pass: {
+        type: String,
+    },
     wallet: {
         type: Number,
         default: 0,

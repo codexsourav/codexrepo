@@ -1,12 +1,6 @@
-export function generateRandomId(length = 15) {
-    const prefix = 'BABAG';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let paymentId = prefix;
-
-    for (let i = prefix.length; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * characters.length);
-        paymentId += characters.charAt(randomIndex);
-    }
-
-    return paymentId;
+export function generateRandomId() {
+    const randomNum = Math.floor(Math.random() * 900000) + 100000;
+    const randomString = Math.random().toString(36).substring(2, 4).toUpperCase();
+    const randomId = `BABAG${randomNum}${randomString}`;
+    return randomId;
 }

@@ -165,7 +165,7 @@ export const newCabBooking = async (req: AuthRequest, res: Response) => {
 
 export const mybooking = async (req: AuthRequest, res: Response) => {
     try {
-        const bookingData = await getCadData({ userId: req.authUser!._id });
+        const bookingData = await getCadData({ userId: req.authUser!._id, delete: false });
         const user = await UsersModel.findOne({ _id: req.authUser?._id }, { otp: 0 });
 
         res.send({ user, bookings: bookingData });
