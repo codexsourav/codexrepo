@@ -8,6 +8,7 @@ export interface ICabData {
     maxpac: number;
     delete: boolean;
     isAllow: boolean;
+    discount: number;
     date: {
         $date: string;
     };

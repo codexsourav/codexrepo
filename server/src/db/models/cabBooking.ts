@@ -17,6 +17,7 @@ export interface DriverInfo {
 }
 
 export interface CabBooking extends Document {
+    _doc: any,
     tripInfo: TripInfo;
     userId: string,
     orderId: string;
@@ -34,11 +35,15 @@ export interface CabBooking extends Document {
     pickupDate: string;
     returnDate: string;
     cabId: string;
-    isComplete: boolean;
     paymentType: string;
-    isAccepted: boolean;
+    status: string;
     paymentInfo: object;
     driverInfo: DriverInfo;
+    refund: boolean;
+    cabData: any,
+    note: string,
+    delete: boolean,
+    date: Date,
 }
 
 const tripInfoSchema = new Schema<TripInfo>({
@@ -75,11 +80,18 @@ export const cabBookingSchema = new Schema<CabBooking>({
     pickupDate: { type: String, required: true },
     returnDate: { type: String },
     cabId: { type: String, required: true },
-    isComplete: { type: Boolean, required: true, default: false },
     paymentType: { type: String, required: true },
+    refund: { type: Boolean },
     paymentInfo: Object,
-    isAccepted: { type: Boolean, required: true, default: false },
     driverInfo: { type: driverInfoSchema },
+    status: { type: String, default: "pending", required: true },
+    note: { type: String },
+    delete: { type: Boolean, default: false, required: true },
+    date: {
+        type: Date,
+        default: Date.now(),
+        required: true,
+    }
 });
 
 const CabBookingModel = model<CabBooking>('CabBooking', cabBookingSchema);

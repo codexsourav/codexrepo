@@ -26,7 +26,7 @@ ExploreRouts.post("/api/explore/:type", async (req: Request, res: Response) => {
                 }
             }
         }
-        const cabs = await CabsModel.find({ delete: false });
+        const cabs = await CabsModel.find({ delete: false, allowTrip: type });
         res.send({ cabs, "destination": destinationData });
     } catch (error: any) {
         console.log(error);

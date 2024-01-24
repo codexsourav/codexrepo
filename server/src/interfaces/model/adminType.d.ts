@@ -2,6 +2,7 @@ import { Document, Model } from 'mongoose';
 
 // Define the interface for the Cat document
 interface IAdminUsers {
+    _id?: string,
     name: string;
     email: string | number;
     pass: string;

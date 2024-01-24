@@ -12,7 +12,7 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-
+import { Checkbox } from "@/components/ui/checkbox"
 import {
     Card,
     CardContent,
@@ -33,17 +33,24 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { ChangeEvent, useEffect, useState } from "react"
+import { tripTypes } from "@/Contents/Info"
+import { errorToast } from "@/Lib/showToast"
 
-interface Cab {
-    _id: string;
-    name: string;
-    baserate: number;
-    carnumber: string;
+interface CabData {
     image: string;
-    maxpac: number,
+    name: string;
+    carnumber: string;
     parkm: number;
+    baserate: number;
+    maxpac: number;
+    discount: number,
+    allowTrip: string[],
+}
+
+interface Cab extends CabData {
+    _id: string;
     isAllow: boolean;
-    date: string; // You might want to use a Date type here if you're parsing it as a Date object
+    date: string;
     __v: number;
 }
 
@@ -104,7 +111,7 @@ function ManageCabs() {
                                 <p>Max Passenger : {e.maxpac}</p>
                             </CardContent>
                             <CardFooter className="flex float-end">
-                                <UpdateCabs id={e._id} data={{ name: e.name, baserate: e.baserate, carnumber: e.carnumber, image: e.image, maxpac: e.maxpac, parkm: e.parkm }} reloadData={reloadData} />
+                                <UpdateCabs id={e._id} data={{ name: e.name, baserate: e.baserate, carnumber: e.carnumber, image: e.image, maxpac: e.maxpac, parkm: e.parkm, allowTrip: e.allowTrip, discount: e.discount }} reloadData={reloadData} />
                                 <AlertDialog>
                                     <AlertDialogTrigger>    <Button className="bg-red-600 hover:bg-red-900">Delete</Button></AlertDialogTrigger>
                                     <AlertDialogContent>
@@ -136,14 +143,7 @@ function ManageCabs() {
 }
 export default ManageCabs
 
-interface CabData {
-    image: string;
-    name: string;
-    carnumber: string;
-    parkm: number;
-    baserate: number;
-    maxpac: number;
-}
+
 
 function AddCabs({ reloadData, showAddCab, showAdd }: { reloadData: Function, showAddCab: Function, showAdd: boolean }) {
 
@@ -155,7 +155,23 @@ function AddCabs({ reloadData, showAddCab, showAdd }: { reloadData: Function, sh
         parkm: 50,
         baserate: 200,
         maxpac: 4,
+        allowTrip: [],
+        discount: 0,
     });
+
+    const managechecked = (id: string) => {
+        let data = cabData.allowTrip
+        if (cabData.allowTrip.includes(id)) {
+            let indexToRemove = data.indexOf(id);
+            // Remove the element at the found index
+            if (indexToRemove !== -1) {
+                data.splice(indexToRemove, 1);
+            }
+        } else {
+            data.push(id)
+        }
+        setCabData({ ...cabData, allowTrip: data });
+    };
 
     const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
 
@@ -212,16 +228,28 @@ function AddCabs({ reloadData, showAddCab, showAdd }: { reloadData: Function, sh
         }
 
         if (cabData.parkm <= 0) {
-            errors.kmprice = '1/KM Price must be greater than zero';
+            errors.kmprice = '1/KM Price';
         }
 
         if (cabData.baserate <= 0) {
-            errors.baserate = 'Base Rate Amount must be greater than zero';
+            errors.baserate = 'Base Rate Amount';
+        }
+
+        if (cabData.allowTrip.length == 0) {
+            errors.allowTrip = 'Select Allow Trips This Cab';
         }
 
         if (cabData.maxpac <= 0) {
-            errors.maxpac = 'Max Passenger Capacity must be greater than zero';
+            errors.maxpac = 'Max Passenger Capacity ';
         }
+        if (!cabData.discount) {
+            errors.discount = 'Enter a discount %';
+        }
+        if (cabData.allowTrip.length == 0) {
+            errorToast("Select One Allow Trips")
+            errors.allowTrip = 'Select Allow Trips';
+        }
+
 
         setValidationErrors(errors);
 
@@ -249,6 +277,8 @@ function AddCabs({ reloadData, showAddCab, showAdd }: { reloadData: Function, sh
                     parkm: 50,
                     baserate: 200,
                     maxpac: 4,
+                    allowTrip: [],
+                    discount: 0,
                 })
                 reloadData();
                 showAddCab(false);
@@ -264,9 +294,11 @@ function AddCabs({ reloadData, showAddCab, showAdd }: { reloadData: Function, sh
     };
 
     return (
-        <Dialog open={showAdd} onOpenChange={(e) => showAddCab(e)} >
+        <Dialog open={showAdd} onOpenChange={(e) => showAddCab(e)}  >
+
+
             <DialogTrigger  >Add New Cab</DialogTrigger>
-            <DialogContent>
+            <DialogContent >
                 <DialogHeader>
                     <DialogTitle>Add New Cab</DialogTitle>
                     <DialogDescription>
@@ -288,29 +320,48 @@ function AddCabs({ reloadData, showAddCab, showAdd }: { reloadData: Function, sh
                     <Input type="text" name="name" value={cabData.name} onChange={handleInputChange} />
                     {validationErrors.name && <div className="text-red-600 text-sm">{validationErrors.name}</div>}
                 </div>
-
+                <div className="grid grid-cols-3 gap-2">
+                    <div className="mb-1 col-span-2">
+                        <Label>Cab Id Number</Label>
+                        <Input type="text" name="carnumber" value={cabData.carnumber} onChange={handleInputChange} />
+                        {validationErrors.carnumber && <div className="text-red-600 text-sm">{validationErrors.carnumber}</div>}
+                    </div>
+                    <div className="mb-1">
+                        <Label>Discount (%)</Label>
+                        <Input type="number" name="discount" value={cabData.discount} onChange={handleInputChange} />
+                        {validationErrors.discount && <div className="text-red-600 text-sm">{validationErrors.discount}</div>}
+                    </div>
+                </div>
                 <div className="mb-1">
-                    <Label>Cab Id Number</Label>
-                    <Input type="text" name="carnumber" value={cabData.carnumber} onChange={handleInputChange} />
-                    {validationErrors.carnumber && <div className="text-red-600 text-sm">{validationErrors.carnumber}</div>}
+                    <Label >Available Trips</Label>
+                    <div className="grid grid-cols-4 mt-2">
+
+                        <CheckMe checked={cabData.allowTrip.includes(tripTypes[0])} id={tripTypes[0]} title="OneWay" onChange={managechecked} />
+                        <CheckMe checked={cabData.allowTrip.includes(tripTypes[1])} id={tripTypes[1]} title="Round Trip" onChange={managechecked} />
+                        <CheckMe checked={cabData.allowTrip.includes(tripTypes[2])} id={tripTypes[2]} title="Local" onChange={managechecked} />
+                        <CheckMe checked={cabData.allowTrip.includes(tripTypes[3])} id={tripTypes[3]} title="Airport" onChange={managechecked} />
+
+                    </div>
                 </div>
 
-                <div className="mb-1">
-                    <Label>1/KM Price</Label>
-                    <Input type="number" min={1} name="parkm" value={cabData.parkm} onChange={handleInputChange} />
-                    {validationErrors.kmprice && <div className="text-red-600 text-sm">{validationErrors.kmprice}</div>}
-                </div>
+                <div className="grid grid-cols-3 gap-3">
+                    <div className="mb-1">
+                        <Label>1/KM Price</Label>
+                        <Input type="number" min={1} name="parkm" value={cabData.parkm} onChange={handleInputChange} />
+                        {validationErrors.kmprice && <div className="text-red-600 text-sm">{validationErrors.kmprice}</div>}
+                    </div>
 
-                <div className="mb-1">
-                    <Label>Base Rate Amount</Label>
-                    <Input type="number" min={1} name="baserate" value={cabData.baserate} onChange={handleInputChange} />
-                    {validationErrors.baserate && <div className="text-red-600 text-sm">{validationErrors.baserate}</div>}
-                </div>
+                    <div className="mb-1">
+                        <Label>Base Rate Amount</Label>
+                        <Input type="number" min={1} name="baserate" value={cabData.baserate} onChange={handleInputChange} />
+                        {validationErrors.baserate && <div className="text-red-600 text-sm">{validationErrors.baserate}</div>}
+                    </div>
 
-                <div className="mb-1">
-                    <Label>Max Passenger Capacity</Label>
-                    <Input type="number" min={1} name="maxpac" value={cabData.maxpac} onChange={handleInputChange} />
-                    {validationErrors.maxpac && <div className="text-red-600 text-sm">{validationErrors.maxpac}</div>}
+                    <div className="mb-1">
+                        <Label>Max Passenger</Label>
+                        <Input type="number" min={1} name="maxpac" value={cabData.maxpac} onChange={handleInputChange} />
+                        {validationErrors.maxpac && <div className="text-red-600 text-sm">{validationErrors.maxpac}</div>}
+                    </div>
                 </div>
 
                 <Button type="button" onClick={handleAddCab}>
@@ -318,6 +369,7 @@ function AddCabs({ reloadData, showAddCab, showAdd }: { reloadData: Function, sh
                 </Button>
 
             </DialogContent>
+
 
         </Dialog>
 
@@ -331,7 +383,24 @@ function UpdateCabs({ id, data, reloadData, }: { id: string, data: CabData, relo
 
     const [cabData, setCabData] = useState<CabData>(data);
 
+
     const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+
+
+    const managechecked = (id: string) => {
+        let data = cabData.allowTrip
+        if (cabData.allowTrip.includes(id)) {
+            let indexToRemove = data.indexOf(id);
+            // Remove the element at the found index
+            if (indexToRemove !== -1) {
+                data.splice(indexToRemove, 1);
+            }
+        } else {
+            data.push(id)
+        }
+        setCabData({ ...cabData, allowTrip: data });
+    };
+
 
     const uploadAfile = async (e: ChangeEvent<HTMLInputElement>) => {
         const fileInput = e.target;
@@ -395,6 +464,13 @@ function UpdateCabs({ id, data, reloadData, }: { id: string, data: CabData, relo
 
         if (cabData.maxpac <= 0) {
             errors.maxpac = 'Max Passenger Capacity must be greater than zero';
+        }
+        if (!cabData.discount) {
+            errors.discount = 'Enter a discount %';
+        }
+        if (cabData.allowTrip.length == 0) {
+            errorToast("Select One Allow Trips")
+            errors.discount = 'Select Allow Trips';
         }
 
         setValidationErrors(errors);
@@ -454,28 +530,48 @@ function UpdateCabs({ id, data, reloadData, }: { id: string, data: CabData, relo
                     {validationErrors.name && <div className="text-red-600 text-sm">{validationErrors.name}</div>}
                 </div>
 
+                <div className="grid grid-cols-3 gap-2">
+                    <div className="mb-1 col-span-2">
+                        <Label>Cab Id Number</Label>
+                        <Input type="text" name="carnumber" value={cabData.carnumber} onChange={handleInputChange} />
+                        {validationErrors.carnumber && <div className="text-red-600 text-sm">{validationErrors.carnumber}</div>}
+                    </div>
+                    <div className="mb-1">
+                        <Label>Discount (%)</Label>
+                        <Input type="text" name="discount" value={cabData.discount} onChange={handleInputChange} />
+                        {validationErrors.discount && <div className="text-red-600 text-sm">{validationErrors.discount}</div>}
+                    </div>
+                </div>
                 <div className="mb-1">
-                    <Label>Cab Id Number</Label>
-                    <Input type="text" name="carnumber" value={cabData.carnumber} onChange={handleInputChange} />
-                    {validationErrors.carnumber && <div className="text-red-600 text-sm">{validationErrors.carnumber}</div>}
+                    <Label >Available Trips</Label>
+                    <div className="grid grid-cols-4 mt-2">
+
+                        <CheckMe checked={cabData.allowTrip.includes(tripTypes[0])} id={tripTypes[0]} title="OneWay" onChange={managechecked} />
+                        <CheckMe checked={cabData.allowTrip.includes(tripTypes[1])} id={tripTypes[1]} title="Round Trip" onChange={managechecked} />
+                        <CheckMe checked={cabData.allowTrip.includes(tripTypes[2])} id={tripTypes[2]} title="Local" onChange={managechecked} />
+                        <CheckMe checked={cabData.allowTrip.includes(tripTypes[3])} id={tripTypes[3]} title="Airport" onChange={managechecked} />
+
+                    </div>
                 </div>
 
-                <div className="mb-1">
-                    <Label>1/KM Price</Label>
-                    <Input type="number" min={1} name="parkm" value={cabData.parkm} onChange={handleInputChange} />
-                    {validationErrors.kmprice && <div className="text-red-600 text-sm">{validationErrors.kmprice}</div>}
-                </div>
+                <div className="grid grid-cols-3 gap-2">
+                    <div className="mb-1">
+                        <Label>1/KM Price</Label>
+                        <Input type="number" min={1} name="parkm" value={cabData.parkm} onChange={handleInputChange} />
+                        {validationErrors.kmprice && <div className="text-red-600 text-sm">{validationErrors.kmprice}</div>}
+                    </div>
 
-                <div className="mb-1">
-                    <Label>Base Rate Amount</Label>
-                    <Input type="number" min={1} name="baserate" value={cabData.baserate} onChange={handleInputChange} />
-                    {validationErrors.baserate && <div className="text-red-600 text-sm">{validationErrors.baserate}</div>}
-                </div>
+                    <div className="mb-1">
+                        <Label>Base Rate Amount</Label>
+                        <Input type="number" min={1} name="baserate" value={cabData.baserate} onChange={handleInputChange} />
+                        {validationErrors.baserate && <div className="text-red-600 text-sm">{validationErrors.baserate}</div>}
+                    </div>
 
-                <div className="mb-1">
-                    <Label>Max Passenger Capacity</Label>
-                    <Input type="number" min={1} name="maxpac" value={cabData.maxpac} onChange={handleInputChange} />
-                    {validationErrors.maxpac && <div className="text-red-600 text-sm">{validationErrors.maxpac}</div>}
+                    <div className="mb-1">
+                        <Label>Max Passenger</Label>
+                        <Input type="number" min={1} name="maxpac" value={cabData.maxpac} onChange={handleInputChange} />
+                        {validationErrors.maxpac && <div className="text-red-600 text-sm">{validationErrors.maxpac}</div>}
+                    </div>
                 </div>
 
                 <Button type="button" onClick={handleAddCab}>
@@ -486,5 +582,23 @@ function UpdateCabs({ id, data, reloadData, }: { id: string, data: CabData, relo
 
         </Dialog>
 
+    )
+
+
+}
+
+
+
+export function CheckMe({ checked, id, onChange, title }: { id: string, title: string, checked: boolean, onChange: ((id: string) => void) }) {
+    return (
+        <div className="flex items-center space-x-2">
+            <Checkbox id={id} checked={checked} onClick={() => onChange(id)} />
+            <label
+                htmlFor={id}
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            >
+                {title}
+            </label>
+        </div>
     )
 }

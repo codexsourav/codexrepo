@@ -7,7 +7,8 @@ import Loading from '@/Component/loading';
 import { validateEmail } from '@/Lib/validate';
 import { errorToast } from '@/Lib/showToast';
 import { generateRandomId } from '@/Lib/makeID';
-import InDEV from '@/Component/InDEV';
+
+import useRazorpay, { RazorpayOptions } from "react-razorpay";
 
 interface IForm {
     name: string,
@@ -44,6 +45,7 @@ export type ICabBooking = {
     returnDate?: string;
     cabId: string;
     paymentType: string;
+    paymentInfo: any,
 }
 
 
@@ -54,8 +56,10 @@ export interface ITripPrice {
 }
 
 
+
 const Booking = () => {
-    const [pageData, setpageData] = useState<{ cabs: ICabData, destination: IRouteData, pricing: ITripPrice } | null>(null)
+    const [loading, setloading] = useState(false)
+    const [pageData, setpageData] = useState<{ cab: ICabData, destination: IRouteData, pricing: ITripPrice } | null>(null)
     const [formDataView, setFormDataView] = useState<IForm>({
         email: "",
         from: "",
@@ -64,7 +68,7 @@ const Booking = () => {
         name: "",
         to: "",
     });
-
+    const [Razorpay] = useRazorpay();
     const handelForm = ({ name, value }: { name: keyof IForm, value: string }) => {
         setFormDataView({ ...formDataView, [name]: value });
     }
@@ -139,7 +143,6 @@ const Booking = () => {
         }
     };
 
-
     // loading all data 
     const loadInitData = async () => {
         const from = type == "airport" ? airportname : pickupaddress;
@@ -170,6 +173,8 @@ const Booking = () => {
                     landmark: "",
                 });
             } else {
+                console.log(response.data);
+
                 window.location.replace("/")
             }
         } catch (error: any) {
@@ -181,6 +186,39 @@ const Booking = () => {
     useEffect(() => {
         loadInitData();
     }, []);
+
+
+
+    const handlePayment = () => {
+
+        const options: RazorpayOptions = {
+            key: import.meta.env.VITE_RAZORPAY,
+            amount: `${Math.round(pageData!.pricing.price)}00`,
+            currency: "INR",
+            name: "BabagCabs",
+            description: "Book Ride For " + type,
+            image: "https://example.com/your_logo",
+            order_id: "",
+            handler: (data: any) => {
+                makeNewBooking(data);
+            },
+            prefill: {
+                name: formDataView.name,
+                email: formDataView.email,
+                contact: formDataView.mobile,
+            },
+            notes: {
+                address: fromAddress(),
+            },
+            theme: {
+                color: "#ea580c",
+            },
+        };
+        console.log(options);
+
+        const rzpay = new Razorpay(options);
+        rzpay.open();
+    };
 
 
     const ValiDateForm = (): string | boolean => {
@@ -207,21 +245,23 @@ const Booking = () => {
     const createBooking = async () => {
         const valid = ValiDateForm();
         if (valid == true) {
-            makeNewBooking();
+            if (pageData?.pricing.price) {
+                handlePayment();
+            }
         } else {
             errorToast(valid.toString());
         }
     }
 
 
-    const makeNewBooking = async () => {
+    const makeNewBooking = async (payinfo: any) => {
         const orderId = generateRandomId()
-
+        setloading(true);
         try {
             const data: ICabBooking = {
                 type: type!,
-                name: formDataView.mobile,
-                cabId: pageData?.cabs._id!,
+                name: formDataView.name,
+                cabId: pageData?.cab._id!,
                 email: formDataView.email,
                 from: formDataView.from,
                 to: formDataView.to,
@@ -231,7 +271,7 @@ const Booking = () => {
                 pickupDate: pickdate!,
                 returnDate: returndate!,
                 pickupTime: picktime!,
-                paymentType: "TEST",
+                paymentType: "prepaid",
                 distance: pageData?.pricing.km!,
                 trip: (type == "airport" ? airportTripType[+(trip || "0")] : type!),
                 amount: Math.round(pageData?.pricing.price!),
@@ -241,15 +281,25 @@ const Booking = () => {
                     pickupDate: pickdate!,
                     returnDate: returndate!,
                     pickupTime: picktime!,
-                    trip: trip!,
+                    trip: (type == "airport" ? airportTripType[+(trip || "0")] : type!),
                     type: type!,
-                }
+                },
+                paymentInfo: payinfo,
             }
-            const response = makeApi({ path: "/api/new/booking/", method: "POST", data })
+            const response = await makeApi({ path: "/api/new/booking/", method: "POST", data })
+            setloading(false);
+
             console.log(response);
+            if (response.data.status == "OK" && response.data.orderId) {
+                window.location.replace("/profile?new=" + response.data.orderId);
+            } else {
+                errorToast(response.data.message || "Cab Booking Field")
+            }
+        } catch (error: any) {
+            setloading(false);
 
-        } catch (error) {
-
+            console.log(error);
+            errorToast(error.response.data.message || "Cab Booking Field")
         }
     }
 
@@ -319,7 +369,7 @@ const Booking = () => {
                                 onChange={(e) => { handelForm({ name: 'to', value: e.target.value }) }}
                             />
                         </div>
-                        <button className={styles.bookbtn} onClick={createBooking} >Book Your Cab</button>
+                        <button className={styles.bookbtn} onClick={createBooking} disabled={loading} >{!loading ? "Book Your Cab" : "Creating Order..."}</button>
                     </div>
                     <div>
                         <div className={styles.info}>
@@ -338,7 +388,6 @@ const Booking = () => {
                     </div>
                 </div>
             </div>
-            <InDEV />
         </>
     );
 };

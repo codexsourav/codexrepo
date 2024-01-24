@@ -8,19 +8,18 @@ import { ICabData, IRouteData } from '@/Interfaces/cabs';
 import TripBox from '@/Component/TripBox/TripBox';
 import { VscClose } from "react-icons/vsc";
 import { airportTripType } from '../Home/Componets/tabs/Airport/Airport';
+import { getCashBack } from '@/Lib/getCashBack';
 
 // ?type=oneway&pickupaddress=[]&dropaddress=[]&pickdate=[]&picktime=[];
 // ?type=roundtrip&pickupaddress=[]&dropaddress=[]&pickdate=[]&returndate=[]&picktime=[];
 // ?type=local&pickupaddress=[]&pickdate=[]&picktime=[];
 // ?type=airport&trip=[]&airportname=[]&location=[]&pickdate=[]&picktime=[];
 
-
-
 const Explore = () => {
 
     const [cabs, setCabs] = useState<null | { cabs: ICabData[], destination: IRouteData }>(null);
     const [isError, setError] = useState(false)
-    const localKm = ["8", "12", "20"];
+    const localKm = ["15", "30", "50"];
     const [localTab, setLocalTab] = useState(0);
     const [updateTrip, setUpdateTrip] = useState<boolean>(false)
     // get url paramiters 
@@ -77,12 +76,43 @@ const Explore = () => {
         }
     }
 
+    const valiDatePageData = () => {
+        if (type == "airport") {
+
+            return !(!airportname || !location || !pickdate || !picktime || !trip)
+
+        } else if (type == "local") {
+            return !(!pickupaddress || !pickdate || !picktime)
+        } else if (type == "oneway") {
+            return !(!pickupaddress || !dropaddress || !pickdate || !picktime)
+        } else if (type == "roundtrip") {
+            return !(!pickupaddress || !dropaddress || !returndate || !pickdate || !picktime)
+        } else {
+            console.log("this error");
+            setError(true);
+
+            return false;
+        }
+    };
+
     useEffect(() => {
-        loadCabsData();
-    }, [])
+
+        if (valiDatePageData()) {
+            loadCabsData();
+        } else {
+            console.log("error");
+
+            // window.location.replace("/")
+        }
+    }, []);
 
     // this is loader 
-    if (!cabs) {
+    if (isError) {
+        return <div className="w-screen h-screen flex justify-center items-center flex-col">
+            <h1 className='text-3xl font-bold mb-5'>No Cabs Found On This Root</h1>
+            <Link to="/">Please Try Again</Link>
+        </div>
+    } else if (!cabs) {
         return <div className="mt-16"><Loading /></div>
     } else if (isError || cabs.cabs.length == 0) {
         return <div className="w-screen h-screen flex justify-center items-center flex-col">
@@ -147,12 +177,13 @@ const CarBox = ({ data, km, type }: { data: ICabData, km: number, type: string }
             return "/booking" + query.search + `&car=${data._id}` + (type == "local" ? "&km=" + km : "");
         }
     };
-    return <div className={`${styles.carbox}`}>
+    return <div className={`${styles.carbox} relative`}>
+        <p className='absolute right-5 top-3 bg-orange-600 font-bold px-2 text-[12px] rounded text-white py-1'>{data.discount}% OFF</p>
         <div className="flex justify-between items-start  pt-4 w-full">
             <div className="pl-5">
                 <h1 className='text-xl' >{data.name}</h1>
-                <p className='font-bold text-2xl text-orange-600 '>₹{Math.round(km * data.parkm)}.00</p>
-                <p className='font-bold text-sm text-slate-500 line-through hover:line-through'>₹{Math.round(km * data.parkm) + 1599}.00</p>
+                <p className='font-bold text-2xl text-orange-600 '>₹{Math.round((km * data.parkm) - getCashBack(Math.round(km * data.parkm), data.discount))}.00</p>
+                <p className='font-bold text-sm text-slate-500 line-through hover:line-through'>₹{Math.round(km * data.parkm)}.00</p>
                 <p className='font-bold mt-2'>up to {Math.round(km)}.0KM</p>
             </div>
             <img src={import.meta.env.VITE_APIURL + "/" + data.image} alt="car" className='h-32 w-full object-contain pl-5 pr-2' />

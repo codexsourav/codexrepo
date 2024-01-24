@@ -7,6 +7,7 @@ import Navbar from '@/Component/Navbar/Navbar';
 import { useLocation } from 'react-router-dom';
 import { Toaster } from '@/components/ui/toaster';
 import "react-toastify/dist/ReactToastify.css";
+import InDEV from '@/Component/InDEV';
 
 interface AppWrapperProps {
     children: ReactNode;
@@ -33,6 +34,7 @@ const AppWrapper: React.FC<AppWrapperProps> = ({ children }) => {
             theme="light"
         />
         <Toaster />
+        <InDEV />
     </>;
 
 };
