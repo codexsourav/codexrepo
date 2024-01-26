@@ -15,7 +15,7 @@ const GoogleMapInput = forwardRef(
             label,
             onChenge,
             placeholder,
-            value,
+            // value,
             className,
             dClass,
         }: {
@@ -59,7 +59,7 @@ export default React.memo(GoogleMapInput);
 
 
 
-export const PlacesAutocomplete = ({ onChenge, placeholder, airport, className, dClass, label, }: {
+export const PlacesAutocomplete = ({ className, dClass, label, }: {
     dClass?: string;
     className?: string;
     value?: string;
@@ -131,7 +131,7 @@ export const PlacesAutocomplete = ({ onChenge, placeholder, airport, className, 
                 value={value}
                 onChange={handleInput}
                 disabled={!ready}
-                className="tabinput"
+                className={className || "tabinput"}
                 placeholder="Where are you going?"
             />
             {/* We can use the "status" to decide whether we should display the dropdown or not */}

@@ -130,8 +130,8 @@ const RoundTrip = () => {
                     </select>
                 </div>
                 {
-                    locations.map((e, i) => {
-                        return <div className="grid-cols-10 w-full" style={{ display: "grid" }}>
+                    locations.map((_, i) => {
+                        return <div className="grid-cols-10 w-full" style={{ display: "grid" }} key={"key+" + i}>
                             {/* <GoogleMapInput ref={e} label={'To'} dClass='col-span-8' placeholder='Ex: Kolkata' onChenge={(places) => {
                                 if (places) {
                                     const locationData = places.formatted_address.toString();
@@ -139,7 +139,7 @@ const RoundTrip = () => {
                                     console.log("update");
                                 }
                             }} /> */}
-                            <PlacesAutocomplete label={'To'} dClass='col-span-8' placeholder='Ex: Kolkata' />
+                            <PlacesAutocomplete onChenge={() => { }} airport={false} label={'To'} dClass='col-span-8' placeholder='Ex: Kolkata' />
                             <div className="tabinput col-span-2 flex justify-end items-end cursor-pointer" onClick={(locations.length - 1) == i ? addToLocations : () => removeLocation(i)}><div className=""></div><div className="text-center text-lg">+</div></div>
                         </div>
                     })
