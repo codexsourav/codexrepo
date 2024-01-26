@@ -12,3 +12,6 @@ export function isDateUpToCurrent(dateToCheck: string | number | Date): boolean 
 }
 
 
+export const getCashBack = (purchaseAmount: number, cashbackPercentage: number) => {
+    return (purchaseAmount * cashbackPercentage) / 100;
+}

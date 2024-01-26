@@ -8,6 +8,7 @@ export interface ITripPrice {
     km: string | undefined; // Assuming destinationData?.data.distance.text is of type string
     value: number | string | undefined; // Assuming destinationData?.data.distance.value is of type number
     price: number;
+    amount: number;
 }
 
 // ["oneway","airport","local","roundtrip"]

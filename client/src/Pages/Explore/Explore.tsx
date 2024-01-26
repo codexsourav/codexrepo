@@ -9,17 +9,20 @@ import TripBox from '@/Component/TripBox/TripBox';
 import { VscClose } from "react-icons/vsc";
 import { airportTripType } from '../Home/Componets/tabs/Airport/Airport';
 import { getCashBack } from '@/Lib/getCashBack';
-
+import { IoCloseOutline } from "react-icons/io5";
 // ?type=oneway&pickupaddress=[]&dropaddress=[]&pickdate=[]&picktime=[];
 // ?type=roundtrip&pickupaddress=[]&dropaddress=[]&pickdate=[]&returndate=[]&picktime=[];
 // ?type=local&pickupaddress=[]&pickdate=[]&picktime=[];
 // ?type=airport&trip=[]&airportname=[]&location=[]&pickdate=[]&picktime=[];
+import { IoIosInformationCircleOutline } from "react-icons/io";
 
 const Explore = () => {
 
     const [cabs, setCabs] = useState<null | { cabs: ICabData[], destination: IRouteData }>(null);
     const [isError, setError] = useState(false)
-    const localKm = ["15", "30", "50"];
+    const localKm = ["40", "80", "120"];
+    const localHr = ["4", "8", "12"];
+
     const [localTab, setLocalTab] = useState(0);
     const [updateTrip, setUpdateTrip] = useState<boolean>(false)
     // get url paramiters 
@@ -123,6 +126,7 @@ const Explore = () => {
 
     return (
         <>
+            {/* <PickCabType /> */}
             <div className="h-14 shadow mt-16 w-full bg-orange-600 mb-10 flex justify-center items-center font-bold text-white">
                 <h1>PRICE INCLUSIVE OF ALL TOOLS AND TAXES</h1>
             </div>
@@ -130,15 +134,7 @@ const Explore = () => {
                 <div className="">
                     <div className={`${styles.info}`}>
                         <h2 className='text-xl font-bold' >Your Trip Info</h2>
-                        {type == "local" ? <Tabs defaultValue={localKm[localTab]} className="w-full px-4 py-1" >
-                            <TabsList className='w-full' >
-                                {
-                                    localKm.map((e, i) => {
-                                        return <TabsTrigger value={e.toString()} key={"tab-" + i} className='w-full' onClick={() => setLocalTab(i)} >{e}KM</TabsTrigger>
-                                    })
-                                }
-                            </TabsList>
-                        </Tabs> : null}
+
                         <ul>
                             <li className='capitalize'>Trip: {type == "airport" ? airportTripType[+(trip || "0")] : type}</li>
                             <li>{locationName()}</li>
@@ -152,8 +148,19 @@ const Explore = () => {
                     </div>
                 </div>
 
-                <div className="">
-                    <div className={styles.cars}>
+                <div className="flex justify-center items-center w-full flex-col">
+                    {type == "local" ? <div className="px-6 mb-5 min-w-[400px] ">
+                        <Tabs defaultValue={localKm[localTab]} className="w-full px-4 py-1" >
+                            <TabsList className='w-full bg-orange-100' >
+                                {
+                                    localKm.map((e, i) => {
+                                        return <TabsTrigger value={e.toString()} key={"tab-" + i} className='w-full bg-orange-100 data-[state=active]:bg-orange-500 data-[state=active]:text-white font-bold' onClick={() => setLocalTab(i)} >{localHr[i]}hrs | {e}KM</TabsTrigger>
+                                    })
+                                }
+                            </TabsList>
+                        </Tabs>
+                    </div> : null}
+                    <div className={`${styles.cars} w-full`}>
                         {
                             cabs.cabs.map((e: ICabData, i: any) => <CarBox km={(cabs?.destination?.data?.distance?.value ? (cabs?.destination?.data?.distance?.value / 1000) : +localKm[localTab])} key={"cab-" + i} type={type!} data={e} />)
                         }
@@ -161,6 +168,7 @@ const Explore = () => {
                 </div>
             </div>
             {updateTrip ? <EditTrip onClose={() => setUpdateTrip(false)} /> : null}
+            {/* <PickCabType /> */}
         </>
     );
 };
@@ -190,12 +198,12 @@ const CarBox = ({ data, km, type }: { data: ICabData, km: number, type: string }
 
         </div>
         <div className={`${styles.infobox} px-5`}>
-            <div className={styles.infocar}><p>Base Rate:</p> <p>₹{data.baserate}.00</p></div>
+            {/* <div className={styles.infocar}><p>Base Rate:</p> <p>₹{data.baserate}.00</p></div> */}
             <div className={styles.infocar}><p>Par 1/KM:</p> <p>₹{data.parkm}.00</p></div>
             <div className={styles.infocar}><p>Max Passengers:</p> <p>{data.maxpac}</p></div>
             {/* <div className={styles.infocar}><p>Total Price:</p> <p>₹{Math.round(km * data.parkm)}.00</p></div> */}
         </div>
-        <a href={rediractUrl()} className={`${styles.bookbtn} w-full`}>BOOK NOW</a>
+        <a href={rediractUrl()} className={`${styles.bookbtn} w-full bg-orange-100 `}>BOOK NOW</a>
     </div>
 }
 
@@ -211,3 +219,38 @@ function EditTrip({ onClose }: { onClose: Function }) {
         </div>
     )
 }
+
+
+function InfoBox() {
+    return (
+        <div>InfoBox</div>
+    )
+}
+
+
+function PickCabType() {
+    return (
+        <div className='fixed top-0 right-0 w-screen h-screen bg-black/50 z-[999] justify-center items-center flex'>
+            <div className="relative w-10/12 max-w-96 h-96 bg-white p-5 rounded-xl shadow-lg flex justify-between items-center flex-col" >
+                <div className="absolute right-3 text-orange-300 cursor-pointer hover:text-orange-500"><IoCloseOutline size={30} /></div>
+                <h1 className='text-center font-bold uppercase mt-3 text-lg text-orange-600'>Chose Cab Type</h1>
+                <p className='text-center'>Select Your Booking type BABAG-assured secure or your booking</p>
+                <div className="grid grid-cols-2 gap-3 ">
+                    <div className="relative flex flex-col justify-between items-center w-full h-36 border-2 border-orange-100 hover:border-orange-400 overflow-hidden rounded-xl">
+                        <div className=""></div>
+                        <img src="https://babagcabs.com/1706125598780_8o1ifd.webp" className='w-full h-24 object-contain' />
+                        <div className=" bg-orange-400 text-sm  text-white w-full justify-center items-center flex h-6 uppercase">BABAG</div>
+                    </div>
+                    <div className="relative flex flex-col justify-between items-center w-full h-36 border-2 border-orange-100 hover:border-orange-400 overflow-hidden rounded-xl">
+                        <div className=""></div>
+                        <img src="https://babagcabs.com/1706125598780_8o1ifd.webp" className='w-full h-24 object-contain' />
+                        <div className=" bg-orange-400 text-sm  text-white w-full justify-center items-center flex h-6 uppercase">BABAG-assured</div>
+                    </div>
+
+                </div>
+                <div className=" w-full bg-orange-100 hover:bg-orange-500 hover:text-white cursor-pointer h-12 justify-center items-center flex rounded-xl font-bold uppercase" style={{ transition: "0.5s" }}>Book Now</div>
+            </div>
+        </div>
+    )
+}
+

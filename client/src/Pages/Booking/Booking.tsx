@@ -9,6 +9,8 @@ import { errorToast } from '@/Lib/showToast';
 import { generateRandomId } from '@/Lib/makeID';
 
 import useRazorpay, { RazorpayOptions } from "react-razorpay";
+import { mobileCodes } from '@/utils/GetTime';
+import GoogleMapInput from '@/Component/GoogleMapInput/GoogleMapInput';
 
 interface IForm {
     name: string,
@@ -17,6 +19,7 @@ interface IForm {
     from: string,
     to: string,
     landmark: string,
+    code?: string,
 }
 
 export type ICabBooking = {
@@ -67,6 +70,7 @@ const Booking = () => {
         mobile: "",
         name: "",
         to: "",
+        code: "+91"
     });
     const [Razorpay] = useRazorpay();
     const handelForm = ({ name, value }: { name: keyof IForm, value: string }) => {
@@ -222,7 +226,7 @@ const Booking = () => {
 
 
     const ValiDateForm = (): string | boolean => {
-        const { email, from, landmark, mobile, name, to } = formDataView;
+        const { email, from, landmark, mobile, name } = formDataView;
 
         if (!name) {
             return "Enter Your Name";
@@ -232,8 +236,6 @@ const Booking = () => {
             return "Enter A Valid Email ID";
         } else if (!from) {
             return "Enter Departure Location";
-        } else if (!to) {
-            return "Enter Destination Location";
         } else if (!landmark) {
             return "Enter Landmark";
         } else if (mobile.length !== 10 || !/^\d+$/.test(mobile)) {
@@ -335,22 +337,23 @@ const Booking = () => {
                         </div>
                         <div className={styles.inputsec}>
                             <label >Mobile Number</label>
-                            <input
-                                className={"tabinput"}
-                                placeholder='Enter Your Mobile Number'
-                                value={formDataView.mobile}
-                                onChange={(e) => { handelForm({ name: 'mobile', value: e.target.value }) }}
-                            />
+                            <div className="grid grid-cols-12 gap-3">
+                                <select className='tabinput col-span-2 text-center' onChange={(e) => handelForm({ name: 'code', value: e.target.value })} >
+                                    {
+                                        mobileCodes.map((e, i) => {
+                                            return <option value={e} key={i + "-code-" + e} >{e}</option>
+                                        })
+                                    }
+                                </select>
+                                <input
+                                    className={"tabinput col-span-10"}
+                                    placeholder='Enter Your Mobile Number'
+                                    value={formDataView.mobile}
+                                    onChange={(e) => { handelForm({ name: 'mobile', value: e.target.value }) }}
+                                /></div>
                         </div>
                         <div className={styles.inputsec}>
-                            <label >Pickup Address</label>
-                            <input
-
-                                className={"tabinput"}
-                                placeholder='Enter Pickup Address Here'
-                                value={formDataView.from}
-                                onChange={(e) => { handelForm({ name: 'from', value: e.target.value }) }}
-                            />
+                            <GoogleMapInput label='Pickup Address' value={formDataView.from} placeholder='Enter Pickup Address Here' onChenge={(e) => handelForm({ name: 'from', value: e.target.value })} />
                         </div>
                         <div className={styles.inputsec}>
                             <input
@@ -360,23 +363,18 @@ const Booking = () => {
                                 onChange={(e) => { handelForm({ name: 'landmark', value: e.target.value }) }}
                             />
                         </div>
-                        <div className={styles.inputsec}>
-                            <label >Drop Address</label>
-                            <input
-                                className={"tabinput"}
-                                placeholder='Enter Drop Address Here'
-                                value={formDataView.to}
-                                onChange={(e) => { handelForm({ name: 'to', value: e.target.value }) }}
-                            />
-                        </div>
+
                         <button className={styles.bookbtn} onClick={createBooking} disabled={loading} >{!loading ? "Book Your Cab" : "Creating Order..."}</button>
                     </div>
                     <div>
-                        <div className={styles.info}>
+                        <div className={`${styles.info} relative`}>
                             <h1 className='font-bold text-lg'>Booking Details</h1>
+                            <img src={"https://babagcabs.com/" + pageData.cab.image} height={100} width={120} className='absolute top-3 right-3 object-contain' />
                             <ul className='list-none'>
                                 <li className='capitalize'>Trip: {type == "airport" ? airportTripType[+(trip || "0")] : type}</li>
+                                <li>Cab Type: {pageData.cab.name}</li>
                                 <li>{locationName()}</li>
+
                                 {type == "local" ? null : <li>{dropName()}</li>}
                                 <li>Pickup Date: {pickdate}</li>
                                 {type == "roundtrip" ? <li>Return Date: {returndate}</li> : null}

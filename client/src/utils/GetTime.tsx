@@ -21,3 +21,5 @@ export const generateTimeArray = (): string[] => {
 };
 
 
+
+export const mobileCodes = ["+91", "+1", "+44", "+81", "+86", "+33", "+49", "+7", "+55", "+61"];

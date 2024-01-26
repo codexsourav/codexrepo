@@ -35,6 +35,10 @@ import { toast } from "@/components/ui/use-toast"
 import { ChangeEvent, useEffect, useState } from "react"
 import { tripTypes } from "@/Contents/Info"
 import { errorToast } from "@/Lib/showToast"
+import { GoPlus } from "react-icons/go";
+import { TbEditCircle } from "react-icons/tb";
+import { AiOutlineDelete } from "react-icons/ai";
+import { useNavigate } from "react-router-dom"
 
 interface CabData {
     image: string;
@@ -57,7 +61,7 @@ interface Cab extends CabData {
 function ManageCabs() {
     const [load, setLoad] = useState<number>(0)
     const [showAddCab, setshowAddCab] = useState<boolean>(false)
-
+    const navigate = useNavigate();
     const [data, setData] = useState<null | Cab[]>(null);
     const loadData = async () => {
         try {
@@ -111,9 +115,10 @@ function ManageCabs() {
                                 <p>Max Passenger : {e.maxpac}</p>
                             </CardContent>
                             <CardFooter className="flex float-end">
+                                <Button variant="secondary" className=" mr-3" onClick={() => navigate("/admin/new/" + e._id)}><GoPlus size={20} /></Button>
                                 <UpdateCabs id={e._id} data={{ name: e.name, baserate: e.baserate, carnumber: e.carnumber, image: e.image, maxpac: e.maxpac, parkm: e.parkm, allowTrip: e.allowTrip, discount: e.discount }} reloadData={reloadData} />
                                 <AlertDialog>
-                                    <AlertDialogTrigger>    <Button className="bg-red-600 hover:bg-red-900">Delete</Button></AlertDialogTrigger>
+                                    <AlertDialogTrigger>    <Button variant="secondary"><AiOutlineDelete size={20} /></Button></AlertDialogTrigger>
                                     <AlertDialogContent>
                                         <AlertDialogHeader>
                                             <AlertDialogTitle>Are you sure wan to delete?</AlertDialogTitle>
@@ -507,7 +512,7 @@ function UpdateCabs({ id, data, reloadData, }: { id: string, data: CabData, relo
 
     return (
         <Dialog open={showUpdate} onOpenChange={(e) => setshowUpdate(e)} >
-            <DialogTrigger  ><Button className="mr-2" >Update</Button></DialogTrigger>
+            <DialogTrigger  ><Button className="mr-2" variant="secondary" ><TbEditCircle size={20} /></Button></DialogTrigger>
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle>Update Cab</DialogTitle>

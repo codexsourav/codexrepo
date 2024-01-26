@@ -51,3 +51,7 @@ export const setTimeInpValue = (datetime: string | Date) => {
     const formattedTime = `${hours}:${minutes}`;
     return formattedTime;
 }
+
+
+var now = new Date();
+export var minDate = now.toISOString().substring(0, 10);

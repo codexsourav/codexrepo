@@ -39,6 +39,7 @@ export interface Booking {
     name: string;
     email: string;
     mobile: string;
+    totalAmount: number;
     amount: number;
     pickupTime: string;
     pickupDate: string;

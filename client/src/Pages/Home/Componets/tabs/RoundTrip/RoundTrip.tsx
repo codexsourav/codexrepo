@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import styles from './styles/roundtrip.module.css'
 import { generateTimeArray } from '@/utils/GetTime';
-import GoogleMapInput from '@/Component/GoogleMapInput/GoogleMapInput';
+import GoogleMapInput, { PlacesAutocomplete } from '@/Component/GoogleMapInput/GoogleMapInput';
 import { useDispatch, useSelector } from 'react-redux';
 import StoreType, { AppDispatch } from '@/Interfaces/storeInterface';
 import { IRoundTrip, setRoundTrip } from '@/Redux/TripBox/RoundTrip';
@@ -17,11 +17,37 @@ import { validateDateDifference } from '@/Lib/getVewDate';
 
 const RoundTrip = () => {
     const data = useSelector((store: StoreType) => store.roundTrip)
+    const to1 = useRef("");
+    const to2 = useRef("");
+    const to3 = useRef("");
+    const to4 = useRef("");
+    const to5 = useRef("");
+
     const diapatch = useDispatch<AppDispatch>();
     const setData = (name: keyof IRoundTrip, value: string) => {
         diapatch(setRoundTrip({ name, value }))
     };
+    const refs = [to1, to2, to3, to4, to5];
+    const [locations, setLocations] = useState<React.MutableRefObject<string>[]>([to1]);
 
+    const addToLocations = () => {
+        if (locations.length < 5) {
+            setLocations([...locations, refs[locations.length + 1]]);
+        }
+    };
+
+
+    const removeLocation = (index: number) => {
+        // Use filter to create a new array without the item at the specified index
+        const updatedLocations = locations.filter((_, i) => i !== index);
+        setLocations(updatedLocations);
+
+    };
+
+
+
+
+    console.log(locations);
     const valiDateData = (data: IRoundTrip): string | boolean => {
         const { form, to, pickDate, returnDate, time } = data;
 
@@ -79,12 +105,6 @@ const RoundTrip = () => {
                     }
                 }} />
 
-                <GoogleMapInput label='To' placeholder='Ex: Kolkata' onChenge={(places) => {
-                    if (places) {
-                        const locationData = places.formatted_address.toString();
-                        setData('to', locationData)
-                    }
-                }} />
 
 
                 <div className={`md:col-span-2 ${styles.dateselect}`}>
@@ -109,6 +129,21 @@ const RoundTrip = () => {
                         }
                     </select>
                 </div>
+                {
+                    locations.map((e, i) => {
+                        return <div className="grid-cols-10 w-full" style={{ display: "grid" }}>
+                            {/* <GoogleMapInput ref={e} label={'To'} dClass='col-span-8' placeholder='Ex: Kolkata' onChenge={(places) => {
+                                if (places) {
+                                    const locationData = places.formatted_address.toString();
+                                    e.current.valueOf = locationData;
+                                    console.log("update");
+                                }
+                            }} /> */}
+                            <PlacesAutocomplete label={'To'} dClass='col-span-8' placeholder='Ex: Kolkata' />
+                            <div className="tabinput col-span-2 flex justify-end items-end cursor-pointer" onClick={(locations.length - 1) == i ? addToLocations : () => removeLocation(i)}><div className=""></div><div className="text-center text-lg">+</div></div>
+                        </div>
+                    })
+                }
             </div >
             <button className='searchBtn' onClick={exploreCabs}>Explore</button>
         </>

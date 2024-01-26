@@ -6,7 +6,6 @@ const Header = () => {
     return (
         <>
             <div className={styles.header}>
-                <img src="/images/bg.jpg" alt="images" />
                 <TripBox />
             </div>
         </>

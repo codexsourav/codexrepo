@@ -7,6 +7,7 @@ import { ITripPrice } from "../routes/booking.js";
 import { validateCabBooking } from "../utils/validate.js";
 import CabBookingModel from "../db/models/cabBooking.js";
 import UsersModel from "../db/models/usersModels.js";
+import { getCashBack } from "../utils/MakeTimes.js";
 
 
 // ?type=oneway&pickupaddress=[]&dropaddress=[]&pickdate=[]&picktime=[];
@@ -95,10 +96,12 @@ export const initGetBooking = async (req: AuthRequest, res: Response) => {
         if (!cab) {
             return res.send({ status: "CAB_NOT_FOUND", message: "cab Not Found" });
         }
+        const price = type == "local" ? km * cab.parkm : ((destinationData?.data.distance.value || 0) / 1000) * cab.parkm;
         const pricing: ITripPrice = {
             km: destinationData?.data.distance.text || km + "Km",
             value: type == "local" ? km : destinationData?.data.distance.value,
-            price: type == "local" ? km * cab.parkm : ((destinationData?.data.distance.value || 0) / 1000) * cab.parkm,
+            amount: price,
+            price: price - getCashBack(price, cab.discount!),
         }
 
         res.send({ status: "OK", cab, destination: destinationData, user: req.authUser, pricing });

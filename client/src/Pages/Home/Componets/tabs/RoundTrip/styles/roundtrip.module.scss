@@ -1,8 +1,9 @@
 .roundtrip {
     display: grid;
-    grid-template-columns: repeat(2, 1fr) 160px 160px 120px;
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-
+    // padding: 50px 0px;
+    // background-color: red;
     width: 100%;
     .dateselect {
         display: flex !important;

@@ -144,7 +144,7 @@ const BookingView = ({ data, reload }: { data: Booking, reload: Function }) => {
                 <ul>
                     <li>Pickup Address: {data.tripInfo.from}</li>
                     <li>Landmark:{data.landmark}</li>
-                    <li>Drop Address: {data.tripInfo.to || data.to}</li>
+                    {data.to ? <li>Drop Address: {data.tripInfo.to || data.to}</li> : null}
                     <li>Pickup Date: {data.pickupDate}</li>
                     <li>Time: {data.pickupTime}</li>
                     <li>Distance: {data.distance}</li>
@@ -156,7 +156,7 @@ const BookingView = ({ data, reload }: { data: Booking, reload: Function }) => {
                 <h1 className="font-bold text-xl mt-9 mb-3">CONTACT INFO</h1>
                 <ul>
                     <li>Pickup Address: {data.from}</li>
-                    <li>Drop Address: {data.to}</li>
+                    {data.to ? <li>Drop Address: {data.to || data.tripInfo.to}</li> : null}
                     <li>Name: {data.name}</li>
                     <li>Mobile: +91 {data.mobile}</li>
                     <li>Email: {data.email}</li>

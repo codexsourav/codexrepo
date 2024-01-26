@@ -59,6 +59,8 @@ const Local = () => {
             <div className={styles.local}>
 
                 <GoogleMapInput label='Pickup Address' placeholder='Enter Pickup Address' onChenge={(places) => {
+
+
                     if (places) {
                         const locationData = places.formatted_address.toString();
                         setData('form', locationData);
