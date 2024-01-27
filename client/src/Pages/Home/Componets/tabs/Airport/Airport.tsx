@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles/airport.module.css'
 import { generateTimeArray } from '@/utils/GetTime';
-import GoogleMapInput from '@/Component/GoogleMapInput/GoogleMapInput';
+import GoogleMapInput, { PlacesAutocomplete } from '@/Component/GoogleMapInput/GoogleMapInput';
 import { useDispatch, useSelector } from 'react-redux';
 import StoreType, { AppDispatch } from '@/Interfaces/storeInterface';
 import { IAirport, setAirport } from '@/Redux/TripBox/Airport';
@@ -71,18 +71,15 @@ const Airport = () => {
                 </div>
                 <div className={`${styles.fld} ${data.trip == 0 ? styles.flip : null}`} >
 
-                    <GoogleMapInput airport={true} label="Airport Name" placeholder="Enter Airport Name" onChenge={(places) => {
-                        if (places) {
-                            const locationData = places.formatted_address.toString();
-                            setData('airport', locationData);
-                        }
+                    <PlacesAutocomplete airport={true} value={data.airport} label="Airport Name" placeholder="Enter Airport Name" onChenge={(places) => {
+
+                        setData('airport', places);
+
                     }} />
 
-                    <GoogleMapInput label={data.trip ? "Drop Address" : "Pickup Adress"} placeholder="Your Address" onChenge={(places) => {
-                        if (places) {
-                            const locationData = places.formatted_address.toString();
-                            setData('location', locationData);
-                        }
+                    <PlacesAutocomplete value={data.location} label={data.trip ? "Drop Address" : "Pickup Adress"} placeholder="Your Address" onChenge={(places) => {
+                        setData('location', places);
+
                     }} />
 
                 </div>

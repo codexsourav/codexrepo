@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles/local.module.css'
 import { generateTimeArray } from '@/utils/GetTime';
-import GoogleMapInput from '@/Component/GoogleMapInput/GoogleMapInput';
+import GoogleMapInput, { PlacesAutocomplete } from '@/Component/GoogleMapInput/GoogleMapInput';
 
 import { useDispatch, useSelector } from 'react-redux';
 import StoreType, { AppDispatch } from '@/Interfaces/storeInterface';
@@ -58,13 +58,10 @@ const Local = () => {
         <>
             <div className={styles.local}>
 
-                <GoogleMapInput label='Pickup Address' placeholder='Enter Pickup Address' onChenge={(places) => {
+                <PlacesAutocomplete value={data.form} label='Pickup Address' placeholder='Enter Pickup Address' onChenge={(places) => {
 
+                    setData('form', places);
 
-                    if (places) {
-                        const locationData = places.formatted_address.toString();
-                        setData('form', locationData);
-                    }
                 }} />
 
                 <div>

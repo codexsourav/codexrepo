@@ -9,13 +9,26 @@
     align-items: center;
     flex-direction: column;
     margin-bottom: 300px;
-    background-color: var(--main);
-    background: url("https://babagcabs.com/images/bg.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+
+    // background-color: var(--main);
+    // background: url("https://babagcabs.com/images/bg.jpg");
+    // background-size: 300px;
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    // background-position: center;
+    img {
+        display: block;
+        top: 0;
+        right: 0;
+        height: 420px !important;
+        width: 100vw;
+        position: absolute;
+        object-fit: cover;
+        object-position: right;
+    }
     @media screen and (max-width: 800px) {
-        margin-bottom: 600px;
+        margin-bottom: 500px;
+        max-height: 100% !important;
     }
 
     @media screen and (max-width: 800px) {

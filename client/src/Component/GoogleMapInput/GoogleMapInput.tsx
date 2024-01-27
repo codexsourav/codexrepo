@@ -59,29 +59,34 @@ export default React.memo(GoogleMapInput);
 
 
 
-export const PlacesAutocomplete = ({ className, dClass, label, }: {
+export const PlacesAutocomplete = ({ lbclass, tweek, className, dClass, label, value, onChenge, placeholder, airport }: {
     dClass?: string;
     className?: string;
     value?: string;
     label?: string;
     airport?: boolean;
     placeholder: string;
+    tweek?: string;
+    lbclass?: string;
     onChenge: (val: any) => void;
 }) => {
+    const showPlaces = {
+        componentRestrictions: { country: "in" },
+        types: ["establishment"],
+    };
+    const showAirport = {
+        componentRestrictions: { country: "in" },
+        types: ["airport"],
+    };
     const {
         ready,
-        value,
+
         suggestions: { status, data },
         setValue,
         clearSuggestions,
     } = usePlacesAutocomplete({
-        callbackName: "YOUR_CALLBACK_NAME",
-        requestOptions: {
-            componentRestrictions: { country: "in" },
-            types: ["establishment"],
-            language: "EN",
-
-        },
+        requestOptions: airport ? showAirport : showPlaces,
+        defaultValue: value || "",
         debounce: 300,
     });
     const ref = useOnclickOutside(() => {
@@ -91,7 +96,9 @@ export const PlacesAutocomplete = ({ className, dClass, label, }: {
     });
 
     const handleInput = (e: any) => {
-        // Update the keyword of the input element
+        console.log("val=>" + e.target.value);
+
+        onChenge(e.target.value);
         setValue(e.target.value);
     };
 
@@ -102,7 +109,7 @@ export const PlacesAutocomplete = ({ className, dClass, label, }: {
                 // by setting the second parameter to "false"
                 setValue(description, false);
                 clearSuggestions();
-
+                onChenge(description);
                 // Get latitude and longitude via utility functions
                 getGeocode({ address: description }).then((results) => {
                     const { lat, lng } = getLatLng(results[0]);
@@ -118,7 +125,7 @@ export const PlacesAutocomplete = ({ className, dClass, label, }: {
             } = suggestion;
 
             return (
-                <li className="cursor-pointer text-sm p-1 px-3 hover:bg-orange-300" key={place_id} onClick={handleSelect(suggestion)}>
+                <li className="cursor-pointer text-sm p-1 px-3 hover:bg-orange-200 border-t-2 border-orange-600" key={place_id} onClick={handleSelect(suggestion)}>
                     <strong>{main_text}</strong> <small>{secondary_text}</small>
                 </li>
             );
@@ -126,16 +133,16 @@ export const PlacesAutocomplete = ({ className, dClass, label, }: {
 
     return (
         <div ref={ref} className={`${dClass} w-full relative`} >
-            <label >{label}</label>
+            <label className={lbclass} >{label}</label>
             <input
                 value={value}
                 onChange={handleInput}
                 disabled={!ready}
                 className={className || "tabinput"}
-                placeholder="Where are you going?"
+                placeholder={placeholder || ""}
             />
             {/* We can use the "status" to decide whether we should display the dropdown or not */}
-            {status === "OK" && <ul className="absolute top-[75px] border-2 border-orange-600 bg-orange-100 w-full h-52 overflow-scroll" >{renderSuggestions()}</ul>}
+            {status === "OK" && <ul className={`absolute top-[76px] border-2 border-orange-600 border-t-0 bg-orange-100 w-full max-h-52 overflow-y-scroll overflow-x-hidden z-50 ${tweek}`} >{renderSuggestions()}</ul>}
         </div>
     );
 };

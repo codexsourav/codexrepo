@@ -11,7 +11,7 @@ import { resetRoundTrip } from "@/Redux/TripBox/RoundTrip";
 import { resetAirport } from "@/Redux/TripBox/Airport";
 import { resetLocal } from "@/Redux/TripBox/Local";
 
-function TripBox() {
+function TripBox({ setIndex = (e: any) => { } }: { setIndex?: any }) {
     const [tabinex, setTabinex] = useState<number>(0);
     const tabs: ReactNode[] = [<OneWay />, <RoundTrip />, <Local />, <Airport />];
     const dispatch = useDispatch<AppDispatch>();
@@ -26,10 +26,10 @@ function TripBox() {
     return (
         <div className={`${styles.sideBox} container `}>
             <div className={styles.tabs}>
-                <div onClick={() => setTabinex(0)} className={`${styles.tab} ${tabinex == 0 ? styles.active : null}`}>One Way</div>
-                <div onClick={() => setTabinex(1)} className={`${styles.tab} ${tabinex == 1 ? styles.active : null}`}>Round Trip</div>
-                <div onClick={() => setTabinex(2)} className={`${styles.tab} ${tabinex == 2 ? styles.active : null}`}>Local</div>
-                <div onClick={() => setTabinex(3)} className={`${styles.tab} ${tabinex == 3 ? styles.active : null}`}>Airport</div>
+                <div onClick={() => { setIndex(0); setTabinex(0) }} className={`${styles.tab} ${tabinex == 0 ? styles.active : null}`}>One Way</div>
+                <div onClick={() => { setIndex(1); setTabinex(1) }} className={`${styles.tab} ${tabinex == 1 ? styles.active : null}`}>Round Trip</div>
+                <div onClick={() => { setIndex(2); setTabinex(2) }} className={`${styles.tab} ${tabinex == 2 ? styles.active : null}`}>Local</div>
+                <div onClick={() => { setIndex(3); setTabinex(3) }} className={`${styles.tab} ${tabinex == 3 ? styles.active : null}`}>Airport</div>
             </div>
             <div className={styles.tabview}>
                 {tabs[tabinex]}

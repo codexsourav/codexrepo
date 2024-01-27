@@ -7,6 +7,7 @@ import StoreType, { AppDispatch } from '@/Interfaces/storeInterface';
 import { IRoundTrip, setRoundTrip } from '@/Redux/TripBox/RoundTrip';
 import { errorToast } from '@/Lib/showToast';
 import { validateDateDifference } from '@/Lib/getVewDate';
+import useWindowDimensions from '@/Hooks/useWindowDimensions';
 
 // ?type=oneway&pickupaddress=[]&dropaddress=[]&pickdate=[]&picktime=[];
 // ?type=roundtrip&pickupaddress=[]&dropaddress=[]&pickdate=[]&returndate=[]&picktime=[];
@@ -17,22 +18,28 @@ import { validateDateDifference } from '@/Lib/getVewDate';
 
 const RoundTrip = () => {
     const data = useSelector((store: StoreType) => store.roundTrip)
-    const to1 = useRef("");
-    const to2 = useRef("");
-    const to3 = useRef("");
-    const to4 = useRef("");
-    const to5 = useRef("");
 
+    const { width } = useWindowDimensions();
     const diapatch = useDispatch<AppDispatch>();
     const setData = (name: keyof IRoundTrip, value: string) => {
         diapatch(setRoundTrip({ name, value }))
     };
-    const refs = [to1, to2, to3, to4, to5];
-    const [locations, setLocations] = useState<React.MutableRefObject<string>[]>([to1]);
+
+    const [locations, setLocations] = useState<string[]>([]);
 
     const addToLocations = () => {
-        if (locations.length < 5) {
-            setLocations([...locations, refs[locations.length + 1]]);
+        // Check if all existing locations are not empty
+        const allLocationsNotEmpty = locations.every(location => location.trim() !== "");
+
+        if (!data.to) {
+            errorToast("Enter Location to Add New");
+
+        } else if (!allLocationsNotEmpty) {
+            errorToast("Enter Location to Add New");
+        } else if (locations.length > 3) {
+            errorToast("No More Locations Add");
+        } else {
+            setLocations([...locations, ""]);
         }
     };
 
@@ -50,13 +57,14 @@ const RoundTrip = () => {
     console.log(locations);
     const valiDateData = (data: IRoundTrip): string | boolean => {
         const { form, to, pickDate, returnDate, time } = data;
+        const allLocationsNotEmpty = locations.every(location => location.trim() !== "");
 
         if (!form.trim()) {
             return 'Please enter "From" location.';
         }
 
-        if (!to.trim()) {
-            return 'Please enter "To" location.';
+        if (!allLocationsNotEmpty) {
+            return 'Please enter "To" locations.';
         }
 
         if (!pickDate) {
@@ -86,7 +94,8 @@ const RoundTrip = () => {
     const exploreCabs = () => {
         const validate = valiDateData(data);
         if (validate == true) {
-            window.location.href = (`/explore?type=roundtrip&pickupaddress=${data.form}&dropaddress=${data.to}&pickdate=${data.pickDate}&returndate=${data.returnDate}&picktime=${data.time}`);
+            const stringRepresentation = locations.join("||");
+            window.location.href = (`/explore?type=roundtrip&pickupaddress=${data.form}&dropaddress=${stringRepresentation}&pickdate=${data.pickDate}&returndate=${data.returnDate}&picktime=${data.time}`);
         } else {
             errorToast(validate.toString());
         }
@@ -98,13 +107,24 @@ const RoundTrip = () => {
         <>
             <div className={styles.roundtrip}>
 
-                <GoogleMapInput label='From' placeholder='Ex: Delhi' onChenge={(places) => {
-                    if (places) {
-                        const locationData = places.formatted_address.toString();
-                        setData('form', locationData)
-                    }
-                }} />
+                <PlacesAutocomplete label='From' placeholder='Ex: Delhi' value={data.form} onChenge={(place) => {
+                    console.log(place);
 
+                    setData('form', place)
+                }} />
+                <div className="grid-cols-12 w-full" style={{ display: "grid" }} >
+
+                    <PlacesAutocomplete label='To' dClass="col-span-10" placeholder='Ex: Kolkata' value={data.to} onChenge={(place) => {
+                        console.log(place);
+                        setData('to', place)
+                    }} />
+                    <div className="tabinput col-span-2 flex justify-end items-end cursor-pointer" onClick={addToLocations}><div className=""></div>
+                        <div className="text-center text-lg ">+</div>
+                    </div>
+
+                </div>
+
+                {width >= 800 ? null : <RoundTripToS locations={locations} addToLocations={addToLocations} removeLocation={removeLocation} setLocations={setLocations} />}
 
 
                 <div className={`md:col-span-2 ${styles.dateselect}`}>
@@ -129,26 +149,41 @@ const RoundTrip = () => {
                         }
                     </select>
                 </div>
-                {
-                    locations.map((_, i) => {
-                        return <div className="grid-cols-10 w-full" style={{ display: "grid" }} key={"key+" + i}>
-                            {/* <GoogleMapInput ref={e} label={'To'} dClass='col-span-8' placeholder='Ex: Kolkata' onChenge={(places) => {
-                                if (places) {
-                                    const locationData = places.formatted_address.toString();
-                                    e.current.valueOf = locationData;
-                                    console.log("update");
-                                }
-                            }} /> */}
-                            <PlacesAutocomplete onChenge={() => { }} airport={false} label={'To'} dClass='col-span-8' placeholder='Ex: Kolkata' />
-                            <div className="tabinput col-span-2 flex justify-end items-end cursor-pointer" onClick={(locations.length - 1) == i ? addToLocations : () => removeLocation(i)}><div className=""></div><div className="text-center text-lg">+</div></div>
-                        </div>
-                    })
-                }
+
             </div >
+            {width <= 800 ? null : <RoundTripToS locations={locations} addToLocations={addToLocations} removeLocation={removeLocation} setLocations={setLocations} />}
             <button className='searchBtn' onClick={exploreCabs}>Explore</button>
         </>
     );
 };
 
 export default React.memo(RoundTrip);
+
+
+function RoundTripToS({ locations, setLocations, removeLocation }: { locations: string[], setLocations: any, addToLocations: any, removeLocation: any }) {
+    return (
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-5 mt-0 md:mt-5">
+            {
+                locations.map((d, i) => {
+                    return <div className="grid-cols-12 w-full" style={{ display: "grid" }} key={"key+" + i}>
+                        <PlacesAutocomplete
+                            value={d}
+                            tweek='top-[68px]'
+
+                            lbclass='text-sm font-bold'
+                            onChenge={(e) => {
+                                var data = [...locations];
+                                data[i] = e;
+                                setLocations(data);
+                            }} airport={false} label={'To'} dClass='col-span-11' placeholder='Ex: Kolkata' />
+                        <div className="tabinput p-0 col-span-1 flex flex-col cursor-pointer w-full h-full justify-center items-center bg-red-950" onClick={() => removeLocation(i)}>
+
+                            <div className={`text-red-600 rotate-45  pl-5 h-full w-full text-right text-lg flex justify-center items-end `}>+</div>
+                        </div>
+                    </div>
+                })
+            }
+        </div>
+    )
+}
 

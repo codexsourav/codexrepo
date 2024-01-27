@@ -10,7 +10,7 @@ import { generateRandomId } from '@/Lib/makeID';
 
 import useRazorpay, { RazorpayOptions } from "react-razorpay";
 import { mobileCodes } from '@/utils/GetTime';
-import GoogleMapInput from '@/Component/GoogleMapInput/GoogleMapInput';
+import GoogleMapInput, { PlacesAutocomplete } from '@/Component/GoogleMapInput/GoogleMapInput';
 
 interface IForm {
     name: string,
@@ -353,7 +353,7 @@ const Booking = () => {
                                 /></div>
                         </div>
                         <div className={styles.inputsec}>
-                            <GoogleMapInput label='Pickup Address' value={formDataView.from} placeholder='Enter Pickup Address Here' onChenge={(e) => handelForm({ name: 'from', value: e.target.value })} />
+                            <PlacesAutocomplete label='Pickup Address' value={formDataView.from} placeholder='Enter Pickup Address Here' onChenge={(e) => handelForm({ name: 'from', value: e })} />
                         </div>
                         <div className={styles.inputsec}>
                             <input

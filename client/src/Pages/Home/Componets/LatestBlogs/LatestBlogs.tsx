@@ -16,6 +16,9 @@ const LatestBlogs = () => {
                     <BlogPost />
                     <BlogPost />
                     <BlogPost />
+                    <BlogPost />
+                    <BlogPost />
+                    <BlogPost />
                 </div>
 
             </div>

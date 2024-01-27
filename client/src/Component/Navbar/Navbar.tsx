@@ -13,7 +13,7 @@ const Navbar = () => {
             <div className={styles.navbar}>
                 <div className={`${styles.nav} container`}>
                     <IoMenuOutline onClick={() => setShowMenu(true)} size={24} color="#fff" style={{ display: "none" }} className={styles.menuicon} />
-                    <img src="/images/logo.png" alt="logo" height={40} className={`${styles.logo} `} />
+                    <a href="/"><img src="/images/logo.png" alt="logo" height={60} className={`${styles.logo} `} /></a>
                     <a href='https://api.whatsapp.com/send?phone=01169266014' target='_blank' className='  items-center justify-center hidden md:flex'>
                         <div className="bg-orange-600 text-white rounded-full flex items-center justify-center gap-3 h-6 overflow-hidden">
                             <div className="bg-white w-9 h-6 rounded-full text-orange-600 flex items-center justify-center">
@@ -26,9 +26,9 @@ const Navbar = () => {
                         <div className={`${styles.links} ${showMenu ? styles.active : null}`}>
                             <IoCloseOutline onClick={() => setShowMenu(false)} size={40} color="#fff" style={{ display: "none" }} className={styles.closeicon} />
                             <a href="/">Home</a>
-                            <a href="/">About</a>
-                            <a href="/">Blog</a>
-                            <a href="/">Services</a>
+                            <a href="/#about">About</a>
+                            <a href="/#services">Services</a>
+                            <a href="/#blog">Blog</a>
                         </div>
                         {/* {localStorage.getItem(import.meta.env.VITE_AUTHKEY) ? <a href="#" className='flex justify-center items-center gap-3 ' ><IoWallet size={24} className={styles.wallet} />  <span className='hidden sm:block'  >₹250.0</span></a> : null} */}
                         <a href={localStorage.getItem(import.meta.env.VITE_AUTHKEY) ? "/profile" : "/auth"}> {localStorage.getItem(import.meta.env.VITE_AUTHKEY) ?
