@@ -30,8 +30,8 @@ const GoogleMapInput = forwardRef(
         ref: React.Ref<any>
     ) => {
         const showPlaces = {
-            componentRestrictions: { country: "in" },
-            types: ["establishment"],
+            componentRestrictions: { country: "in",},
+            types: ["cities"],
         };
         const showAirport = {
             componentRestrictions: { country: "in" },
