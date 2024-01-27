@@ -10,7 +10,7 @@ import { generateRandomId } from '@/Lib/makeID';
 
 import useRazorpay, { RazorpayOptions } from "react-razorpay";
 import { mobileCodes } from '@/utils/GetTime';
-import GoogleMapInput, { PlacesAutocomplete } from '@/Component/GoogleMapInput/GoogleMapInput';
+import { PlacesAutocomplete } from '@/Component/GoogleMapInput/GoogleMapInput';
 
 interface IForm {
     name: string,

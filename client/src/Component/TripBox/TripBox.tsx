@@ -11,7 +11,9 @@ import { resetRoundTrip } from "@/Redux/TripBox/RoundTrip";
 import { resetAirport } from "@/Redux/TripBox/Airport";
 import { resetLocal } from "@/Redux/TripBox/Local";
 
-function TripBox({ setIndex = (e: any) => { } }: { setIndex?: any }) {
+function TripBox({ setIndex = (e: any) => {
+    console.log(e);
+} }: { setIndex?: any }) {
     const [tabinex, setTabinex] = useState<number>(0);
     const tabs: ReactNode[] = [<OneWay />, <RoundTrip />, <Local />, <Airport />];
     const dispatch = useDispatch<AppDispatch>();

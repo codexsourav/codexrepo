@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles/oneway.module.css'
 import { generateTimeArray } from '@/utils/GetTime';
-import GoogleMapInput, { PlacesAutocomplete } from '@/Component/GoogleMapInput/GoogleMapInput';
+import { PlacesAutocomplete } from '@/Component/GoogleMapInput/GoogleMapInput';
 import { useDispatch, useSelector } from 'react-redux';
 import StoreType, { AppDispatch } from '@/Interfaces/storeInterface';
 import { IOneWay, setOneWay } from '@/Redux/TripBox/OneWay';

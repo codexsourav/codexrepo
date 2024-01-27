@@ -34,7 +34,7 @@ const AppWrapper: React.FC<AppWrapperProps> = ({ children }) => {
             theme="light"
         />
         <Toaster />
-        {/* <InDEV /> */}
+        <InDEV />
     </>;
 
 };
