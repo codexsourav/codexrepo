@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './styles/roundtrip.module.css'
 import { generateTimeArray } from '@/utils/GetTime';
-import GoogleMapInput, { PlacesAutocomplete } from '@/Component/GoogleMapInput/GoogleMapInput';
+import { PlacesAutocomplete } from '@/Component/GoogleMapInput/GoogleMapInput';
 import { useDispatch, useSelector } from 'react-redux';
 import StoreType, { AppDispatch } from '@/Interfaces/storeInterface';
 import { IRoundTrip, setRoundTrip } from '@/Redux/TripBox/RoundTrip';
@@ -107,19 +107,16 @@ const RoundTrip = () => {
         <>
             <div className={styles.roundtrip}>
 
-                <GoogleMapInput label='From' placeholder='Ex: Delhi' onChenge={(place) => {
+                <PlacesAutocomplete label='From' placeholder='Ex: Delhi' value={data.form} onChenge={(place) => {
+                    console.log(place);
 
-                    if (place) {
-                        setData('form', place.formatted_address.toString())
-                    }
-
+                    setData('form', place)
                 }} />
                 <div className="grid-cols-12 w-full" style={{ display: "grid" }} >
 
-                    <GoogleMapInput label='To' dClass="col-span-10" placeholder='Ex: Kolkata' onChenge={(place) => {
-                        if (place) {
-                            setData('to', place.formatted_address.toString())
-                        }
+                    <PlacesAutocomplete label='To' dClass="col-span-10" placeholder='Ex: Kolkata' value={data.to} onChenge={(place) => {
+                        console.log(place);
+                        setData('to', place)
                     }} />
                     <div className="tabinput col-span-2 flex justify-end items-end cursor-pointer" onClick={addToLocations}><div className=""></div>
                         <div className="text-center text-lg ">+</div>
@@ -172,7 +169,6 @@ function RoundTripToS({ locations, setLocations, removeLocation }: { locations: 
                         <PlacesAutocomplete
                             value={d}
                             tweek='top-[68px]'
-
                             lbclass='text-sm font-bold'
                             onChenge={(e) => {
                                 var data = [...locations];

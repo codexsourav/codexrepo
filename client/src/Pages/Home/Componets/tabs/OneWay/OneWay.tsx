@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles/oneway.module.css";
 import { generateTimeArray } from "@/utils/GetTime";
-import GoogleMapInput, {
+import {
   PlacesAutocomplete,
 } from "@/Component/GoogleMapInput/GoogleMapInput";
 import { useDispatch, useSelector } from "react-redux";
@@ -60,24 +60,23 @@ const OneWay = () => {
   return (
     <>
       <div className={styles.oneway}>
-        <GoogleMapInput
+        <PlacesAutocomplete
           label="From"
           placeholder="Ex: Delhi"
+          value={data.from}
           onChenge={(places) => {
-            if (places) {
-              setData("from", places.formatted_address.toString());
-            }
+            setData("from", places);
           }}
         />
 
-        <GoogleMapInput
+        <PlacesAutocomplete
           value={data.to}
           label="To"
           placeholder="Ex: Kolkata"
           onChenge={(places) => {
-            if (places) {
-              setData("to", places.formatted_address.toString());
-            }
+
+            setData("to", places);
+
           }}
         />
 
