@@ -70,7 +70,7 @@ const OneWay = () => {
           }}
         />
 
-        <PlacesAutocomplete
+        <GoogleMapInput
           value={data.to}
           label="To"
           placeholder="Ex: Kolkata"

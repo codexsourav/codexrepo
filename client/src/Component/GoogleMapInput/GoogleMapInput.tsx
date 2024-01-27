@@ -2,6 +2,7 @@ import React, { forwardRef } from "react";
 import ReactGoogleAutocomplete from "react-google-autocomplete";
 
 import usePlacesAutocomplete, {
+    RequestOptions,
     getGeocode,
     getLatLng,
 } from "use-places-autocomplete";
@@ -30,7 +31,7 @@ const GoogleMapInput = forwardRef(
         ref: React.Ref<any>
     ) => {
         const showPlaces = {
-            componentRestrictions: { country: "in",},
+            componentRestrictions: { country: "in", },
             types: ["cities"],
         };
         const showAirport = {
@@ -70,13 +71,15 @@ export const PlacesAutocomplete = ({ lbclass, tweek, className, dClass, label, v
     lbclass?: string;
     onChenge: (val: any) => void;
 }) => {
-    const showPlaces = {
+    const showPlaces: RequestOptions = {
         componentRestrictions: { country: "in" },
-        types: ["establishment"],
+        types: ['(cities)'],
+        region: "in",
     };
-    const showAirport = {
+    const showAirport: RequestOptions = {
         componentRestrictions: { country: "in" },
-        types: ["airport"],
+        types: ["(airport)"],
+        region: "in",
     };
     const {
         ready,
