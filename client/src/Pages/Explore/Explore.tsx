@@ -9,6 +9,7 @@ import TripBox from '@/Component/TripBox/TripBox';
 import { VscClose } from "react-icons/vsc";
 import { airportTripType } from '../Home/Componets/tabs/Airport/Airport';
 import { getCashBack } from '@/Lib/getCashBack';
+import CABTAQ, { CabInfo, EXCLUSIONS, FACILITIES } from '@/Component/cabDtls/CabInfo';
 
 // ?type=oneway&pickupaddress=[]&dropaddress=[]&pickdate=[]&picktime=[];
 // ?type=roundtrip&pickupaddress=[]&dropaddress=[]&pickdate=[]&returndate=[]&picktime=[];
@@ -178,6 +179,7 @@ export default React.memo(Explore);
 
 const CarBox = ({ data, km, type }: { data: ICabData, km: number, type: string }) => {
     const query = useLocation();
+    const [show, setShow] = useState<any>(null)
     const rediractUrl = () => {
         if (!localStorage.getItem(import.meta.env.VITE_AUTHKEY)) {
             return "/auth" + query.search + `&car=${data._id}` + (type == "local" ? "&km=" + km : "");
@@ -203,8 +205,13 @@ const CarBox = ({ data, km, type }: { data: ICabData, km: number, type: string }
             <div className={styles.infocar}><p>Max Passengers:</p> <p>{data.maxpac}</p></div>
             {/* <div className={styles.infocar}><p>Total Price:</p> <p>₹{Math.round(km * data.parkm)}.00</p></div> */}
         </div>
-        <a href={rediractUrl()} className={`${styles.bookbtn} w-full bg-orange-100 `}>BOOK NOW</a>
+        <div className="grid grid-cols-12 w-full place-items-center px-3">
+            <button onClick={() => setShow({})} className={`${styles.bookbtn} w-full bg-orange-100  col-span-4 uppercase text-orange-500`}>Details</button>
+            <a href={rediractUrl()} className={`${styles.bookbtn} w-full bg-orange-100 col-span-8 text-orange-500`}>BOOK NOW</a>
+        </div>
+        {show != null ? <CabDetails show={setShow} /> : null}
     </div>
+
 }
 
 
@@ -220,12 +227,6 @@ function EditTrip({ onClose }: { onClose: Function }) {
     )
 }
 
-
-// function InfoBox() {
-//     return (
-//         <div>InfoBox</div>
-//     )
-// }
 
 
 // function PickCabType() {
@@ -254,3 +255,30 @@ function EditTrip({ onClose }: { onClose: Function }) {
 //     )
 // }
 
+
+function CabDetails({ show }: { show: Function }) {
+    const [index, setIndex] = useState(0)
+    return (
+        <div className='fixed top-0 right-0 bg-black/20 p-5 w-screen h-screen z-[999999] flex justify-center items-center' >
+            <div className="bg-white w-full p-5  relative  max-w-[450px] min-h-[300px] rounded-xl flex justify-start items-center flex-col">
+                <div className="absolute right-2 top-2 cursor-pointer" onClick={() => show(null)}><VscClose size={20} /></div>
+                <div className="w-full overflow-x-auto scrollbar-hidden text-center">
+                    <Tabs defaultValue="INCLUSIONS" className="w-full">
+                        <TabsList className='bg-orange-100'>
+                            <TabsTrigger onClick={() => setIndex(0)} className='text-orange-600 font-bold' value="INCLUSIONS">INCLUSIONS</TabsTrigger>
+                            <TabsTrigger onClick={() => setIndex(1)} className='text-orange-600 font-bold' value="EXCLUSIONS">EXCLUSIONS</TabsTrigger>
+                            <TabsTrigger onClick={() => setIndex(2)} className='text-orange-600 font-bold' value="FACILITIES">FACILITIES</TabsTrigger>
+                            <TabsTrigger onClick={() => setIndex(3)} className='text-orange-600 font-bold' value="T&C">T&C</TabsTrigger>
+                        </TabsList>
+                    </Tabs>
+                </div>
+                {[<CabInfo />,
+                <EXCLUSIONS />,
+                <FACILITIES />,
+                <CABTAQ />,
+                ][index]}
+            </div>
+
+        </div>
+    )
+}
