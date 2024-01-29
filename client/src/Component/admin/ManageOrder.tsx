@@ -33,7 +33,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 function ManageOrder({ data, reload }: { data: Booking[], reload: Function }) {
 
     return (
-        <div className="px-5 sm:px-20 mt-10" >
+        <div className="p-0 sm:px-0 mt-10" >
             <Table>
                 <TableHeader>
                     <TableRow>

@@ -94,8 +94,10 @@ const RoundTrip = () => {
     const exploreCabs = () => {
         const validate = valiDateData(data);
         if (validate == true) {
-            const stringRepresentation =locations.length==0? data.to :data.to+"||"+  locations.join("||");
-            window.location.href = (`/explore?type=roundtrip&pickupaddress=${data.form}&dropaddress=${stringRepresentation}&pickdate=${data.pickDate}&returndate=${data.returnDate}&picktime=${data.time}`);
+
+            const stringRepresentation = (locations.length == 0) ? data.to : (data.to + "||" + locations.join("||"));
+            window.location.href = (`/explore/roundtrip?type=roundtrip&pickupaddress=${data.form}&dropaddress=${stringRepresentation}&pickdate=${data.pickDate}&returndate=${data.returnDate}&picktime=${data.time}`);
+
         } else {
             errorToast(validate.toString());
         }
@@ -168,7 +170,7 @@ function RoundTripToS({ locations, setLocations, removeLocation }: { locations: 
                     return <div className="grid-cols-12 w-full" style={{ display: "grid" }} key={"key+" + i}>
                         <PlacesAutocomplete
                             value={d}
-                            tweek='top-[68px]'
+                            tweek='top-[73.5px] md:top-[67.5px]'
                             lbclass='text-sm font-bold'
                             onChenge={(e) => {
                                 var data = [...locations];

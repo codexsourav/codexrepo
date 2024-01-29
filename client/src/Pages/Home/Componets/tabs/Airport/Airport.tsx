@@ -51,7 +51,7 @@ const Airport = () => {
     const exploreCabs = () => {
         const validate = validateAirportData(data);
         if (validate == true) {
-            window.location.href = (`/explore?type=airport&trip=${data.trip}&airportname=${data.airport}&location=${data.location}&pickdate=${data.pickDate}&picktime=${data.time}`)
+            window.location.href = (`/explore/airport?type=airport&trip=${data.trip}&airportname=${data.airport}&location=${data.location}&pickdate=${data.pickDate}&picktime=${data.time}`)
         } else {
             errorToast(validate.toString());
         }

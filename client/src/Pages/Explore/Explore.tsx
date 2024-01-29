@@ -3,13 +3,12 @@ import styles from './styles/explore.module.css'
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import makeApi from '@/Lib/makeApi';
 import Loading from '@/Component/loading';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ICabData, IRouteData } from '@/Interfaces/cabs';
-import TripBox from '@/Component/TripBox/TripBox';
-import { VscClose } from "react-icons/vsc";
+
 import { airportTripType } from '../Home/Componets/tabs/Airport/Airport';
-import { getCashBack } from '@/Lib/getCashBack';
-import CABTAQ, { CabInfo, EXCLUSIONS, FACILITIES } from '@/Component/cabDtls/CabInfo';
+import { CarBox } from '@/Component/Explore/CabBox';
+import { EditTrip } from './ExitTrip';
 
 // ?type=oneway&pickupaddress=[]&dropaddress=[]&pickdate=[]&picktime=[];
 // ?type=roundtrip&pickupaddress=[]&dropaddress=[]&pickdate=[]&returndate=[]&picktime=[];
@@ -177,55 +176,9 @@ const Explore = () => {
 export default React.memo(Explore);
 
 
-const CarBox = ({ data, km, type }: { data: ICabData, km: number, type: string }) => {
-    const query = useLocation();
-    const [show, setShow] = useState<any>(null)
-    const rediractUrl = () => {
-        if (!localStorage.getItem(import.meta.env.VITE_AUTHKEY)) {
-            return "/auth" + query.search + `&car=${data._id}` + (type == "local" ? "&km=" + km : "");
-        } else {
-            return "/booking" + query.search + `&car=${data._id}` + (type == "local" ? "&km=" + km : "");
-        }
-    };
-    return <div className={`${styles.carbox} relative`}>
-        <p className='absolute right-5 top-3 bg-orange-600 font-bold px-2 text-[12px] rounded text-white py-1'>{data.discount}% OFF</p>
-        <div className="flex justify-between items-start  pt-4 w-full">
-            <div className="pl-5">
-                <h1 className='text-xl' >{data.name}</h1>
-                <p className='font-bold text-2xl text-orange-600 '>₹{Math.round((km * data.parkm) - getCashBack(Math.round(km * data.parkm), data.discount))}.00</p>
-                <p className='font-bold text-sm text-slate-500 line-through hover:line-through'>₹{Math.round(km * data.parkm)}.00</p>
-                <p className='font-bold mt-2'>up to {Math.round(km)}.0KM</p>
-            </div>
-            <img src={import.meta.env.VITE_APIURL + "/" + data.image} alt="car" className='h-32 w-full object-contain pl-5 pr-2' />
-
-        </div>
-        <div className={`${styles.infobox} px-5`}>
-            {/* <div className={styles.infocar}><p>Base Rate:</p> <p>₹{data.baserate}.00</p></div> */}
-            <div className={styles.infocar}><p>Par 1/KM:</p> <p>₹{data.parkm}.00</p></div>
-            <div className={styles.infocar}><p>Max Passengers:</p> <p>{data.maxpac}</p></div>
-            {/* <div className={styles.infocar}><p>Total Price:</p> <p>₹{Math.round(km * data.parkm)}.00</p></div> */}
-        </div>
-        <div className="grid grid-cols-12 w-full place-items-center px-3">
-            <button onClick={() => setShow({})} className={`${styles.bookbtn} w-full bg-orange-100  col-span-4 uppercase text-orange-500`}>Details</button>
-            <a href={rediractUrl()} className={`${styles.bookbtn} w-full bg-orange-100 col-span-8 text-orange-500`}>BOOK NOW</a>
-        </div>
-        {show != null ? <CabDetails show={setShow} /> : null}
-    </div>
-
-}
 
 
 
-function EditTrip({ onClose }: { onClose: Function }) {
-    return (
-        <div className="w-screen h-screen fixed top-0 right-0 bg-black/90 overflow-scroll pb-5 md:pb-0" >
-            <div className="flex justify-center items-center -mt-16 relative md:mt-0  "><TripBox /></div>
-            <div className="absolute top-20 right-10 cursor-pointer" >
-                <VscClose size={40} color="#fff" onClick={onClose} />
-            </div>
-        </div>
-    )
-}
 
 
 
@@ -255,30 +208,3 @@ function EditTrip({ onClose }: { onClose: Function }) {
 //     )
 // }
 
-
-function CabDetails({ show }: { show: Function }) {
-    const [index, setIndex] = useState(0)
-    return (
-        <div className='fixed top-0 right-0 bg-black/20 p-5 w-screen h-screen z-[999999] flex justify-center items-center' >
-            <div className="bg-white w-full p-5  relative  max-w-[450px] min-h-[300px] rounded-xl flex justify-start items-center flex-col">
-                <div className="absolute right-2 top-2 cursor-pointer" onClick={() => show(null)}><VscClose size={20} /></div>
-                <div className="w-full overflow-x-auto scrollbar-hidden text-center">
-                    <Tabs defaultValue="INCLUSIONS" className="w-full">
-                        <TabsList className='bg-orange-100'>
-                            <TabsTrigger onClick={() => setIndex(0)} className='text-orange-600 font-bold' value="INCLUSIONS">INCLUSIONS</TabsTrigger>
-                            <TabsTrigger onClick={() => setIndex(1)} className='text-orange-600 font-bold' value="EXCLUSIONS">EXCLUSIONS</TabsTrigger>
-                            <TabsTrigger onClick={() => setIndex(2)} className='text-orange-600 font-bold' value="FACILITIES">FACILITIES</TabsTrigger>
-                            <TabsTrigger onClick={() => setIndex(3)} className='text-orange-600 font-bold' value="T&C">T&C</TabsTrigger>
-                        </TabsList>
-                    </Tabs>
-                </div>
-                {[<CabInfo />,
-                <EXCLUSIONS />,
-                <FACILITIES />,
-                <CABTAQ />,
-                ][index]}
-            </div>
-
-        </div>
-    )
-}
