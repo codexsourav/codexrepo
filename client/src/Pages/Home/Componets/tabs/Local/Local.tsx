@@ -47,7 +47,7 @@ const Local = () => {
     const exploreCabs = () => {
         const validate = validateLocalData(data);
         if (validate == true) {
-            window.location.href = (`/explore?type=local&pickupaddress=${data.form}&pickdate=${data.pickDate}&picktime=${data.time}`)
+            window.location.href = (`/explore/local?type=local&pickupaddress=${data.form}&pickdate=${data.pickDate}&picktime=${data.time}`)
         } else {
             errorToast(validate.toString());
         }

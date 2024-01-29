@@ -52,7 +52,7 @@ const OneWay = () => {
       errorToast(valid.toString());
       return false;
     } else {
-      window.location.href = `/explore?type=oneway&pickupaddress=${data.from}&dropaddress=${data.to}&pickdate=${data.pickDate}&picktime=${data.time}`;
+      window.location.href = `/explore/oneway?type=oneway&pickupaddress=${data.from}&dropaddress=${data.to}&pickdate=${data.pickDate}&picktime=${data.time}`;
     }
   };
 
