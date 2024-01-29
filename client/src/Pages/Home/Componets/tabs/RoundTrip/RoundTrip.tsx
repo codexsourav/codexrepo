@@ -94,8 +94,10 @@ const RoundTrip = () => {
     const exploreCabs = () => {
         const validate = valiDateData(data);
         if (validate == true) {
+
             const stringRepresentation = (locations.length == 0) ? data.to : (data.to + "||" + locations.join("||"));
             window.location.href = (`/explore/roundtrip?type=roundtrip&pickupaddress=${data.form}&dropaddress=${stringRepresentation}&pickdate=${data.pickDate}&returndate=${data.returnDate}&picktime=${data.time}`);
+
         } else {
             errorToast(validate.toString());
         }
