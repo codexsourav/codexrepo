@@ -248,7 +248,8 @@ const Booking = () => {
         const valid = ValiDateForm();
         if (valid == true) {
             if (pageData?.pricing.price) {
-                handlePayment();
+                // handlePayment();
+                await makeNewBooking(null);
             }
         } else {
             errorToast(valid.toString());
