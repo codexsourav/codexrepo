@@ -68,7 +68,9 @@ function LocalExplore() {
                     </div>
                 </div>
                 <div className="col-span-1 md:col-span-8">
-                    <LocalTimeTab />
+                    <LocalTimeTab index={0} setIndex={(e) => {
+                        console.log(e);
+                    }} />
                     <div className=" grid md:grid-cols-2 gap-6 mb-40" >
                         {
                             cabs.cabs.map((e) => {

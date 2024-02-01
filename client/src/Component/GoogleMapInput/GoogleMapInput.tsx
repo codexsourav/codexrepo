@@ -239,7 +239,7 @@ export const AirportAutocomplete = ({ lbclass, tweek, className, dClass, label, 
 };
 
 
-export const LocalAutocomplete = ({ lbclass, tweek, className, dClass, label, value, onChenge, placeholder, airport }: {
+export const LocalAutocomplete = ({ lbclass, tweek, className, dClass, label, value, onChenge, placeholder }: {
     dClass?: string;
     className?: string;
     value?: string;

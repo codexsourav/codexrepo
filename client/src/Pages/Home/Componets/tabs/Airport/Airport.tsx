@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles/airport.module.css'
 import { generateTimeArray } from '@/utils/GetTime';
-import GoogleMapInput, { AirportAutocomplete, LocalAutocomplete, PlacesAutocomplete } from '@/Component/GoogleMapInput/GoogleMapInput';
+import GoogleMapInput from '@/Component/GoogleMapInput/GoogleMapInput';
 import { useDispatch, useSelector } from 'react-redux';
 import StoreType, { AppDispatch } from '@/Interfaces/storeInterface';
 import { IAirport, setAirport } from '@/Redux/TripBox/Airport';

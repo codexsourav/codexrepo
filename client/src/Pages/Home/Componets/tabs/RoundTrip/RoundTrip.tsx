@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styles from './styles/roundtrip.module.css'
 import { generateTimeArray } from '@/utils/GetTime';
-import { PlacesAutocomplete } from '@/Component/GoogleMapInput/GoogleMapInput';
 import { useDispatch, useSelector } from 'react-redux';
 import StoreType, { AppDispatch } from '@/Interfaces/storeInterface';
 import { IRoundTrip, setRoundTrip } from '@/Redux/TripBox/RoundTrip';
