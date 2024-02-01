@@ -12,11 +12,13 @@ import OneWayExplore from "@/Pages/Explore/OneWay/OneWayExplore";
 import RoundTripExplore from "@/Pages/Explore/RoundTrip/RoundTrip";
 import LocalExplore from "@/Pages/Explore/Local/Local";
 import AirportExplore from "@/Pages/Explore/Airport/Airport";
+import CityInput from "@/Component/AutoCompleet/CityInput";
 
 function AppRoutes() {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/test" element={<CityInput />} />
 
             <Route path="/explore/oneway" element={<OneWayExplore />} />
             <Route path="/explore/roundtrip" element={<RoundTripExplore />} />

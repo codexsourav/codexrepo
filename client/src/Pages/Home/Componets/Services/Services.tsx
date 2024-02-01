@@ -12,10 +12,10 @@ const Services = () => {
                     <p className="text-4xl uppercase font-extrabold text-[#1f1f1f]">WHAT We PROVIDE?</p>
                 </div>
                 <div className={styles.content}>
-                    <ServicesBox title='One Way' image='https://imgd.aeplcdn.com/1920x1080/n/cw/ec/141113/venue-exterior-left-front-three-quarter.jpeg?isig=0&q=80&q=80' desc='Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo necessitatibus porro blanditiis pariatur corrupti illum beatae quo praesentium!' />
-                    <ServicesBox title='Round Trip' image='https://imgd.aeplcdn.com/1920x1080/n/cw/ec/141113/venue-exterior-left-front-three-quarter.jpeg?isig=0&q=80&q=80' desc='Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo necessitatibus porro blanditiis pariatur corrupti illum beatae quo praesentium!' />
-                    <ServicesBox title='Local' image='https://imgd.aeplcdn.com/1920x1080/n/cw/ec/141113/venue-exterior-left-front-three-quarter.jpeg?isig=0&q=80&q=80' desc='Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo necessitatibus porro blanditiis pariatur corrupti illum beatae quo praesentium!' />
-                    <ServicesBox title='Airport' image='https://imgd.aeplcdn.com/1920x1080/n/cw/ec/141113/venue-exterior-left-front-three-quarter.jpeg?isig=0&q=80&q=80' desc='Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo necessitatibus porro blanditiis pariatur corrupti illum beatae quo praesentium!' />
+                    <ServicesBox title='One Way' image='/images/assets/1.jpeg' desc='Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo necessitatibus porro blanditiis pariatur corrupti illum beatae quo praesentium!' />
+                    <ServicesBox title='Round Trip' image='/images/assets/2.jpeg' desc='Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo necessitatibus porro blanditiis pariatur corrupti illum beatae quo praesentium!' />
+                    <ServicesBox title='Local' image='/images/assets/3.jpeg' desc='Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo necessitatibus porro blanditiis pariatur corrupti illum beatae quo praesentium!' />
+                    <ServicesBox title='Airport' image='/images/assets/4.jpeg' desc='Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo necessitatibus porro blanditiis pariatur corrupti illum beatae quo praesentium!' />
                 </div>
             </div>
         </>

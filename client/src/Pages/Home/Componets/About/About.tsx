@@ -9,7 +9,13 @@ const About = () => {
                 <h1 className="text-xl font-bold mb-2 text-orange-600">ABOUT US</h1>
                 <p className="text-4xl uppercase font-extrabold text-[#1f1f1f]">Who We Are?</p>
                 <div className="text-center leading-8 px-15 mt-10 text-xl">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo necessitatibus porro blanditiis pariatur corrupti illum beatae quo praesentium! Cum eum id quibusdam ut ab assumenda aliquam ipsa! Culpa dicta nisi distinctio dolorem, quibusdam laudantium recusandae? Exercitationem dolorum dolores sit quos doloribus dolor quas, expedita placeat facilis voluptates numquam aspernatur ipsa vel tempora suscipit commodi maiores hic iusto repellat vero necessitatibus! Laborum, molestiae. Dolorum minima quod nam, necessitatibus facere iusto inventore voluptatum repudiandae dignissimos praesentium eaque nesciunt accusamus at ab totam in repellendus dolores ut atque temporibus debitis, eum exercitationem ratione sapiente. Veritatis porro saepe vero. Eligendi amet in dicta velit.</p>
+                    <p>BaBaG Cabs  operates in the public transport market since October 2023. Even though a relatively new company,BaBaG Cabs achieved within a short time to consolidate it’s position in the market, vs
+                        being today the biggest taxi company in Dilhi ,Gurugran and other famouse cities of India with a feet of 30 cars, which crosses approx.
+                        6000km (3730 miles) every day, covering every corner of the city.
+                        Our taxis operate 24 hours a day, 7 days a week, 365 days a year in the city of India .
+                        Our vehicles are designed to offer comfort to the passengers but also
+                        effciency in the consumption of fuel. All vehicles have 4+1 seats, equipped with GPS system,
+                        radio, air conditioner etc.</p>
                 </div>
             </div >
         </>

@@ -10,17 +10,18 @@ import { BrowserRouter } from 'react-router-dom'
 import store from '@/Redux/store'
 import AppWrapper from '@/Routes/AppWrapper'
 import AppRoutes from '@/Routes/AppRoutes'
+import React from 'react'
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  // <React.StrictMode>
-  <BrowserRouter >
-    <Provider store={store}>
-      <AppWrapper>
-        <AppRoutes />
-      </AppWrapper>
-    </Provider>
-  </BrowserRouter >
-  // </React.StrictMode>
+  <React.StrictMode>
+    <BrowserRouter >
+      <Provider store={store}>
+        <AppWrapper>
+          <AppRoutes />
+        </AppWrapper>
+      </Provider>
+    </BrowserRouter >
+  </React.StrictMode>
 
 );

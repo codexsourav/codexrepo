@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from './styles/airport.module.css'
 import { generateTimeArray } from '@/utils/GetTime';
-import { PlacesAutocomplete } from '@/Component/GoogleMapInput/GoogleMapInput';
+import GoogleMapInput, { AirportAutocomplete, LocalAutocomplete, PlacesAutocomplete } from '@/Component/GoogleMapInput/GoogleMapInput';
 import { useDispatch, useSelector } from 'react-redux';
 import StoreType, { AppDispatch } from '@/Interfaces/storeInterface';
 import { IAirport, setAirport } from '@/Redux/TripBox/Airport';
 import { validateDateDifference } from '@/Lib/getVewDate';
 import { errorToast } from '@/Lib/showToast';
+import AirportInput from '@/Component/AutoCompleet/AirportInput';
 
 // ?type=oneway&pickupaddress=[]&dropaddress=[]&pickdate=[]&picktime=[];
 // ?type=roundtrip&pickupaddress=[]&dropaddress=[]&pickdate=[]&returndate=[]&picktime=[];
@@ -71,14 +72,13 @@ const Airport = () => {
                 </div>
                 <div className={`${styles.fld} ${data.trip == 0 ? styles.flip : null}`} >
 
-                    <PlacesAutocomplete airport={true} value={data.airport} label="Airport Name" placeholder="Enter Airport Name" onChenge={(places) => {
-
-                        setData('airport', places);
-
+                    <AirportInput text={data.airport} label="Airport Name" placeholder="Enter Airport Name" setText={(place) => {
+                        setData('airport', place);
                     }} />
 
-                    <PlacesAutocomplete value={data.location} label={data.trip ? "Drop Address" : "Pickup Adress"} placeholder="Your Address" onChenge={(places) => {
+                    <GoogleMapInput value={data.location} label={data.trip ? "Drop Address" : "Pickup Adress"} placeholder="Your Address" onChenge={(places) => {
                         setData('location', places);
+                        console.log(places);
 
                     }} />
 

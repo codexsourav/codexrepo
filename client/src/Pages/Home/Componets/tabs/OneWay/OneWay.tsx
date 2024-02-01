@@ -1,14 +1,12 @@
 import React from "react";
 import styles from "./styles/oneway.module.css";
 import { generateTimeArray } from "@/utils/GetTime";
-import {
-  PlacesAutocomplete,
-} from "@/Component/GoogleMapInput/GoogleMapInput";
 import { useDispatch, useSelector } from "react-redux";
 import StoreType, { AppDispatch } from "@/Interfaces/storeInterface";
 import { IOneWay, setOneWay } from "@/Redux/TripBox/OneWay";
 import { errorToast } from "@/Lib/showToast";
 import { validateDateDifference } from "@/Lib/getVewDate";
+import CityInput from "@/Component/AutoCompleet/CityInput";
 
 // ?type=oneway&pickupaddress=[]&dropaddress=[]&pickdate=[]&picktime=[];
 // ?type=roundtrip&pickupaddress=[]&dropaddress=[]&pickdate=[]&returndate=[]&picktime=[];
@@ -60,25 +58,20 @@ const OneWay = () => {
   return (
     <>
       <div className={styles.oneway}>
-        <PlacesAutocomplete
+        <CityInput
           label="From"
+          text={data.from}
           placeholder="Ex: Delhi"
-          value={data.from}
-          onChenge={(places) => {
-            setData("from", places);
-          }}
-        />
-
-        <PlacesAutocomplete
-          value={data.to}
+          setText={(e) => {
+            setData("from", e);
+          }} />
+        <CityInput
           label="To"
+          text={data.to}
           placeholder="Ex: Kolkata"
-          onChenge={(places) => {
-
-            setData("to", places);
-
-          }}
-        />
+          setText={(e) => {
+            setData("to", e);
+          }} />
 
         <div>
           <label>Pickup Date</label>

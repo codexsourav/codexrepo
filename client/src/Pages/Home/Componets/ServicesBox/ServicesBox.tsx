@@ -6,7 +6,7 @@ const ServicesBox = ({ desc, image, title }: { title: string, desc: string, imag
     return (
         <>
             <div className={styles.blogpost}>
-                <img className={`${styles.image} rounded-full`} src={image} alt="post" />
+                <img className={`${styles.image} rounded-full border-2`} src={image} alt="post" />
                 <h1 className={`${styles.title} text-center uppercase`}>{title}</h1>
                 <p className={`${styles.desc} text-center`} >{desc}</p>
             </div>

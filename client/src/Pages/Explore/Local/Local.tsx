@@ -6,6 +6,7 @@ import Loading from "@/Component/loading";
 import { ICabData, IRouteData } from "@/Interfaces/cabs";
 import makeApi from "@/Lib/makeApi";
 import { EditTrip } from "../ExitTrip";
+import LocalTimeTab from "./LocalTimeTab";
 
 function LocalExplore() {
     const [cabs, setCabs] = useState<null | { cabs: ICabData[], destination: IRouteData }>(null);
@@ -50,6 +51,7 @@ function LocalExplore() {
     return (
         <>
             <ExploreWrapper  >
+
                 <div className="col-span-1 md:col-span-4">
                     <div className=" border-2 border-orange-100 transition-all  rounded-xl relative md:sticky md:top-24">
                         <div className="border-b-2 border-orange-100 p-2 text-center">
@@ -66,7 +68,7 @@ function LocalExplore() {
                     </div>
                 </div>
                 <div className="col-span-1 md:col-span-8">
-                    <h1>dfsdfsd</h1>
+                    <LocalTimeTab />
                     <div className=" grid md:grid-cols-2 gap-6 mb-40" >
                         {
                             cabs.cabs.map((e) => {

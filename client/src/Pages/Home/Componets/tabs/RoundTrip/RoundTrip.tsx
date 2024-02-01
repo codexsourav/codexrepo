@@ -8,6 +8,7 @@ import { IRoundTrip, setRoundTrip } from '@/Redux/TripBox/RoundTrip';
 import { errorToast } from '@/Lib/showToast';
 import { validateDateDifference } from '@/Lib/getVewDate';
 import useWindowDimensions from '@/Hooks/useWindowDimensions';
+import CityInput from '@/Component/AutoCompleet/CityInput';
 
 // ?type=oneway&pickupaddress=[]&dropaddress=[]&pickdate=[]&picktime=[];
 // ?type=roundtrip&pickupaddress=[]&dropaddress=[]&pickdate=[]&returndate=[]&picktime=[];
@@ -109,15 +110,12 @@ const RoundTrip = () => {
         <>
             <div className={styles.roundtrip}>
 
-                <PlacesAutocomplete label='From' placeholder='Ex: Delhi' value={data.form} onChenge={(place) => {
-                    console.log(place);
-
+                <CityInput label='From' placeholder='Ex: Delhi' text={data.form} setText={(place) => {
                     setData('form', place)
                 }} />
                 <div className="grid-cols-12 w-full" style={{ display: "grid" }} >
 
-                    <PlacesAutocomplete label='To' dClass="col-span-10" placeholder='Ex: Kolkata' value={data.to} onChenge={(place) => {
-                        console.log(place);
+                    <CityInput className='col-span-10' label='To' placeholder='Ex: Delhi' text={data.to} setText={(place) => {
                         setData('to', place)
                     }} />
                     <div className="tabinput col-span-2 flex justify-end items-end cursor-pointer" onClick={addToLocations}><div className=""></div>
@@ -168,17 +166,14 @@ function RoundTripToS({ locations, setLocations, removeLocation }: { locations: 
             {
                 locations.map((d, i) => {
                     return <div className="grid-cols-12 w-full" style={{ display: "grid" }} key={"key+" + i}>
-                        <PlacesAutocomplete
-                            value={d}
-                            tweek='top-[73.5px] md:top-[67.5px]'
-                            lbclass='text-sm font-bold'
-                            onChenge={(e) => {
+                        <CityInput
+                            text={d}
+                            setText={(e) => {
                                 var data = [...locations];
                                 data[i] = e;
                                 setLocations(data);
-                            }} airport={false} label={'To'} dClass='col-span-11' placeholder='Ex: Kolkata' />
+                            }} label={'To'} className='col-span-11' placeholder='Ex: Kolkata' />
                         <div className="tabinput p-0 col-span-1 flex flex-col cursor-pointer w-full h-full justify-center items-center bg-red-950" onClick={() => removeLocation(i)}>
-
                             <div className={`text-red-600 rotate-45  pl-5 h-full w-full text-right text-lg flex justify-center items-end `}>+</div>
                         </div>
                     </div>
