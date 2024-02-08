@@ -20,7 +20,7 @@ export const viewDate = (datetime: string | Date, year = false) => {
     const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
     const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
 
-    const formattedDate = `${monthAbbreviation} ${day} ${year ? date.getUTCFullYear() : ""} - ${formattedHours}:${formattedMinutes} ${ampm}`;
+    const formattedDate = `${date.getFullYear()} ${monthAbbreviation} ${day} ${year ? date.getUTCFullYear() : ""} - ${formattedHours}:${formattedMinutes} ${ampm}`;
     return formattedDate;
 
 }
@@ -51,3 +51,7 @@ export const setTimeInpValue = (datetime: string | Date) => {
     const formattedTime = `${hours}:${minutes}`;
     return formattedTime;
 }
+
+
+var now = new Date();
+export var minDate = now.toISOString().substring(0, 10);

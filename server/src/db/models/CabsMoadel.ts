@@ -17,6 +17,11 @@ const cabs = new mongo.Schema<ICabs>({
         type: Boolean,
         default: true,
     },
+    discount: {
+        type: Number,
+        default: 0,
+    },
+    allowTrip: [],
     date: {
         type: Date,
         default: Date.now(),

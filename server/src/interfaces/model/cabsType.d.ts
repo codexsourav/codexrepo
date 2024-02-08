@@ -10,6 +10,8 @@ interface ICabs {
     maxpac: number;
     isAllow: boolean;
     delete: boolean;
+    discount: number,
+    allowTrip: string[],
     date: any,
 }
 

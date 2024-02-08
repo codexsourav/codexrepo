@@ -9,6 +9,12 @@ const users = new Schema<IUsers>({
         minLength: 2,
         trim: true,
     },
+    email: {
+        type: String,
+        lowercase: true,
+        minLength: 2,
+        trim: true,
+    },
     image: {
         type: String,
         required: true,
@@ -21,6 +27,9 @@ const users = new Schema<IUsers>({
         lowercase: true,
         minLength: 10,
         unique: true,
+    },
+    pass: {
+        type: String,
     },
     wallet: {
         type: Number,
@@ -41,6 +50,10 @@ const users = new Schema<IUsers>({
     otp: {
         value: String,
         date: Date,
+    },
+    date: {
+        type: Date,
+        default: Date.now(),
     }
 });
 

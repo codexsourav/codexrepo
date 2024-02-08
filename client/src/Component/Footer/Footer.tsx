@@ -61,7 +61,7 @@ const Footer = () => {
                     <div className={styles.title}>Address</div>
                     <div className={styles.contents}>
                         <p>Address:  Sheetla Colony, Sector-6, Gurgaon Haryana 122006</p>
-                        <p><TbPhoneFilled className={styles.icon} /> +91 9680855252</p>
+                        <a href='tel:01169266014' className='flex justify-start items-center'><TbPhoneFilled className={styles.icon} />01169266014</a>
                         {/* <p><TbPhoneFilled className={styles.icon} /> +91 8295936863</p> */}
                         <p><MdEmail className={styles.icon} /> support@babagcabs.com</p>
                     </div>

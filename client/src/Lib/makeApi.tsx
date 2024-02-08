@@ -19,12 +19,14 @@ export default async ({ path = "/", method = "GET", data = {}, baseUrl = import.
         return response;
     } catch (error) {
         if (error instanceof AxiosError) {
-            if (error.response?.status == 401) {
-                if (typeof window !== "undefined") {
-                    window.location.replace("/");
-                    throw error;
-                }
-            }
+            console.log(error.response?.data);
+
+            // if (error.response?.status == 401) {
+            //     if (typeof window !== "undefined") {
+            //         window.location.replace("/");
+            //         throw error;
+            //     }
+            // }
         } else {
             throw error;
         }

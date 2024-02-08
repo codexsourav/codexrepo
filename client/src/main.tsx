@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 import '@/globals.css'
@@ -11,6 +10,7 @@ import { BrowserRouter } from 'react-router-dom'
 import store from '@/Redux/store'
 import AppWrapper from '@/Routes/AppWrapper'
 import AppRoutes from '@/Routes/AppRoutes'
+import React from 'react'
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

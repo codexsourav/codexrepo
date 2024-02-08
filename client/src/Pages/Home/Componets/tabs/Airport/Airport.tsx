@@ -7,6 +7,7 @@ import StoreType, { AppDispatch } from '@/Interfaces/storeInterface';
 import { IAirport, setAirport } from '@/Redux/TripBox/Airport';
 import { validateDateDifference } from '@/Lib/getVewDate';
 import { errorToast } from '@/Lib/showToast';
+import AirportInput from '@/Component/AutoCompleet/AirportInput';
 
 // ?type=oneway&pickupaddress=[]&dropaddress=[]&pickdate=[]&picktime=[];
 // ?type=roundtrip&pickupaddress=[]&dropaddress=[]&pickdate=[]&returndate=[]&picktime=[];
@@ -51,7 +52,7 @@ const Airport = () => {
     const exploreCabs = () => {
         const validate = validateAirportData(data);
         if (validate == true) {
-            window.location.href = (`/explore?type=airport&trip=${data.trip}&airportname=${data.airport}&location=${data.location}&pickdate=${data.pickDate}&picktime=${data.time}`)
+            window.location.href = (`/explore/airport?type=airport&trip=${data.trip}&airportname=${data.airport}&location=${data.location}&pickdate=${data.pickDate}&picktime=${data.time}`)
         } else {
             errorToast(validate.toString());
         }
@@ -71,18 +72,14 @@ const Airport = () => {
                 </div>
                 <div className={`${styles.fld} ${data.trip == 0 ? styles.flip : null}`} >
 
-                    <GoogleMapInput airport={true} label="Airport Name" placeholder="Enter Airport Name" onChenge={(places) => {
-                        if (places) {
-                            const locationData = places.formatted_address.toString();
-                            setData('airport', locationData);
-                        }
+                    <AirportInput text={data.airport} label="Airport Name" placeholder="Enter Airport Name" setText={(place) => {
+                        setData('airport', place);
                     }} />
 
-                    <GoogleMapInput label={data.trip ? "Drop Address" : "Pickup Adress"} placeholder="Your Address" onChenge={(places) => {
-                        if (places) {
-                            const locationData = places.formatted_address.toString();
-                            setData('location', locationData);
-                        }
+                    <GoogleMapInput value={data.location} label={data.trip ? "Drop Address" : "Pickup Adress"} placeholder="Your Address" onChenge={(places) => {
+                        setData('location', places);
+                        console.log(places);
+
                     }} />
 
                 </div>

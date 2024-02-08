@@ -1,7 +1,7 @@
 .navbar {
     width: 100vw;
     height: 70px;
-    background-color: #141414de;
+    background-color: #323141;
     border-bottom: 3px solid var(--main);
     backdrop-filter: blur(10px);
     z-index: 999;
@@ -15,7 +15,7 @@
         align-items: center;
         z-index: 999;
         .logo {
-            width: 120px;
+            width: 100px;
         }
         .menu {
             display: flex;
